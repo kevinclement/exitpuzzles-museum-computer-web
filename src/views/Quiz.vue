@@ -7,31 +7,15 @@
 
           <!-- QUESTION -->
           <div>
-              <p class="question">I can now customize the question that gets asked.</p>
+              <p class="question">{{ question.question }}</p>
               <p class="question">Wanna try?:</p>
           </div>
 
           <!-- ANSWERS -->
           <table class="mainGF answerTable">
-              <tr>
-                  <td class="answerBtn">A.</td>
-                  <td>The first answer</td>
-              </tr>
-              <tr>
-                  <td class="answerBtn">B.</td>
-                  <td>Another good answer</td>
-              </tr>
-              <tr>
-                  <td class="answerBtn">C.</td>
-                  <td>The dumb answer no one should ever pick</td>
-              </tr>
-              <tr>
-                  <td class="answerBtn">D.</td>
-                  <td>The correct answer</td>
-              </tr>
-              <tr>
-                  <td class="answerBtn">E.</td>
-                  <td>So close, but not correct</td>
+              <tr v-for="(answer, index) in answers" :key="index">
+                  <td class="answerBtn">{{ letterFromIndex(index) }}</td>
+                  <td>{{answer}}</td>
               </tr>
           </table>
 
@@ -43,14 +27,27 @@
 </template>
 
 <script>
+import questions from '@/assets/questions.json';
 export default {
   name: 'Quiz',
   props: {
   },
   data() {
     return {
+        question: { question: "" },
+        answers: []
     }
   },
+  created () {
+    // load questions from json
+    this.question = questions[0];
+    this.answers = this.question.answers;
+  },
+  methods: {
+    letterFromIndex(index) {
+        return String.fromCharCode(65 + index) + "."
+    }
+  }
 }
 </script>
 <style scoped>

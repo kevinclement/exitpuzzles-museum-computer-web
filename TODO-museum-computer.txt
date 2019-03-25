@@ -1,5 +1,5 @@
-[ ] convert to vue
-  [ ] cleanup helloworld and map to prototype
+[x] convert to vue
+  [x] cleanup helloworld and map to prototype
 [ ] write test buttons for correct/incorrect
 
 [ ] What behavior do we want for correct vs incorret answer?
@@ -12,10 +12,10 @@
   [ ] pi node app to detect button press
 
 ## Dynamic Client:
-  [ ] questions stored in json files
-    [ ] question
-    [ ] answers A-E
-    [ ] correct answer attribute
+  [x] questions stored in json files
+    [x] question
+    [x] answers A-E
+    [x] correct answer attribute
   [ ] properly supports newlines in questions
     [ ] newlines should get mapped to <p>
   [ ] randomization to questions

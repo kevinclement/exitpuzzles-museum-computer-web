@@ -1,0 +1,13 @@
+[
+    {
+        "question": "I can now customize the question that gets asked.",
+        "answers": [
+            "The first answer",
+            "Another good answer",
+            "The dumb answer no one should ever pick",
+            "The correct answer",
+            "So close, but not correct"
+        ],
+        "correctAnswer": 3
+    }
+]
