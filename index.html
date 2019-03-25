@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <title>oregon demo</title>
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+        <style>
+            @font-face {
+                font-family: 'Arcade';
+                src: url('DlxFont.TTF');
+            }
+
+            body {
+                background: #000;
+                margin:0px;
+                padding: 0px;
+            }
+            .allImg {
+                padding-left:105px;
+            }
+            .top {
+                padding-top:55px;
+            }
+            .middle {
+                padding-top:80px;
+                padding-bottom:80px;
+            }
+
+            .item {
+            }
+            .header {
+                justify-self:center;
+                padding-top:50px;
+            }
+            .main {
+                background: #000;
+                width: 100vh;
+                font-family: 'Arcade';
+            }
+            .mainGF {
+                font-family: 'Press Start 2P', cursive;
+                line-height: 1.3;
+                font-size: 24px;
+                color: #00D46A;
+            }
+            .footer {
+                
+            }
+            .answer {
+                padding-top:2px;
+            }
+            .mainGF td {
+                vertical-align: top;
+                padding-top:3px;
+            }
+            .answerBtn {
+                padding-right: 13px;
+            }
+            .answerTable {
+                padding-left:24px;
+            }
+
+
+            .page {
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: 170px auto 110px;
+                height: 100vh;
+                justify-items: center;
+
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            }, false);
+        </script>
+    </head>
+    <!-- 1024 x 768
+        light green:  #00FF80
+        darker green: #00D46A;
+    -->
+    <body>
+        <div class="page">
+            <div class="item header"><img src="oregon-border.png"/></div>
+            <div class="item main mainGF">
+                <div>I can now customize the question that gets asked.</div>
+                <div>&nbsp;</div>
+                <div>Wanna try?:</div>
+                <div>&nbsp;</div>
+                <table class="mainGF answerTable">
+                    <tr>
+                        <td class="answerBtn">A.</td>
+                        <td>The first answer</td>
+                    </tr>
+                    <tr>
+                        <td class="answerBtn">B.</td>
+                        <td>Another good answer</td>
+                    </tr>
+                    <tr>
+                        <td class="answerBtn">C.</td>
+                        <td>The dumb answer no one should ever pick</td>
+                    </tr>
+                    <tr>
+                        <td class="answerBtn">D.</td>
+                        <td>The correct answer</td>
+                    </tr>
+                    <tr>
+                        <td class="answerBtn">E.</td>
+                        <td>So close, but not correct</td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="item footer"><img src="oregon-border.png"/></div>
+        </div>
+        <!-- <img src="oregon-border.png" style=""/>
+        <img src="oregon-text.png" style=""/>
+        <img src="oregon-border.png"/> -->
+    </body>
+</html>
