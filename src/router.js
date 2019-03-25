@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Launch from './views/Launch.vue'
 import Quiz from './views/Quiz.vue'
 

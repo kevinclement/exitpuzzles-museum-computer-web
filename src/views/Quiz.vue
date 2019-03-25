@@ -1,7 +1,45 @@
 <template>
-  <div class="quiz">
-    <h1>{{ msg }}</h1>
-  </div>
+    <div class="page">
+      <!-- HEADER -->
+      <div class="header"><img src="../assets/border.png"/></div>
+
+      <div class="main mainGF">
+
+          <!-- QUESTION -->
+          <div>
+              <p class="question">I can now customize the question that gets asked.</p>
+              <p class="question">Wanna try?:</p>
+          </div>
+
+          <!-- ANSWERS -->
+          <table class="mainGF answerTable">
+              <tr>
+                  <td class="answerBtn">A.</td>
+                  <td>The first answer</td>
+              </tr>
+              <tr>
+                  <td class="answerBtn">B.</td>
+                  <td>Another good answer</td>
+              </tr>
+              <tr>
+                  <td class="answerBtn">C.</td>
+                  <td>The dumb answer no one should ever pick</td>
+              </tr>
+              <tr>
+                  <td class="answerBtn">D.</td>
+                  <td>The correct answer</td>
+              </tr>
+              <tr>
+                  <td class="answerBtn">E.</td>
+                  <td>So close, but not correct</td>
+              </tr>
+          </table>
+
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer"><img src="../assets/border.png"/></div>
+    </div>
 </template>
 
 <script>
@@ -11,11 +49,54 @@ export default {
   },
   data() {
     return {
-      msg: "Hello quiz"
     }
   },
 }
 </script>
-
 <style scoped>
+  .page {
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: 170px auto 110px;
+      height: 100vh;
+      justify-items: center;
+  }
+
+  .header {
+      justify-self:center;
+      padding-top:50px;
+  }
+  .main {
+      background: #000;
+      width: 100vh;
+  }
+  .mainGF {
+      font-family: 'Press Start 2P', cursive;
+      line-height: 1.3;
+      font-size: 24px;
+      color: #00D46A;
+  }
+  .footer {
+  }
+
+  .question {
+      margin: 0px;
+      padding: 0px;
+      padding-top: 0px;
+      padding-bottom: 30px;
+  }
+
+  .answer {
+      padding-top:2px;
+  }
+  .mainGF td {
+      vertical-align: top;
+      padding-top:3px;
+  }
+  .answerBtn {
+      padding-right: 13px;
+  }
+  .answerTable {
+      padding-left:24px;
+  }
 </style>
