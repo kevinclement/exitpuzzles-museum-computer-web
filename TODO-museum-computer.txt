@@ -11,14 +11,15 @@
   [ ] pi node app to detect button press
 
 ## Dynamic Client:
-  [ ] websocket connection to webpage
   [ ] questions stored in json files
     [ ] question
     [ ] answers A-E
-    [ ] correct answer marked
+    [ ] correct answer attribute
   [ ] properly supports newlines in questions
+    [ ] newlines should get mapped to <p>
   [ ] randomization to questions
-
+  [ ] websocket connection to webpage
+  
 ## Pass/Fail:
   [ ] final score screen
     [ ] number correct
