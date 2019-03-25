@@ -1,8 +1,9 @@
 <html>
     <head>
-        <title>oregon demo</title>
+        <title>Museum of Curiosity: Quiz</title>
         <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
         <style>
+            /* Can probably kill when all is said and done */
             @font-face {
                 font-family: 'Arcade';
                 src: url('DlxFont.TTF');
@@ -13,19 +14,16 @@
                 margin:0px;
                 padding: 0px;
             }
-            .allImg {
-                padding-left:105px;
-            }
-            .top {
-                padding-top:55px;
-            }
-            .middle {
-                padding-top:80px;
-                padding-bottom:80px;
+
+            .page {
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: 170px auto 110px;
+                height: 100vh;
+                justify-items: center;
+
             }
 
-            .item {
-            }
             .header {
                 justify-self:center;
                 padding-top:50px;
@@ -42,8 +40,8 @@
                 color: #00D46A;
             }
             .footer {
-                
             }
+
             .answer {
                 padding-top:2px;
             }
@@ -58,15 +56,6 @@
                 padding-left:24px;
             }
 
-
-            .page {
-                display: grid;
-                grid-template-columns: auto;
-                grid-template-rows: 170px auto 110px;
-                height: 100vh;
-                justify-items: center;
-
-            }
         </style>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -79,8 +68,8 @@
     -->
     <body>
         <div class="page">
-            <div class="item header"><img src="oregon-border.png"/></div>
-            <div class="item main mainGF">
+            <div class="header"><img src="oregon-border.png"/></div>
+            <div class="main mainGF">
                 <div>I can now customize the question that gets asked.</div>
                 <div>&nbsp;</div>
                 <div>Wanna try?:</div>
@@ -109,10 +98,7 @@
                 </table>
 
             </div>
-            <div class="item footer"><img src="oregon-border.png"/></div>
+            <div class="footer"><img src="oregon-border.png"/></div>
         </div>
-        <!-- <img src="oregon-border.png" style=""/>
-        <img src="oregon-text.png" style=""/>
-        <img src="oregon-border.png"/> -->
     </body>
 </html>
