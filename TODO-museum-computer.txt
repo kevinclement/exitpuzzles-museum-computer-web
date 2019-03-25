@@ -1,9 +1,10 @@
+[ ] convert to vue
+  [ ] cleanup helloworld and map to prototype
+[ ] write test buttons for correct/incorrect
+
 [ ] What behavior do we want for correct vs incorret answer?
   [ ] when button is pressed, all other answers are hidden
   [ ] if incorrect, it will strike through it
-  
-[ ] convert to vue
-[ ] write test buttons for correct/incorrect
 
 ## Buttons:
   [ ] test button wiring raw
