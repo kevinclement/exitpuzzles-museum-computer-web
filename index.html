@@ -42,6 +42,13 @@
             .footer {
             }
 
+            .question {
+                margin: 0px;
+                padding: 0px;
+                padding-top: 0px;
+                padding-bottom: 30px;
+            }
+
             .answer {
                 padding-top:2px;
             }
@@ -68,12 +75,16 @@
     -->
     <body>
         <div class="page">
-            <div class="header"><img src="oregon-border.png"/></div>
+            <!-- HEADER -->
+            <div class="header"><img src="border.png"/></div>
             <div class="main mainGF">
-                <div>I can now customize the question that gets asked.</div>
-                <div>&nbsp;</div>
-                <div>Wanna try?:</div>
-                <div>&nbsp;</div>
+                <!-- QUESTION -->
+                <div>
+                    <p class="question">I can now customize the question that gets asked.</p>
+                    <p class="question">Wanna try?:</p>
+                </div>
+
+                <!-- ANSWERS -->
                 <table class="mainGF answerTable">
                     <tr>
                         <td class="answerBtn">A.</td>
@@ -98,7 +109,9 @@
                 </table>
 
             </div>
-            <div class="footer"><img src="oregon-border.png"/></div>
+
+            <!-- FOOTER -->
+            <div class="footer"><img src="border.png"/></div>
         </div>
     </body>
 </html>
