@@ -2,23 +2,9 @@
     <div class="page">
       <!-- HEADER -->
       <div class="header"><img src="../assets/border.png"/></div>
-
-      <div class="main mainGF">
-
-          <!-- QUESTION -->
-          <div>
-              <p class="question" v-for="part in questionParts()" :key="part">{{part}}</p>
-          </div>
-
-          <!-- ANSWERS -->
-          <table class="mainGF answerTable">
-              <tr v-for="(answer, index) in answers" :key="index">
-                  <td class="answerBtn">{{ letterFromIndex(index) }}</td>
-                  <td>{{answer}}</td>
-              </tr>
-          </table>
-
-      </div>
+      
+      <!-- QUESTION -->
+      <Question :question="questions[0]"></Question>
 
       <!-- FOOTER -->
       <div class="footer"><img src="../assets/border.png"/></div>
@@ -26,6 +12,7 @@
 </template>
 
 <script>
+import Question from '@/components/Question'
 import questions from '@/assets/questions.json';
 export default {
   name: 'Quiz',
@@ -33,23 +20,15 @@ export default {
   },
   data() {
     return {
-        question: { question: "" },
-        answers: [],
-        questionParts: function() {
-            return this.question.question.split('\n');
-        },
+        questions: questions,
     }
   },
   created () {
-    // TODO: proper random, for now load the first one
-    this.question = questions[0];
-    this.answers = this.question.answers;
   },
   methods: {
-    letterFromIndex(index) {
-        return String.fromCharCode(65 + index) + "."
-    },
-
+  },
+  components: {
+    'Question': Question,
   }
 }
 </script>
@@ -66,37 +45,6 @@ export default {
       justify-self:center;
       padding-top:50px;
   }
-  .main {
-      background: #000;
-      width: 100vh;
-  }
-  .mainGF {
-      font-family: 'Press Start 2P', cursive;
-      line-height: 1.3;
-      font-size: 24px;
-      color: #00D46A;
-  }
   .footer {
-  }
-
-  .question {
-      margin: 0px;
-      padding: 0px;
-      padding-top: 0px;
-      padding-bottom: 30px;
-  }
-
-  .answer {
-      padding-top:2px;
-  }
-  .mainGF td {
-      vertical-align: top;
-      padding-top:3px;
-  }
-  .answerBtn {
-      padding-right: 13px;
-  }
-  .answerTable {
-      padding-left:24px;
   }
 </style>
