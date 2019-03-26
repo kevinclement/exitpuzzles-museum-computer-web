@@ -3,7 +3,7 @@
 
         <!-- QUESTION -->
         <div>
-            <p class="question" v-for="part in questionParts()" :key="part">{{part}}</p>
+            <p class="question" v-for="part in questionParts" :key="part">{{part}}</p>
         </div>
 
         <!-- ANSWERS -->
@@ -24,11 +24,12 @@ export default {
       question: Object
   },
   data() {
-    return {
-        questionParts: function() {
-            return this.question.question.split('\n');
-        },
-    }
+    return {}
+  },
+  computed: {
+    questionParts: function() {
+        return this.question.question.split('\n');
+    },
   },
   methods: {
     letterFromIndex(index) {

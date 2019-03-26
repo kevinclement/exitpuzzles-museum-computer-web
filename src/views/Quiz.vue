@@ -4,7 +4,13 @@
       <div class="header"><img src="../assets/border.png"/></div>
       
       <!-- QUESTION -->
-      <Question :question="questions[0]"></Question>
+      <Question :question="currentQuestion"></Question>
+      
+      <div>
+        <button v-on:click="prev" style="margin-right:10px;">prev</button>
+        <button v-on:click="choose" style="margin-right:10px;">choose</button>
+        <button v-on:click="next" style="">next</button>
+      </div>
 
       <!-- FOOTER -->
       <div class="footer"><img src="../assets/border.png"/></div>
@@ -21,11 +27,31 @@ export default {
   data() {
     return {
         questions: questions,
+        questionIndex: 0,
     }
   },
-  created () {
+  computed: {
+      currentQuestion: function() {
+          return this.questions[this.questionIndex]
+      }
+  },
+  created() {
+      this.questionIndex = 1
   },
   methods: {
+      prev: function() {
+          if (this.questionIndex > 0) {
+            this.questionIndex--;
+          }
+      },
+      choose: function() {
+
+      },
+      next: function() {
+          if (this.questionIndex < this.questions.length - 1) {
+              this.questionIndex++;
+          }
+      }
   },
   components: {
     'Question': Question,
