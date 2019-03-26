@@ -1,6 +1,6 @@
 [
     {
-        "question": "I can now customize the question that gets asked.",
+        "question": "I can now customize the question that gets asked.\nWanna try?:",
         "answers": [
             "The first answer",
             "Another good answer",

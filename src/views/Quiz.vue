@@ -7,8 +7,7 @@
 
           <!-- QUESTION -->
           <div>
-              <p class="question">{{ question.question }}</p>
-              <p class="question">Wanna try?:</p>
+              <p class="question" v-for="part in questionParts()" :key="part">{{part}}</p>
           </div>
 
           <!-- ANSWERS -->
@@ -35,18 +34,22 @@ export default {
   data() {
     return {
         question: { question: "" },
-        answers: []
+        answers: [],
+        questionParts: function() {
+            return this.question.question.split('\n');
+        },
     }
   },
   created () {
-    // load questions from json
+    // TODO: proper random, for now load the first one
     this.question = questions[0];
     this.answers = this.question.answers;
   },
   methods: {
     letterFromIndex(index) {
         return String.fromCharCode(65 + index) + "."
-    }
+    },
+
   }
 }
 </script>
