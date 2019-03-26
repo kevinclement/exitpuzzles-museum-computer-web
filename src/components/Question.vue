@@ -21,7 +21,8 @@
 export default {
   name: 'Question',
   props: {
-      question: Object
+      question: Object,
+      selectedAnswer: Number,
   },
   data() {
     return {}
