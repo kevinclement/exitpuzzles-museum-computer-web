@@ -84,7 +84,7 @@ function getRandInt(max, cur) {
   .page {
       display: grid;
       grid-template-columns: auto;
-      grid-template-rows: 170px 488px 110px;
+      grid-template-rows: 170px 385px 110px;
       height: 100vh;
       justify-items: center;
   }
