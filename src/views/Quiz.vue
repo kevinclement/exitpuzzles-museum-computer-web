@@ -2,39 +2,14 @@
     <div class="page">
       <!-- HEADER -->
       <div class="header"><img src="../assets/border.png"/></div>
-
-      <div class="main mainGF">
-
-          <!-- QUESTION -->
-          <div>
-              <p class="question">I can now customize the question that gets asked.</p>
-              <p class="question">Wanna try?:</p>
-          </div>
-
-          <!-- ANSWERS -->
-          <table class="mainGF answerTable">
-              <tr>
-                  <td class="answerBtn">A.</td>
-                  <td>The first answer</td>
-              </tr>
-              <tr>
-                  <td class="answerBtn">B.</td>
-                  <td>Another good answer</td>
-              </tr>
-              <tr>
-                  <td class="answerBtn">C.</td>
-                  <td>The dumb answer no one should ever pick</td>
-              </tr>
-              <tr>
-                  <td class="answerBtn">D.</td>
-                  <td>The correct answer</td>
-              </tr>
-              <tr>
-                  <td class="answerBtn">E.</td>
-                  <td>So close, but not correct</td>
-              </tr>
-          </table>
-
+      
+      <!-- QUESTION -->
+      <Question :question="currentQuestion"></Question>
+      
+      <div>
+        <button v-on:click="prev" style="margin-right:10px;">prev</button>
+        <button v-on:click="choose" style="margin-right:10px;">choose</button>
+        <button v-on:click="next" style="">next</button>
       </div>
 
       <!-- FOOTER -->
@@ -43,14 +18,44 @@
 </template>
 
 <script>
+import Question from '@/components/Question'
+import questions from '@/assets/questions.json';
 export default {
   name: 'Quiz',
   props: {
   },
   data() {
     return {
+        questions: questions,
+        questionIndex: 0,
     }
   },
+  computed: {
+      currentQuestion: function() {
+          return this.questions[this.questionIndex]
+      }
+  },
+  created() {
+      this.questionIndex = 1
+  },
+  methods: {
+      prev: function() {
+          if (this.questionIndex > 0) {
+            this.questionIndex--;
+          }
+      },
+      choose: function() {
+
+      },
+      next: function() {
+          if (this.questionIndex < this.questions.length - 1) {
+              this.questionIndex++;
+          }
+      }
+  },
+  components: {
+    'Question': Question,
+  }
 }
 </script>
 <style scoped>
@@ -66,37 +71,6 @@ export default {
       justify-self:center;
       padding-top:50px;
   }
-  .main {
-      background: #000;
-      width: 100vh;
-  }
-  .mainGF {
-      font-family: 'Press Start 2P', cursive;
-      line-height: 1.3;
-      font-size: 24px;
-      color: #00D46A;
-  }
   .footer {
-  }
-
-  .question {
-      margin: 0px;
-      padding: 0px;
-      padding-top: 0px;
-      padding-bottom: 30px;
-  }
-
-  .answer {
-      padding-top:2px;
-  }
-  .mainGF td {
-      vertical-align: top;
-      padding-top:3px;
-  }
-  .answerBtn {
-      padding-right: 13px;
-  }
-  .answerTable {
-      padding-left:24px;
   }
 </style>

@@ -1,0 +1,35 @@
+[
+    {
+        "question": "1I can now customize the question that gets asked.\nWanna try?:",
+        "answers": [
+            "The first answer",
+            "Another good answer",
+            "The dumb answer no one should ever pick",
+            "The correct answer",
+            "So close, but not correct"
+        ],
+        "correctAnswer": 3
+    },
+    {
+        "question": "2I can now customize the question that gets asked.\nWanna try?:",
+        "answers": [
+            "The first answer",
+            "Another good answer",
+            "The dumb answer no one should ever pick",
+            "The correct answer",
+            "So close, but not correct"
+        ],
+        "correctAnswer": 3
+    },
+    {
+        "question": "3I can now customize the question that gets asked.\nWanna try?:",
+        "answers": [
+            "The first answer",
+            "Another good answer",
+            "The dumb answer no one should ever pick",
+            "The correct answer",
+            "So close, but not correct"
+        ],
+        "correctAnswer": 3
+    }
+]
