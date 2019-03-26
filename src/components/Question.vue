@@ -10,7 +10,7 @@
         <table class="mainGF answerTable">
             <tr v-for="(answer, index) in question.answers" :key="index">
                 <td class="answerBtn">{{ letterFromIndex(index) }}</td>
-                <td>{{answer}}</td>
+                <td>{{answerFromIndex(answer, index)}}</td>
             </tr>
         </table>
 
@@ -34,7 +34,27 @@ export default {
   },
   methods: {
     letterFromIndex(index) {
+        if (this.selectedAnswer >= 0 && index != this.selectedAnswer) {
+            return "\u00A0"
+        }
         return String.fromCharCode(65 + index) + "."
+    },
+    answerFromIndex(answer, index) {
+        if (this.selectedAnswer >= 0 && index != this.selectedAnswer) {
+
+            // replace answer with non-breaking spaces, but keep spaces
+            // so content will just disapear without shifting
+            let padded = ""
+            for(let i = 0; i < answer.length; i++) {
+                if (answer[i] !== " ") {
+                    padded += "\u00A0"
+                } else {
+                    padded += " "
+                }
+            }
+            return padded
+        }
+        return answer
     },
   }
 }

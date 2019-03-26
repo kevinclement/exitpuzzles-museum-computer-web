@@ -1,6 +1,17 @@
 [
     {
-        "question": "1I can now customize the question that gets asked.\nWanna try?:",
+        "question": "What year did they discover the first bigfoot footprint?:",
+        "answers": [
+            "1887",
+            "1932",
+            "1945",
+            "1901",
+            "1984"
+        ],
+        "correctAnswer": 3
+    },
+    {
+        "question": "I can now customize the question that gets asked.\nWanna try?:",
         "answers": [
             "The first answer",
             "Another good answer",
@@ -11,24 +22,13 @@
         "correctAnswer": 3
     },
     {
-        "question": "2I can now customize the question that gets asked.\nWanna try?:",
+        "question": "I need another question don't I?:",
         "answers": [
-            "The first answer",
-            "Another good answer",
-            "The dumb answer no one should ever pick",
-            "The correct answer",
-            "So close, but not correct"
-        ],
-        "correctAnswer": 3
-    },
-    {
-        "question": "3I can now customize the question that gets asked.\nWanna try?:",
-        "answers": [
-            "The first answer",
-            "Another good answer",
-            "The dumb answer no one should ever pick",
-            "The correct answer",
-            "So close, but not correct"
+            "Yup, you have no imagination",
+            "It might be long enough",
+            "Too short",
+            "Kyle is doing more",
+            "I don't know anything about objects"
         ],
         "correctAnswer": 3
     }

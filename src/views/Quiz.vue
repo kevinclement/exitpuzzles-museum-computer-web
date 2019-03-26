@@ -2,10 +2,10 @@
     <div class="page">
       <!-- HEADER -->
       <div class="header"><img src="../assets/border.png"/></div>
-      
+
       <!-- QUESTION -->
-      <Question :question="currentQuestion"></Question>
-      
+      <Question :question="currentQuestion" :selectedAnswer="selectedAnswer"></Question>
+
       <div>
         <button v-on:click="prev" style="margin-right:10px;">prev</button>
         <button v-on:click="choose" style="margin-right:10px;">choose</button>
@@ -28,6 +28,7 @@ export default {
     return {
         questions: questions,
         questionIndex: 0,
+        selectedAnswer: -1,
     }
   },
   computed: {
@@ -45,7 +46,11 @@ export default {
           }
       },
       choose: function() {
-
+        this.selectedAnswer = getRandInt(this.currentQuestion.answers.length, this.selectedAnswer);
+        setTimeout(() => {
+           this.selectedAnswer = -1
+           this.questionIndex = getRandInt(this.questions.length, this.questionIndex);
+        }, 1000);
       },
       next: function() {
           if (this.questionIndex < this.questions.length - 1) {
@@ -57,12 +62,29 @@ export default {
     'Question': Question,
   }
 }
+
+function getRandInt(max, cur) {
+  let rand = -1;
+
+  do {
+    rand = Math.floor(Math.random() * Math.floor(max))
+  } while(rand === cur)
+
+  return rand
+}
 </script>
+
+
+<!-- 
+  resolution:   1024 x 768
+  light green:  #00FF80
+  darker green: #00D46A
+-->
 <style scoped>
   .page {
       display: grid;
       grid-template-columns: auto;
-      grid-template-rows: 170px auto 110px;
+      grid-template-rows: 170px 488px 110px;
       height: 100vh;
       justify-items: center;
   }

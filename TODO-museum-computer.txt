@@ -7,6 +7,10 @@
   [\] if incorrect, it will strike through it
     [x] kyle doesnt want this behavior 
 
+[ ] do we want sounds?
+  [ ] check built in monitor and see how bad that is
+[ ] simple test rig for buttons with wood I have?
+
 ## Buttons:
   [ ] test button wiring raw
   [ ] wire up buttons to pi
