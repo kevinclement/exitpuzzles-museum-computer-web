@@ -4,7 +4,8 @@
 
 [ ] What behavior do we want for correct vs incorret answer?
   [ ] when button is pressed, all other answers are hidden
-  [ ] if incorrect, it will strike through it
+  [\] if incorrect, it will strike through it
+    [x] kyle doesnt want this behavior 
 
 ## Buttons:
   [ ] test button wiring raw
