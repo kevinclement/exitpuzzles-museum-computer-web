@@ -15,7 +15,8 @@
     "onoff": "^4.1.1",
     "socketio": "^1.0.0",
     "vue": "^2.6.6",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-socket.io": "^3.0.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",
@@ -35,7 +36,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

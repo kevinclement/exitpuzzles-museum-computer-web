@@ -6,11 +6,13 @@
       <!-- QUESTION -->
       <Question :question="currentQuestion" :selectedAnswer="selectedAnswer"></Question>
 
+      <!--
       <div>
         <button v-on:click="prev" style="margin-right:10px;">prev</button>
         <button v-on:click="choose" style="margin-right:10px;">choose</button>
         <button v-on:click="next" style="">next</button>
       </div>
+      -->
 
       <!-- FOOTER -->
       <div class="footer"><img src="../assets/border.png"/></div>
@@ -23,6 +25,15 @@ import questions from '@/assets/questions.json';
 export default {
   name: 'Quiz',
   props: {
+  },
+  sockets: {
+    connect: function () {
+        console.log('socket connected')
+    },
+    button: function (data) {
+        console.log(`button pressed: ${data}`)
+        this.choose()
+    }
   },
   data() {
     return {
@@ -84,7 +95,7 @@ function getRandInt(max, cur) {
   .page {
       display: grid;
       grid-template-columns: auto;
-      grid-template-rows: 170px 385px 110px;
+      grid-template-rows: 170px auto 110px;
       height: 100vh;
       justify-items: center;
   }

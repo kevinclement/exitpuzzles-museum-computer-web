@@ -27,6 +27,6 @@ io.on('connection', function(socket){
   console.log('client connected');
 });
 
-http.listen(80, function(){
-  console.log('listening on *:80');
+http.listen(8080, function(){
+  console.log('listening on *:8080');
 });
