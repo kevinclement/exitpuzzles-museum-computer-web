@@ -6,14 +6,6 @@
       <!-- QUESTION -->
       <Question :question="currentQuestion" :selectedAnswer="selectedAnswer"></Question>
 
-      <!--
-      <div>
-        <button v-on:click="prev" style="margin-right:10px;">prev</button>
-        <button v-on:click="choose" style="margin-right:10px;">choose</button>
-        <button v-on:click="next" style="">next</button>
-      </div>
-      -->
-
       <!-- FOOTER -->
       <div class="footer"><img src="../assets/border.png"/></div>
     </div>
@@ -49,6 +41,10 @@ export default {
   },
   created() {
       this.questionIndex = 1
+      window.addEventListener('keydown', this.onkeydown)
+  },
+  destroyed() {
+      window.removeEventListener('keydown', this.onkeydown)
   },
   methods: {
       prev: function() {
@@ -56,8 +52,14 @@ export default {
             this.questionIndex--;
           }
       },
-      choose: function() {
-        this.selectedAnswer = getRandInt(this.currentQuestion.answers.length, this.selectedAnswer);
+      choose: function(index) {
+        if (index === undefined) {
+          this.selectedAnswer = getRandInt(this.currentQuestion.answers.length, this.selectedAnswer)
+        }
+        else {
+          this.selectedAnswer = index
+        }
+
         setTimeout(() => {
            this.selectedAnswer = -1
            this.questionIndex = getRandInt(this.questions.length, this.questionIndex);
@@ -67,6 +69,33 @@ export default {
           if (this.questionIndex < this.questions.length - 1) {
               this.questionIndex++;
           }
+      },
+      onkeydown(e){
+        switch(e.code) {
+          case "ArrowRight":
+            this.next()
+            break;
+          case "ArrowLeft":
+            this.prev()
+            break;
+          case "ArrowUp":
+            this.choose()
+            break;
+          case "KeyA":
+          case "KeyB":
+          case "KeyC":
+          case "KeyD":
+          case "KeyE":
+            this.choose(e.keyCode - 65)
+            break
+          case "Digit1":
+          case "Digit2":
+          case "Digit3":
+          case "Digit4":
+          case "Digit5":
+            this.choose(parseInt(e.key) - 1)
+            break;
+        }
       }
   },
   components: {
