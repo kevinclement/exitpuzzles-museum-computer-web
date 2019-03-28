@@ -7,13 +7,14 @@
       <Question :question="currentQuestion" :selectedAnswer="selectedAnswer"></Question>
 
       <!-- FOOTER -->
-      <div class="footer"><img src="../assets/border.png"/></div>
+      <div class="footer">
+        <div class="progress">Question {{questionIndex + 1}}/{{QUESTION_LIMIT}}</div>
+        <img src="../assets/border.png"/>
+      </div>
     </div>
 </template>
 
 <script>
-const QUESTION_LIMIT = 5
-
 import Question from '@/components/Question'
 import questions from '@/assets/questions.json'
 
@@ -32,6 +33,7 @@ export default {
   },
   data() {
     return {
+        QUESTION_LIMIT: 5,
         missedQuestions: [],
         questions: questions,
         questionIndex: 0,
@@ -46,7 +48,7 @@ export default {
   created() {
       // create random set of questions
       // should contain any previously missed questions
-      this.questions = randomizeQuestions(questions, this.missedQuestions, QUESTION_LIMIT)
+      this.questions = randomizeQuestions(questions, this.missedQuestions, this.QUESTION_LIMIT)
       
       // set the first question as selected
       this.questionIndex = 0;
@@ -148,7 +150,7 @@ function randomizeQuestions(questions, missed, limit) {
     }
 
     // only do this until we've hit our limit
-    if (randQuestions.length - 1 === limit) {
+    if (randQuestions.length === limit) {
       break;
     }
   }
@@ -169,17 +171,31 @@ function randomizeQuestions(questions, missed, limit) {
 -->
 <style scoped>
   .page {
+      background: #000;
       display: grid;
       grid-template-columns: auto;
-      grid-template-rows: 170px auto 110px;
+      grid-template-rows: 170px auto 150px;
       height: 100vh;
       justify-items: center;
+      color: #00D46A;
+      font-family: 'Press Start 2P';
   }
 
   .header {
       justify-self:center;
       padding-top:50px;
   }
+
   .footer {
   }
+
+  .progress {
+    padding-bottom: 25px;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: 20px;
+    width: 300px;
+    text-align: end;
+  }
+  
 </style>

@@ -44,14 +44,11 @@ export default {
 </script>
 <style scoped>
   .main {
-      background: #000;
       width: 100vh;
   }
   .mainGF {
-      font-family: 'Press Start 2P', cursive;
       line-height: 1.3;
       font-size: 24px;
-      color: #00D46A;
   }
 
   .question {
