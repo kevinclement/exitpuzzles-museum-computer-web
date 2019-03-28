@@ -1,7 +1,8 @@
 <template>
-  <div class="launch" style="padding-left:40px">
-    <img src="../assets/zoltar-nes-clean-block.png" style="width:400px;padding-bottom: 10px;"/>
-    <pre style="font: 12px/12px monospace;color:#00D46A;display:inline-block;padding-top:160px;padding-left:15px;padding-bottom:10px;">
+  <div class="launch" style="">
+    <img class="zoltar" src="../assets/zoltar-nes-clean-block.png"/>
+    <pre class="logoText">
+
 ███▄ ▄███▓ █    ██   ██████ ▓█████  █    ██  ███▄ ▄███▓               
 ▓██▒▀█▀ ██▒ ██  ▓██▒▒██    ▒ ▓█   ▀  ██  ▓██▒▓██▒▀█▀ ██▒               
 ▓██    ▓██░▓██  ▒██░░ ▓██▄   ▒███   ▓██  ▒██░▓██    ▓██░               
@@ -33,8 +34,8 @@
 ░ ░         ░        ░      ░      ░ ░        ░   ░            ░ ░     
 ░                                                              ░ ░     
   </pre>
-    <div style="font-size:13px;padding-left:290px;padding-top:10px">©<span style="padding-left:3px;">1985</span> Marko Software INC.</div>
-    <div v-bind:class="{ blink: blink }" style="font-size:18px;padding-left:150px;padding-top:100px">Insert QUIZ DISK 2/2 to continue...</div>
+    <div class="copyright">©<span style="padding-left:3px;">1985</span> Marko Software INC.</div>
+    <div class="insertDisk" v-bind:class="{ blink: blink }">Insert QUIZ DISK 2/2 to continue...</div>
   </div>
   
 </template>
@@ -45,7 +46,7 @@ export default {
   },
   data() {
     return {
-      blink: true
+      blink: false
     }
   },
   created() {
@@ -57,19 +58,40 @@ export default {
 </script>
 
 <style scoped>
-  .blink {
-    color: #000;
-  }
-  .blink_me {
-    animation: blinker 1s infinite;
-  }
-  @keyframes blinker {
-    50% {
-      opacity: 0;
-    }
-  }
   .launch {
+    height: 100vh;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: auto auto;
+    grid-template-rows: 540px 145px auto;
     color: #00D46A;
     font-family: 'Press Start 2P';
   }
+  .zoltar {
+    width:400px;
+    justify-self: right;
+    padding-right:8px;
+    align-self: end;
+  }
+  .logoText {
+    font: 12px/12px monospace;
+    display:inline-block;
+    justify-self:left;
+    align-self: end;
+    padding-right: 50px;
+
+  }
+  .copyright {
+    grid-column: 1 / 3;
+    font-size:13px;
+    padding-top:20px;
+  }
+  .insertDisk {
+    grid-column: 1 / 3;
+    font-size:18px;
+  }
+  .blink {
+    color: #000;
+  }
+
 </style>
