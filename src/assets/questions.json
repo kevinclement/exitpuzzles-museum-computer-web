@@ -31,5 +31,128 @@
             "I don't know anything about objects"
         ],
         "correctAnswer": 3
+    },
+    {
+        "question": "When did the Liberty Bell get its name?:",
+        "answers": [
+            "When it was made, in 1701",
+            "When it rang on July 4, 1776",
+            "When John named it in newspaper report",
+            "In the 19th century, when it became a symbol of the abolition of slavery",
+            "None of the above"
+        ],
+        "correctAnswer": 3
+    },
+    {
+        "question": "The Daniel Boon museum at the home where he died can best be described how?",
+        "answers": [
+            "a log cabin in Kentucky",
+            "a two-story clapboard house in Tennessee",
+            "a four-story Georgian-style home in Missouri",
+            "a three story brick house in Arkansas",
+            "a whole in the ground with a cot"
+        ]
+    },
+    {
+        "question": "Which of the following items was owned by the fewest U.S. homes in 1990?",
+        "answers": [
+            "home computer",
+            "dryer",
+            "compact disk player",
+            "cordless phone",
+            "dishwasher"
+        ]
+    },
+    {        
+        "question": "Who holds the record for the most victories in a row on the professional golf tour?",
+        "answers": [
+            "Jack Nicklaus",
+            "Arnold Palmer",
+            "Michael Jackson",
+            "Byron Nelson",
+            "Ben Hogan"
+        ]
+    },
+    {
+        "question": "Who is third behind Hank Aaron and Babe Ruth in major league career home runs?",
+        "answers": [
+            "Reggie Jackson",
+            "Harmon Killebrew",
+            "Willie Mays",
+            "Ichiro Suziki",
+            "Frank Robinson"
+        ]
+    },
+    {
+        "question": "In 1990, in what percentage of U.S. married couples did the wife earn more money than the husband?",
+        "answers": [
+            "8",
+            "18",
+            "38",
+            "44",
+            "58"
+        ]
+    },
+    {        
+        "question": "During the 1980s for six consecutive years what breed of dog was the most popular in the U.S.?",
+        "answers": [
+            "Cocker Spaniel",
+            "German Shepherd",
+            "Bulldog",
+            "Labrador Retriever",
+            "Poodle"
+        ]
+    },
+    {        
+        "question": "In 1985, five percent of U.S. households had telephone answering machines. By 1990 what percentage of homes had answering machines?",
+        "answers": [
+            "10 percent",
+            "15 percent",
+            "22 percent",
+            "31 percent",
+            "51 percent"
+            ]
+    },
+    {
+        "question": "The first black American pictured on a U.S. postage stamp was who?",
+        "answers": [
+            "Frederick Douglass",
+            "Booker T. Washington",
+            "Louis Armstrong",
+            "Barak O'bama'",
+            "Joe Louis"
+        ]
+    },
+    {        
+        "question": "What did the 'D' in 'D-Day' stand for?",
+        "answers": [
+            "Doom",
+            "Day",
+            "Dwight (Eisenhower)",
+            "Dunkirk",
+            "Delightful"
+        ]
+    },
+    {        
+        "question": "The Brownie Box Camera introduced by Eastman Kodak in 1900 had a retail price of what?",
+        "answers": [
+            "$1",
+            "$5",
+            "$10",
+            "$15",
+            "$20"
+        ]
+    },
+    {
+        "question": "Which of these characters turned 40 years old in 1990?",
+        "answers": [
+            "Charlie Brown",
+            "Bugs Bunny",
+            "Mickey Mouse",
+            "Fred Flintstone",
+            "Bart Simpson"
+        ]
     }
+
+    
 ]
