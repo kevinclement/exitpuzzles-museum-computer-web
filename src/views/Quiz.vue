@@ -12,8 +12,11 @@
 </template>
 
 <script>
+const QUESTION_LIMIT = 5
+
 import Question from '@/components/Question'
-import questions from '@/assets/questions.json';
+import questions from '@/assets/questions.json'
+
 export default {
   name: 'Quiz',
   props: {
@@ -40,7 +43,14 @@ export default {
       }
   },
   created() {
-      this.questionIndex = 1
+      // create random set of questions
+      // should contain any previously missed questions
+      this.questions = randomizeQuestions(questions, QUESTION_LIMIT)
+      
+      // set the first question as selected
+      this.questionIndex = 0;
+
+      // hookup keyboard handler for debug stuff when not using buttons
       window.addEventListener('keydown', this.onkeydown)
   },
   destroyed() {
@@ -112,6 +122,38 @@ function getRandInt(max, cur) {
 
   return rand
 }
+
+// Will randomize questions to ask, taking into account ones we've previously missed
+function randomizeQuestions(questions, limit) {
+  let randQuestions = [];
+
+  // first add any missed questions to our list
+  // TODO: actually do this
+
+  // then randomize the original list
+  questions.sort( function() { return 0.5 - Math.random() } );
+
+  // then pick N number of items out of that list until
+  // its full with total needed
+  for (let i=0; i < questions.length; i++) {
+    let q = questions[i]
+
+    // only add it to our list of questions if it wasn't already in our list of missed questions
+    // note: I know this is n^2, but n shouldn't be big
+    if (randQuestions.findIndex(q2 => { return q2.question === q.question }) < 0) {
+      randQuestions.push(q);
+    }
+
+    // only do this until we've hit our limit
+    if (randQuestions.length - 1 === limit) {
+      break;
+    }
+  }
+
+  console.dir(randQuestions)
+  return randQuestions
+}
+
 </script>
 
 
