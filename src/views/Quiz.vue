@@ -18,6 +18,7 @@
       <div>
         <div>correct: {{correctQuestions.length}}</div>
         <div>missed: {{missedQuestions.length}}</div>
+        <div>score: {{score}}</div>
       </div>
     </div>
 </template>
@@ -41,7 +42,8 @@ export default {
   },
   data() {
     return {
-        QUESTION_LIMIT: 2,
+        QUESTION_LIMIT: 8, // TODO: move back to 15
+        ANSWER_TIMEOUT: 5, // TODO: move back to 1000
         questions: questions,
         questionIndex: 0,
         missedQuestions: [],
@@ -59,6 +61,11 @@ export default {
       },
       finished: function() {
         return this.correctQuestions.length + this.missedQuestions.length === this.QUESTION_LIMIT
+      },
+      score: function() {
+        let score = Math.floor((this.correctQuestions.length / this.QUESTION_LIMIT) * 100)
+
+        return score
       }
   },
   created() {
@@ -116,7 +123,7 @@ export default {
            this.buttonTimer = null;
            this.selectedAnswer = -1
            this.questionIndex++
-        }, 1000);
+        }, this.ANSWER_TIMEOUT);
       },
       next: function() {
           if (this.questionIndex < this.questions.length - 1) {

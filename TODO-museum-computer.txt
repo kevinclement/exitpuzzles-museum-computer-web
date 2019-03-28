@@ -3,6 +3,7 @@
   [ ] wire to quiz and sockets
 
 [ ] how to do a full reset?  e.g. get rid of missed questions
+  [ ] maybe button press for 20s
 
 [ ] do we want sounds?
   [ ] check built in monitor and see how bad that is
@@ -14,9 +15,14 @@
   [ ] number incorrect
 [ ] if all questions are correct, show passcode
 [ ] if any of them are wrong
+  'you scored 87%, try again for a perfect score.'
+  'congrats, you scored 100%.'
+  score value is 5 digits
+  when scoring 100%, 5 digit final score is passcode to lock
+  
   [ ] "press any button to restart quiz"
-  [ ] restart, for sure repeat questions they got wrong, plus potentially some new ones
-
+  [x] restart, repeat questions they got wrong, plus potentially some new ones
+ 
 ## Launch Screen
 [ ] design screen
   [ ] "Insert Quiz Disk 2/2 to continue..."
@@ -24,6 +30,9 @@
   [ ] if disk 2 is removed and disk 1 is inserted, goes back to launch screen
 [ ] when disk 2 is inserted and detected, start quiz screens
   [ ] need to figure out how to listen for this mounting/unmounting
+
+## Password Screen
+[ ] "insert password to continue"
     
 ## Firebase Connection:
 [ ] node app can get questions from firebase and update locally cached questions
