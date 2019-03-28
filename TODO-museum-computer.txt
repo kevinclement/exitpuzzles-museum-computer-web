@@ -3,7 +3,7 @@
   [ ] wire to quiz and sockets
 
 [ ] question status somewhere, e.g "Question 1/15"
-[ ] randomization to questions
+[ ] randomization to questions 
 
 [ ] do we want sounds?
   [ ] check built in monitor and see how bad that is
