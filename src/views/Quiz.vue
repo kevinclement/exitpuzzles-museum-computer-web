@@ -8,8 +8,8 @@
 
       <!-- FOOTER -->
       <div class="footer">
-        <div class="progress">Question {{questionIndex + 1}}/{{QUESTION_LIMIT}}</div>
         <img src="../assets/border.png"/>
+        <div class="progress">Question {{questionIndex + 1}}/{{QUESTION_LIMIT}}</div>
       </div>
     </div>
 </template>
@@ -174,7 +174,7 @@ function randomizeQuestions(questions, missed, limit) {
       background: #000;
       display: grid;
       grid-template-columns: auto;
-      grid-template-rows: 170px auto 150px;
+      grid-template-rows: 170px auto 120px;
       height: 100vh;
       justify-items: center;
       color: #00D46A;
@@ -190,7 +190,7 @@ function randomizeQuestions(questions, missed, limit) {
   }
 
   .progress {
-    padding-bottom: 25px;
+    padding-top:10px;
     font-size: 20px;
     margin-left: auto;
     margin-right: 20px;
