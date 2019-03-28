@@ -8,9 +8,9 @@
 
         <!-- ANSWERS -->
         <table class="mainGF answerTable">
-            <tr v-for="(answer, index) in question.answers" :key="index">
+            <tr v-for="(answer, index) in question.answers" :key="index" v-bind:class="{ answerHidden: isNotSelected(index) }">
                 <td class="answerBtn">{{ letterFromIndex(index) }}</td>
-                <td>{{answerFromIndex(answer, index)}}</td>
+                <td>{{answer}}</td>
             </tr>
         </table>
 
@@ -34,27 +34,10 @@ export default {
   },
   methods: {
     letterFromIndex(index) {
-        if (this.selectedAnswer >= 0 && index != this.selectedAnswer) {
-            return "\u00A0"
-        }
         return String.fromCharCode(65 + index) + "."
     },
-    answerFromIndex(answer, index) {
-        if (this.selectedAnswer >= 0 && index != this.selectedAnswer) {
-
-            // replace answer with non-breaking spaces, but keep spaces
-            // so content will just disapear without shifting
-            let padded = ""
-            for(let i = 0; i < answer.length; i++) {
-                if (answer[i] !== " ") {
-                    padded += "\u00A0"
-                } else {
-                    padded += " "
-                }
-            }
-            return padded
-        }
-        return answer
+    isNotSelected(index) {
+        return this.selectedAnswer >= 0 && index != this.selectedAnswer
     },
   }
 }
@@ -81,6 +64,10 @@ export default {
   .answer {
       padding-top:2px;
   }
+  .answerHidden {
+    color:#000;
+  }
+
   .mainGF td {
       vertical-align: top;
       padding-top:3px;
