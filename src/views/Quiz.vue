@@ -1,5 +1,6 @@
 <template>
-    <div class="page">
+    <div class="page" v-if="correctQuestions.length + missedQuestions.length < QUESTION_LIMIT">
+
       <!-- HEADER -->
       <div class="header"><img src="../assets/border.png"/></div>
 
@@ -11,6 +12,12 @@
         <img src="../assets/border.png"/>
         <div class="progress">Question {{questionIndex + 1}}/{{QUESTION_LIMIT}}</div>
       </div>
+
+    </div>
+    <div v-else>
+      <div>correct: {{correctQuestions.length}}</div>
+      <div>missed: {{missedQuestions.length}}</div>
+      <button >retry</button>
     </div>
 </template>
 
@@ -28,21 +35,26 @@ export default {
     },
     button: function (data) {
         console.log(`button pressed: ${data}`)
-        this.choose()
+        this.buttonPressed()
     }
   },
   data() {
     return {
         QUESTION_LIMIT: 5,
-        missedQuestions: [],
         questions: questions,
         questionIndex: 0,
+        missedQuestions: [],
+        correctQuestions: [],
         selectedAnswer: -1,
+        buttonTimer: null,
     }
   },
   computed: {
       currentQuestion: function() {
           return this.questions[this.questionIndex]
+      },
+      correct: function() {
+        return this.currentQuestion.correctAnswer == this.selectedAnswer
       }
   },
   created() {
@@ -65,7 +77,13 @@ export default {
             this.questionIndex--;
           }
       },
-      choose: function(index) {
+      buttonPressed: function(index) {
+        if (this.buttonTimer) {
+          console.log(`INFO: Ignoring multi press for ${index}, selection already made.`)
+          return;
+        }
+
+        // support undefined debug mode that randomly picks answer
         if (index === undefined) {
           this.selectedAnswer = getRandInt(this.currentQuestion.answers.length, this.selectedAnswer)
         }
@@ -73,9 +91,17 @@ export default {
           this.selectedAnswer = index
         }
 
-        setTimeout(() => {
+        // add to score arrays
+        if (this.correct) {
+          this.correctQuestions.push(this.currentQuestion)
+        } else {
+          this.missedQuestions.push(this.currentQuestion)
+        }
+
+        this.buttonTimer = setTimeout(() => {
+           this.buttonTimer = null;
            this.selectedAnswer = -1
-           this.questionIndex = getRandInt(this.questions.length, this.questionIndex);
+           this.questionIndex++
         }, 1000);
       },
       next: function() {
@@ -92,21 +118,21 @@ export default {
             this.prev()
             break;
           case "ArrowUp":
-            this.choose()
+            this.buttonPressed()
             break;
           case "KeyA":
           case "KeyB":
           case "KeyC":
           case "KeyD":
           case "KeyE":
-            this.choose(e.keyCode - 65)
+            this.buttonPressed(e.keyCode - 65)
             break
           case "Digit1":
           case "Digit2":
           case "Digit3":
           case "Digit4":
           case "Digit5":
-            this.choose(parseInt(e.key) - 1)
+            this.buttonPressed(parseInt(e.key) - 1)
             break;
         }
       }

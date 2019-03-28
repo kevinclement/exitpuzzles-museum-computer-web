@@ -2,16 +2,12 @@
   [ ] create cables and solder all
   [ ] wire to quiz and sockets
 
-[ ] question status somewhere, e.g "Question 1/15"
-
 [ ] how to do a full reset?  e.g. get rid of missed questions
 
 [ ] do we want sounds?
   [ ] check built in monitor and see how bad that is
 [ ] simple test rig for buttons with wood I have?
 
-
- 
 ## Pass/Fail:
 [ ] final score screen
   [ ] number correct
@@ -32,6 +28,9 @@
 ## Firebase Connection:
 [ ] node app can get questions from firebase and update locally cached questions
 [ ] should probably figure out what max characters are for it to fix on screen and limit that
+[ ] some sort of support for remote update?  
+  [ ] I can toggle a bit in firebase and it will do a git pull and restart of pm2
+  [ ] tie that into the ux ui to show last pull and possible need to refresh with a button
 
 --------------------------------------------
 [x] convert to vue
@@ -52,3 +51,4 @@
 [x] pi node app to detect button press
 [x] websocket connection to webpage
 [x] randomization to questions
+[x] question status somewhere, e.g "Question 1/15"

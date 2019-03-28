@@ -8,7 +8,7 @@
             "1901",
             "1984"
         ],
-        "correctAnswer": 3
+        "correctAnswer": 2
     },
     {
         "question": "I can now customize the question that gets asked.\nWanna try?:",
@@ -19,7 +19,7 @@
             "The correct answer",
             "So close, but not correct"
         ],
-        "correctAnswer": 3
+        "correctAnswer": 2
     },
     {
         "question": "I need another question don't I?:",
@@ -30,7 +30,7 @@
             "Kyle is doing more",
             "I don't know anything about objects"
         ],
-        "correctAnswer": 3
+        "correctAnswer": 2
     },
     {
         "question": "When did the Liberty Bell get its name?:",
@@ -41,7 +41,7 @@
             "In the 19th century, when it became a symbol of the abolition of slavery",
             "None of the above"
         ],
-        "correctAnswer": 3
+        "correctAnswer": 2
     },
     {
         "question": "The Daniel Boon museum at the home where he died can best be described how?",
@@ -51,7 +51,8 @@
             "a four-story Georgian-style home in Missouri",
             "a three story brick house in Arkansas",
             "a whole in the ground with a cot"
-        ]
+        ],
+        "correctAnswer": 2
     },
     {
         "question": "Which of the following items was owned by the fewest U.S. homes in 1990?",
@@ -61,7 +62,8 @@
             "compact disk player",
             "cordless phone",
             "dishwasher"
-        ]
+        ],
+        "correctAnswer": 2
     },
     {        
         "question": "Who holds the record for the most victories in a row on the professional golf tour?",
@@ -71,7 +73,8 @@
             "Michael Jackson",
             "Byron Nelson",
             "Ben Hogan"
-        ]
+        ],
+        "correctAnswer": 2
     },
     {
         "question": "Who is third behind Hank Aaron and Babe Ruth in major league career home runs?",
@@ -81,7 +84,8 @@
             "Willie Mays",
             "Ichiro Suziki",
             "Frank Robinson"
-        ]
+        ],
+        "correctAnswer": 2
     },
     {
         "question": "In 1990, in what percentage of U.S. married couples did the wife earn more money than the husband?",
@@ -91,7 +95,8 @@
             "38",
             "44",
             "58"
-        ]
+        ],
+        "correctAnswer": 2
     },
     {        
         "question": "During the 1980s for six consecutive years what breed of dog was the most popular in the U.S.?",
@@ -101,7 +106,8 @@
             "Bulldog",
             "Labrador Retriever",
             "Poodle"
-        ]
+        ],
+        "correctAnswer": 2
     },
     {        
         "question": "In 1985, five percent of U.S. households had telephone answering machines. By 1990 what percentage of homes had answering machines?",
@@ -111,7 +117,8 @@
             "22 percent",
             "31 percent",
             "51 percent"
-            ]
+        ],
+        "correctAnswer": 2
     },
     {
         "question": "The first black American pictured on a U.S. postage stamp was who?",
@@ -121,7 +128,8 @@
             "Louis Armstrong",
             "Barack Obama",
             "Joe Louis"
-        ]
+        ],
+        "correctAnswer": 2
     },
     {        
         "question": "What did the 'D' in 'D-Day' stand for?",
@@ -131,7 +139,8 @@
             "Dwight (Eisenhower)",
             "Dunkirk",
             "Delightful"
-        ]
+        ],
+        "correctAnswer": 2
     },
     {        
         "question": "The Brownie Box Camera introduced by Eastman Kodak in 1900 had a retail price of what?",
@@ -141,7 +150,8 @@
             "$10",
             "$15",
             "$20"
-        ]
+        ],
+        "correctAnswer": 2
     },
     {
         "question": "Which of these characters turned 40 years old in 1990?",
@@ -151,7 +161,8 @@
             "Mickey Mouse",
             "Fred Flintstone",
             "Bart Simpson"
-        ]
+        ],
+        "correctAnswer": 2
     }
 
     
