@@ -1,5 +1,6 @@
 <template>
   <div class="launch" style="">
+    <div class="welcome">Welcome to The...</div>
     <img class="zoltar" src="../assets/zoltar-nes-clean-block.png"/>
     <pre class="logoText">
 
@@ -63,9 +64,16 @@ export default {
     display: grid;
     justify-items: center;
     grid-template-columns: auto auto;
-    grid-template-rows: 540px 145px auto;
+    grid-template-rows: 143px 402px 145px auto;
     color: #00D46A;
     font-family: 'Press Start 2P';
+  }
+  .welcome {
+    grid-column: 1 / 3;
+    align-self: end;
+    padding-bottom:9px;
+    padding-left:172px;
+    font-size:17px;
   }
   .zoltar {
     width:400px;
