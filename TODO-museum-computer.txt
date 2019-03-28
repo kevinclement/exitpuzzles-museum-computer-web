@@ -3,11 +3,14 @@
   [ ] wire to quiz and sockets
 
 [ ] question status somewhere, e.g "Question 1/15"
-[ ] randomization to questions 
+
+[ ] how to do a full reset?  e.g. get rid of missed questions
 
 [ ] do we want sounds?
   [ ] check built in monitor and see how bad that is
 [ ] simple test rig for buttons with wood I have?
+
+
  
 ## Pass/Fail:
 [ ] final score screen
@@ -48,3 +51,4 @@
 [x] wire up button to pi
 [x] pi node app to detect button press
 [x] websocket connection to webpage
+[x] randomization to questions

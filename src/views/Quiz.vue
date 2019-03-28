@@ -32,6 +32,7 @@ export default {
   },
   data() {
     return {
+        missedQuestions: [],
         questions: questions,
         questionIndex: 0,
         selectedAnswer: -1,
@@ -45,7 +46,7 @@ export default {
   created() {
       // create random set of questions
       // should contain any previously missed questions
-      this.questions = randomizeQuestions(questions, QUESTION_LIMIT)
+      this.questions = randomizeQuestions(questions, this.missedQuestions, QUESTION_LIMIT)
       
       // set the first question as selected
       this.questionIndex = 0;
@@ -124,11 +125,13 @@ function getRandInt(max, cur) {
 }
 
 // Will randomize questions to ask, taking into account ones we've previously missed
-function randomizeQuestions(questions, limit) {
+function randomizeQuestions(questions, missed, limit) {
   let randQuestions = [];
 
   // first add any missed questions to our list
-  // TODO: actually do this
+  for (let q of missed) {
+    randQuestions.push(q)
+  }
 
   // then randomize the original list
   questions.sort( function() { return 0.5 - Math.random() } );
@@ -150,7 +153,9 @@ function randomizeQuestions(questions, limit) {
     }
   }
 
-  console.dir(randQuestions)
+  // finally, randomize the final set again so missed ones aren't on the front
+  randQuestions.sort( function() { return 0.5 - Math.random() } );
+
   return randQuestions
 }
 
