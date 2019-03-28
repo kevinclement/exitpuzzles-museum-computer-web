@@ -1,5 +1,5 @@
 <template>
-    <div class="page" v-if="!finished">
+    <div class="questions" v-if="!finished">
 
       <!-- HEADER -->
       <div class="header"><img src="../assets/border.png"/></div>
@@ -14,10 +14,11 @@
       </div>
 
     </div>
-    <div v-else>
-      <div>correct: {{correctQuestions.length}}</div>
-      <div>missed: {{missedQuestions.length}}</div>
-      <button >retry</button>
+    <div class="score" v-else>
+      <div>
+        <div>correct: {{correctQuestions.length}}</div>
+        <div>missed: {{missedQuestions.length}}</div>
+      </div>
     </div>
 </template>
 
@@ -40,7 +41,7 @@ export default {
   },
   data() {
     return {
-        QUESTION_LIMIT: 5,
+        QUESTION_LIMIT: 2,
         questions: questions,
         questionIndex: 0,
         missedQuestions: [],
@@ -225,15 +226,20 @@ function shuffle(array) {
   darker green: #00D46A
 -->
 <style scoped>
-  .page {
+  .questions,.score {
       background: #000;
       display: grid;
-      grid-template-columns: auto;
-      grid-template-rows: 170px auto 120px;
       height: 100vh;
-      justify-items: center;
       color: #00D46A;
       font-family: 'Press Start 2P';
+  }
+  .questions {
+      grid-template-columns: auto;
+      grid-template-rows: 170px auto 120px;
+      justify-items: center;
+  }
+  .score {
+
   }
 
   .header {
