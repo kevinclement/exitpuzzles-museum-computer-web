@@ -1,5 +1,5 @@
 <template>
-    <div class="page" v-if="correctQuestions.length + missedQuestions.length < QUESTION_LIMIT">
+    <div class="page" v-if="!finished">
 
       <!-- HEADER -->
       <div class="header"><img src="../assets/border.png"/></div>
@@ -55,15 +55,13 @@ export default {
       },
       correct: function() {
         return this.currentQuestion.correctAnswer == this.selectedAnswer
+      },
+      finished: function() {
+        return this.correctQuestions.length + this.missedQuestions.length === this.QUESTION_LIMIT
       }
   },
   created() {
-      // create random set of questions
-      // should contain any previously missed questions
-      this.questions = randomizeQuestions(questions, this.missedQuestions, this.QUESTION_LIMIT)
-      
-      // set the first question as selected
-      this.questionIndex = 0;
+      this.reset();
 
       // hookup keyboard handler for debug stuff when not using buttons
       window.addEventListener('keydown', this.onkeydown)
@@ -72,6 +70,17 @@ export default {
       window.removeEventListener('keydown', this.onkeydown)
   },
   methods: {
+      reset: function() {
+        // create random set of questions, should contain any previously missed questions
+        this.questions = randomizeQuestions(questions, this.missedQuestions, this.QUESTION_LIMIT)
+
+        // after randomizing, can now reset the missed questions
+        this.missedQuestions = []
+        this.correctQuestions = []
+
+        // set the first question as selected
+        this.questionIndex = 0
+      },
       prev: function() {
           if (this.questionIndex > 0) {
             this.questionIndex--;
@@ -80,6 +89,10 @@ export default {
       buttonPressed: function(index) {
         if (this.buttonTimer) {
           console.log(`INFO: Ignoring multi press for ${index}, selection already made.`)
+          return;
+        }
+        if (this.finished) {
+          this.reset()
           return;
         }
 
@@ -162,7 +175,7 @@ function randomizeQuestions(questions, missed, limit) {
   }
 
   // then randomize the original list
-  questions.sort( function() { return 0.5 - Math.random() } );
+  questions = shuffle(questions)
 
   // then pick N number of items out of that list until
   // its full with total needed
@@ -182,11 +195,27 @@ function randomizeQuestions(questions, missed, limit) {
   }
 
   // finally, randomize the final set again so missed ones aren't on the front
-  randQuestions.sort( function() { return 0.5 - Math.random() } );
-
-  return randQuestions
+  return shuffle(randQuestions)
 }
 
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
 </script>
 
 
