@@ -1,5 +1,5 @@
 <template>
-  <div class="launch" style="padding-left:70px">
+  <div class="launch" style="padding-left:40px">
     <img src="../assets/zoltar-nes-clean-block.png" style="width:400px;padding-bottom: 10px;"/>
     <pre style="font: 12px/12px monospace;color:#00D46A;display:inline-block;padding-top:160px;padding-left:15px;padding-bottom:10px;">
 ███▄ ▄███▓ █    ██   ██████ ▓█████  █    ██  ███▄ ▄███▓               
