@@ -1,16 +1,14 @@
+[ ] wire up all 5 buttons
+  [ ] create cables and solder all
+  [ ] wire to quiz and sockets
+
+[ ] question status somewhere, e.g "Question 1/15"
+[ ] randomization to questions 
+
 [ ] do we want sounds?
   [ ] check built in monitor and see how bad that is
 [ ] simple test rig for buttons with wood I have?
-
-## Buttons:
-[x] test button wiring raw
-[x] wire up button to pi
-[x] pi node app to detect button press
-
-## Dynamic Client:
-[ ] randomization to questions
-[x] websocket connection to webpage
-  
+ 
 ## Pass/Fail:
 [ ] final score screen
   [ ] number correct
@@ -18,7 +16,7 @@
 [ ] if all questions are correct, show passcode
 [ ] if any of them are wrong
   [ ] "press any button to restart quiz"
-  [ ] restart, but don't repeat missed questions
+  [ ] restart, for sure repeat questions they got wrong, plus potentially some new ones
 
 ## Launch Screen
 [ ] design screen
@@ -46,3 +44,7 @@
     [x] correct answer attribute
 [x] properly supports newlines in questions
     [x] newlines should get mapped to <p>
+[x] test button wiring raw
+[x] wire up button to pi
+[x] pi node app to detect button press
+[x] websocket connection to webpage
