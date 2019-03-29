@@ -35,7 +35,7 @@
 ░ ░         ░        ░      ░      ░ ░        ░   ░            ░ ░     
 ░                                                              ░ ░     
   </pre>
-    <div class="copyright">©<span style="padding-left:3px;">1985</span> Marko Software INC.</div>
+    <div class="copyright">©<span style="padding-left:3px;">1985</span> Marco Software INC.</div>
     <div class="insertDisk" v-bind:class="{ blink: blink }">Insert QUIZ DISK 2/2 to continue...</div>
   </div>
   
