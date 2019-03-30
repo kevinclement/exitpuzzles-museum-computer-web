@@ -22,11 +22,13 @@
             <tr><td>Total time:</td><td>{{formatTime(totalTime)}}</td></tr>
             <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
             
-            <tr><td>Final Score:</td><td>{{score}}</td></tr>
+            <tr><td>Final Score:</td>
+                <td><div v-bind:class="{ blink: blink }">{{score}}</div></td>
+            </tr>
           </table>
         </div>
-        <div style="justify-self:center;">TRY AGAIN for a perfect score</div>
-        <div style="justify-self:center;">Press ANY button to RESTART!</div>
+        <div class="footerMsg">{{tryAgain}}</div>
+        <div class="footerMsg">{{pressAnyButton}}</div>
   </div>
 </template>
 
@@ -40,7 +42,10 @@ export default {
       totalTime: Number
   },
   data() {
-    return {}
+    return {
+        blink: false,
+        blinkTimer: null,
+    }
   },
   computed: {
     score: function() {
@@ -71,9 +76,33 @@ export default {
     percentage: function() {
         return Math.floor((this.correct / (this.missed + this.correct)) * 100)
     },
-    formatAverageTime: function() {
-        return formatTime(this.avgTime)
+    tryAgain: function() {
+        if (this.missed == 0) {
+            return "CONGRATULATIONS"
+        } else {
+            return "TRY AGAIN for a perfect score"
+        }
+    },
+    pressAnyButton: function() {
+        if (this.missed == 0) {
+            return "You scored 100%!!"
+        } else {
+            return "Press ANY button to RESTART!"
+        }
     }
+  },
+  created() {
+      // turn on blinking of score if we're at 100%
+      console.log(`per ${this.percentage}`);
+      if (this.percentage == 100) {
+        console.log(`setting timer`);
+        this.blinkTimer = setInterval(() => {
+          this.blink = !this.blink;
+        }, 1000);
+      }
+  },
+  destroyed() {
+    clearTimeout(this.blinkTimer);
   },
   methods: {
     formatTime(tInSeconds) {
@@ -84,7 +113,7 @@ export default {
         if (minutes > 0) {
             minStr = `${minutes}m `
         }
-        
+
         return `${minStr}${seconds}s`
     }
   }
@@ -105,8 +134,14 @@ export default {
     padding-right:40px;
   } 
   .results {
-      font: 18px monospace;
-      font-family:"Courier New", monospace;
+    font: 18px monospace;
+    font-family:"Courier New", monospace;
+  }
+  .footerMsg {
+    justify-self: center;
+  }
+  .blink {
+    color: #000;
   }
 
 </style>

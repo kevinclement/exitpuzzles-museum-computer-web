@@ -2,30 +2,24 @@
   [ ] create cables and solder all
   [ ] wire to quiz and sockets
 
-[ ] how to do a full reset?  e.g. get rid of missed questions
-  [ ] maybe button press for 20s
-
 [ ] do we want sounds?
   [ ] check built in monitor and see how bad that is
 [ ] simple test rig for buttons with wood I have?
 
-## Pass/Fail:
-[ ] final score screen
-  [ ] number correct
-  [ ] number incorrect
-[ ] if all questions are correct, show passcode
-[ ] if any of them are wrong
-  'you scored 87%, try again for a perfect score.'
-  'congrats, you scored 100%.'
-  score value is 5 digits
-  when scoring 100%, 5 digit final score is passcode to lock
-  
-  [ ] "press any button to restart quiz"
-  [x] restart, repeat questions they got wrong, plus potentially some new ones
- 
+[ ] enable timers for questions
+  [ ] bar lower left
+  [ ] if times out, treat it as a miss 
+  [ ] different lengths
+    [ ] 60s timer
+    [ ] 30s
+    [ ] off
+
+[ ] how to do a full reset?  e.g. get rid of missed questions
+  [ ] maybe button press for 20s
+
 ## Launch Screen
 [ ] design screen
-  [ ] "Insert Quiz Disk 2/2 to continue..."
+  [x] "Insert Quiz Disk 2/2 to continue..."
   [ ] if disk 1 is remove do we need a "INSERT DISK..."
   [ ] if disk 1 is remove and reinserted, noop from launch screen
   [ ] if disk 2 is removed and disk 1 is inserted, goes back to launch screen
@@ -62,3 +56,10 @@
 [x] websocket connection to webpage
 [x] randomization to questions
 [x] question status somewhere, e.g "Question 1/15"
+[x] final score screen
+  [x] number correct
+  [x] number incorrect
+[x] if all questions are correct, show passcode
+[x] if any of them are wrong
+  [x] "press any button to restart quiz"
+  [x] restart, repeat questions they got wrong, plus potentially some new ones

@@ -47,14 +47,18 @@ export default {
   },
   data() {
     return {
-      blink: false
+      blink: false,
+      blinkTimer: null,
     }
   },
   created() {
-    setInterval(() => {
+    this.blinkTimer = setInterval(() => {
       this.blink = !this.blink;
     }, 1000);
-  }
+  },
+  destroyed() {
+    clearTimeout(this.blinkTimer);
+  },
 }
 </script>
 

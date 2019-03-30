@@ -17,7 +17,7 @@
 
     <!-- RESULTS -->
     <Results v-else 
-      v-bind:missed="4"
+      v-bind:missed="1"
       v-bind:correct="11"
       v-bind:avgTime="65"
       v-bind:totalTime="737"
