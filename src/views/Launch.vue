@@ -1,40 +1,7 @@
 <template>
   <div class="launch" style="">
     <div class="welcome">Welcome to The...</div>
-    <img class="zoltar" src="../assets/zoltar-nes-clean-block.png"/>
-    <pre class="logoText">
-
-███▄ ▄███▓ █    ██   ██████ ▓█████  █    ██  ███▄ ▄███▓               
-▓██▒▀█▀ ██▒ ██  ▓██▒▒██    ▒ ▓█   ▀  ██  ▓██▒▓██▒▀█▀ ██▒               
-▓██    ▓██░▓██  ▒██░░ ▓██▄   ▒███   ▓██  ▒██░▓██    ▓██░               
-▒██    ▒██ ▓▓█  ░██░  ▒   ██▒▒▓█  ▄ ▓▓█  ░██░▒██    ▒██                
-▒██▒   ░██▒▒▒█████▓ ▒██████▒▒░▒████▒▒▒█████▓ ▒██▒   ░██▒               
-░ ▒░   ░  ░░▒▓▒ ▒ ▒ ▒ ▒▓▒ ▒ ░░░ ▒░ ░░▒▓▒ ▒ ▒ ░ ▒░   ░  ░               
-░  ░      ░░░▒░ ░ ░ ░ ░▒  ░ ░ ░ ░  ░░░▒░ ░ ░ ░  ░      ░               
-░      ░    ░░░ ░ ░ ░  ░  ░     ░    ░░░ ░ ░ ░      ░                  
-       ░      ░           ░     ░  ░   ░            ░                  
-                                                                       
-                   ▒█████    █████▒                                    
-                  ▒██▒  ██▒▓██   ▒                                     
-                  ▒██░  ██▒▒████ ░                                     
-                  ▒██   ██░░▓█▒  ░                                     
-                  ░ ████▓▒░░▒█░                                        
-                  ░ ▒░▒░▒░  ▒ ░                                        
-                    ░ ▒ ▒░  ░                                          
-                  ░ ░ ░ ▒   ░ ░                                        
-                      ░ ░                                              
-                                                                       
- ▄████▄   █    ██  ██▀███   ██▓ ▒█████    ██████  ██▓▄▄▄█████▓▓██   ██▓
-▒██▀ ▀█   ██  ▓██▒▓██ ▒ ██▒▓██▒▒██▒  ██▒▒██    ▒ ▓██▒▓  ██▒ ▓▒ ▒██  ██▒
-▒▓█    ▄ ▓██  ▒██░▓██ ░▄█ ▒▒██▒▒██░  ██▒░ ▓██▄   ▒██▒▒ ▓██░ ▒░  ▒██ ██░
-▒▓▓▄ ▄██▒▓▓█  ░██░▒██▀▀█▄  ░██░▒██   ██░  ▒   ██▒░██░░ ▓██▓ ░   ░ ▐██▓░
-▒ ▓███▀ ░▒▒█████▓ ░██▓ ▒██▒░██░░ ████▓▒░▒██████▒▒░██░  ▒██▒ ░   ░ ██▒▓░
-░ ░▒ ▒  ░░▒▓▒ ▒ ▒ ░ ▒▓ ░▒▓░░▓  ░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░░▓    ▒ ░░      ██▒▒▒ 
-  ░  ▒   ░░▒░ ░ ░   ░▒ ░ ▒░ ▒ ░  ░ ▒ ▒░ ░ ░▒  ░ ░ ▒ ░    ░     ▓██ ░▒░ 
-░         ░░░ ░ ░   ░░   ░  ▒ ░░ ░ ░ ▒  ░  ░  ░   ▒ ░  ░       ▒ ▒ ░░  
-░ ░         ░        ░      ░      ░ ░        ░   ░            ░ ░     
-░                                                              ░ ░     
-  </pre>
+    <img class="zoltar" src="../assets/logo.png"/>
     <div class="copyright">©<span style="padding-left:3px;">1985</span> Marco Software INC.</div>
     <div class="insertDisk" v-bind:class="{ blink: blink }">Insert QUIZ DISK 2/2 to continue...</div>
   </div>
@@ -63,23 +30,20 @@ export default {
     height: 100vh;
     display: grid;
     justify-items: center;
-    grid-template-columns: auto auto;
-    grid-template-rows: 143px 402px 145px auto;
+    grid-template-columns: auto;
+    grid-template-rows: 75px auto 75px auto;
     color: #00D46A;
     font-family: 'Press Start 2P';
   }
   .welcome {
-    grid-column: 1 / 3;
     align-self: end;
-    padding-bottom:9px;
-    padding-left:172px;
+    justify-self: left;
+    padding-bottom:25px;
+    padding-left:210px;
     font-size:17px;
   }
   .zoltar {
-    width:400px;
-    justify-self: right;
-    padding-right:8px;
-    align-self: end;
+    width:600px;
   }
   .logoText {
     font: 12px/12px monospace;
@@ -90,12 +54,10 @@ export default {
 
   }
   .copyright {
-    grid-column: 1 / 3;
     font-size:13px;
-    padding-top:20px;
+    
   }
   .insertDisk {
-    grid-column: 1 / 3;
     font-size:18px;
   }
   .blink {
