@@ -15,12 +15,37 @@
 
     </div>
     <div class="score" v-else>
-      <div>
-        <div>correct: {{correctQuestions.length}}</div>
-        <div>missed: {{missedQuestions.length}}</div>
-        <div>score: {{score}}</div>
+
+        <div>**************************</div>
+        <div>
+        <pre class="results">
+        ██████╗ ███████╗███████╗██╗   ██╗██╗  ████████╗███████╗   
+        ██╔══██╗██╔════╝██╔════╝██║   ██║██║  ╚══██╔══╝██╔════╝ ██╗
+        ██████╔╝█████╗  ███████╗██║   ██║██║     ██║   ███████╗ ╚═╝
+        ██╔══██╗██╔══╝  ╚════██║██║   ██║██║     ██║   ╚════██║ ██╗
+        ██║  ██║███████╗███████║╚██████╔╝███████╗██║   ███████║ ╚═╝
+        ╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚══════╝╚═╝   ╚══════╝   
+        </pre>
+        </div>
+        <div>**************************</div>
+        <div>
+          <table class="resultsTable">
+            <tr><td>Missed:</td><td>&nbsp;2</td></tr>
+            <tr><td>Correct:</td><td>13 (87%)</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+            <tr><td>Avg time:</td><td>65s</td></tr>
+            <tr><td>Total time:</td><td>12m 22s</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+            
+            <tr><td>Final Score:</td><td>87423</td></tr>
+          </table>
+          <p></p>
+        </div>
+        <div style="justify-self:center;">TRY AGAIN for a perfect score</div>
+        <div style="justify-self:center;">Press ANY button to RESTART!</div>
       </div>
-    </div>
+
 </template>
 
 <script>
@@ -60,7 +85,9 @@ export default {
         return this.currentQuestion.correctAnswer == this.selectedAnswer
       },
       finished: function() {
-        return this.correctQuestions.length + this.missedQuestions.length === this.QUESTION_LIMIT
+        // TMP: SO I CAN DESIGN, REMOVE 
+        return true;
+        //return this.correctQuestions.length + this.missedQuestions.length === this.QUESTION_LIMIT
       },
       score: function() {
         let score = Math.floor((this.correctQuestions.length / this.QUESTION_LIMIT) * 100)
@@ -246,7 +273,18 @@ function shuffle(array) {
       justify-items: center;
   }
   .score {
-
+    font-size: 28px;
+    padding-top:40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    grid-template-rows: 37px 160px 75px 315px 50px 50px;
+  }
+  .resultsTable td {
+    padding-right:40px;
+  } 
+  .results {
+      font: 18px monospace;
+      font-family:"Courier New", monospace;
   }
 
   .header {
@@ -265,5 +303,4 @@ function shuffle(array) {
     width: 300px;
     text-align: end;
   }
-  
 </style>
