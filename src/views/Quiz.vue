@@ -1,6 +1,7 @@
 <template>
-    <div class="questions" v-if="!finished">
 
+    <!-- QUESTIONS -->
+    <div class="questions" v-if="!finished">
       <!-- HEADER -->
       <div class="header"><img src="../assets/border.png"/></div>
 
@@ -12,44 +13,21 @@
         <img src="../assets/border.png"/>
         <div class="progress">Question {{questionIndex + 1}}/{{QUESTION_LIMIT}}</div>
       </div>
-
     </div>
-    <div class="score" v-else>
 
-        <div>**************************</div>
-        <div>
-        <pre class="results">
-        ██████╗ ███████╗███████╗██╗   ██╗██╗  ████████╗███████╗   
-        ██╔══██╗██╔════╝██╔════╝██║   ██║██║  ╚══██╔══╝██╔════╝ ██╗
-        ██████╔╝█████╗  ███████╗██║   ██║██║     ██║   ███████╗ ╚═╝
-        ██╔══██╗██╔══╝  ╚════██║██║   ██║██║     ██║   ╚════██║ ██╗
-        ██║  ██║███████╗███████║╚██████╔╝███████╗██║   ███████║ ╚═╝
-        ╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚══════╝╚═╝   ╚══════╝   
-        </pre>
-        </div>
-        <div>**************************</div>
-        <div>
-          <table class="resultsTable">
-            <tr><td>Missed:</td><td>&nbsp;2</td></tr>
-            <tr><td>Correct:</td><td>13 (87%)</td></tr>
-            <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
-
-            <tr><td>Avg time:</td><td>65s</td></tr>
-            <tr><td>Total time:</td><td>12m 22s</td></tr>
-            <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
-            
-            <tr><td>Final Score:</td><td>87423</td></tr>
-          </table>
-          <p></p>
-        </div>
-        <div style="justify-self:center;">TRY AGAIN for a perfect score</div>
-        <div style="justify-self:center;">Press ANY button to RESTART!</div>
-      </div>
+    <!-- RESULTS -->
+    <Results v-else 
+      v-bind:missed="4"
+      v-bind:correct="11"
+      v-bind:avgTime="65"
+      v-bind:totalTime="737"
+    />
 
 </template>
 
 <script>
 import Question from '@/components/Question'
+import Results from '@/components/Results'
 import questions from '@/assets/questions.json'
 
 export default {
@@ -89,11 +67,6 @@ export default {
         return true;
         //return this.correctQuestions.length + this.missedQuestions.length === this.QUESTION_LIMIT
       },
-      score: function() {
-        let score = Math.floor((this.correctQuestions.length / this.QUESTION_LIMIT) * 100)
-
-        return score
-      }
   },
   created() {
       this.reset();
@@ -187,6 +160,7 @@ export default {
   },
   components: {
     'Question': Question,
+    'Results': Results,
   }
 }
 
@@ -260,38 +234,21 @@ function shuffle(array) {
   darker green: #00D46A
 -->
 <style scoped>
-  .questions,.score {
+  .questions {
       background: #000;
       display: grid;
       height: 100vh;
       color: #00D46A;
       font-family: 'Press Start 2P';
-  }
-  .questions {
       grid-template-columns: auto;
       grid-template-rows: 170px auto 120px;
       justify-items: center;
-  }
-  .score {
-    font-size: 28px;
-    padding-top:40px;
-    padding-left: 20px;
-    padding-right: 20px;
-    grid-template-rows: 37px 160px 75px 315px 50px 50px;
-  }
-  .resultsTable td {
-    padding-right:40px;
-  } 
-  .results {
-      font: 18px monospace;
-      font-family:"Courier New", monospace;
   }
 
   .header {
       justify-self:center;
       padding-top:50px;
   }
-
   .footer {
   }
 
