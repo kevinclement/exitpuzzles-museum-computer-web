@@ -14,7 +14,7 @@
         <div>**************************</div>
         <div>
           <table class="resultsTable">
-            <tr><td>Missed:</td><td>&nbsp;{{missed}}</td></tr>
+            <tr><td>Missed:</td><td>{{missed}}</td></tr>
             <tr><td>Correct:</td><td>{{correct}} ({{percentage}}%)</td></tr>
             <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
 
@@ -52,7 +52,8 @@ export default {
         // NOTE:  ideally I'd have some crazy formulae that couldn't be guessed but was consistent
         // Since I don't want to try and figure that out, I'm just manually setting results
         // Simplest thing that works :smile:
-
+        if (this.correct == 0) return "0"
+        
         const scores = [
             "09843",
             "16271",
@@ -74,6 +75,8 @@ export default {
         return scores[this.correct-1]
     },
     percentage: function() {
+        if (this.correct === 0 && this.missed === 0) return "0"
+
         return Math.floor((this.correct / (this.missed + this.correct)) * 100)
     },
     tryAgain: function() {
