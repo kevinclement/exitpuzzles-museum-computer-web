@@ -43,13 +43,13 @@ export default {
     },
     button: function (data) {
         console.log(`button pressed: ${data}`)
-        this.buttonPressed()
+        this.buttonPressed(data.index)
     }
   },
   data() {
     return {
         QUESTION_LIMIT: 8, // TODO: move back to 15
-        ANSWER_TIMEOUT: 5, // TODO: move back to 1000
+        ANSWER_TIMEOUT: 500, // TODO: move back to 1000
         questions: questions,
         questionIndex: 0,
         missedQuestions: [],
