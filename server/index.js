@@ -16,10 +16,29 @@ app.use(staticFileMiddleware);
 
 // Hookup gpio for buttons if we're not on windows
 if (process.platform !== "win32") {
-    const button = new Gpio(14, 'in', 'rising', {debounceTimeout: 10});
-    button.watch((err, value) => {
-        console.log(`button: ${value}`);
+    new Gpio(14, 'in', 'rising', {debounceTimeout: 10}).watch((err, value) => {
+        console.log(`button1`);
         io.emit('button', { index: 0});
+    });
+
+    new Gpio(15, 'in', 'rising', {debounceTimeout: 10}).watch((err, value) => {
+        console.log(`button2`);
+        io.emit('button', { index: 1});
+    });
+
+    new Gpio(18, 'in', 'rising', {debounceTimeout: 10}).watch((err, value) => {
+        console.log(`button3`);
+        io.emit('button', { index: 2});
+    });
+
+    new Gpio(23, 'in', 'rising', {debounceTimeout: 10}).watch((err, value) => {
+      console.log(`button4`);
+      io.emit('button', { index: 3});
+    });
+
+    new Gpio(24, 'in', 'rising', {debounceTimeout: 10}).watch((err, value) => {
+      console.log(`button5`);
+      io.emit('button', { index: 4});
     });
 }
 
