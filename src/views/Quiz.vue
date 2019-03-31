@@ -11,14 +11,17 @@
       <!-- FOOTER -->
       <div class="footer">
         <img src="../assets/border.png"/>
-        <div class="progress">Question {{questionIndex + 1}}/{{QUESTION_LIMIT}}</div>
+        <div>
+          <div style="display:inline-block;padding-top:10px;font-size:20px;right:auto;left:0px;">60s</div>
+          <div class="progress" style="display:inline-block;">Question {{questionIndex + 1}}/{{QUESTION_LIMIT}}</div>
+        </div>
       </div>
     </div>
 
     <!-- RESULTS -->
     <Results v-else 
-      v-bind:missed="0"
-      v-bind:correct="0"
+      v-bind:missed="correctQuestions.length"
+      v-bind:correct="missedQuestions.length"
       v-bind:avgTime="65"
       v-bind:totalTime="737"
     />
@@ -63,9 +66,7 @@ export default {
         return this.currentQuestion.correctAnswer == this.selectedAnswer
       },
       finished: function() {
-        // TMP: SO I CAN DESIGN, REMOVE 
-        return true;
-        //return this.correctQuestions.length + this.missedQuestions.length === this.QUESTION_LIMIT
+        return this.correctQuestions.length + this.missedQuestions.length === this.QUESTION_LIMIT
       },
   },
   created() {

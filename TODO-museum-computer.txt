@@ -27,6 +27,8 @@
   [ ] need to figure out how to listen for this mounting/unmounting
 
 ## Password Screen
+[ ] when disk is inserted, should do a loading bar
+[ ] followed by the password
 [ ] "insert password to continue"
     
 ## Firebase Connection:
