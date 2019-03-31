@@ -36,7 +36,7 @@
 ░                                                              ░ ░     
   </pre>
     <div class="copyright">©<span style="padding-left:3px;">1985</span> Marco Software INC.</div>
-    <div class="insertDisk" v-bind:class="{ blink: blink }">Insert QUIZ DISK 2/2 to continue...</div>
+    <div class="insertDisk" v-bind:class="{ blink: blink }">Press ANY button to START...</div>
   </div>
   
 </template>
@@ -51,14 +51,26 @@ export default {
       blinkTimer: null,
     }
   },
+  sockets: {
+    button: function (data) {
+        this.buttonPressed()
+    }
+  },
   created() {
     this.blinkTimer = setInterval(() => {
       this.blink = !this.blink;
     }, 1000);
+    window.addEventListener('keydown', this.buttonPressed)
   },
   destroyed() {
     clearTimeout(this.blinkTimer);
+    window.removeEventListener('keydown', this.buttonPressed)
   },
+  methods: {
+    buttonPressed: function() {
+      this.$router.push("quiz")
+    }
+  }
 }
 </script>
 
