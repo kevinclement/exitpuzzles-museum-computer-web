@@ -4,6 +4,20 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'App',
+  sockets: {
+    DISK_REMOVED: function () {
+      console.log(`disk removed`)
+    },
+    DISK_FOUND: function(disk) {
+      console.log(`disk ${disk} inserted`)
+    }
+  },
+}
+</script>
+
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

@@ -52,7 +52,7 @@ export default {
     }
   },
   sockets: {
-    button: function (data) {
+    BUTTON: function () {
         this.buttonPressed()
     }
   },

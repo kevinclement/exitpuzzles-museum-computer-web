@@ -41,7 +41,7 @@ export default {
     connect: function () {
         console.log('socket connected')
     },
-    button: function (data) {
+    BUTTON: function (data) {
         console.log(`button pressed: ${data}`)
         this.buttonPressed(data.index)
     }
