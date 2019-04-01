@@ -14,7 +14,7 @@
         <div class="footerProgressRow">
           <div>
             <span>{{ timerBar }}</span>
-            <span style="padding-left:3px;">{{timeForSelection}}s</span>
+            <span style="padding-left:3px;">{{timerLeft }}</span>
           </div>
           <div class="progress">Question {{questionIndex + 1}}/{{QUESTION_LIMIT}}</div>
         </div>
@@ -51,7 +51,7 @@ export default {
   },
   data() {
     return {
-        SELECTION_TIMEOUT: 60,
+        SELECTION_TIMEOUT: 2,
         QUESTION_LIMIT: 3, // TODO: move back to 15
         ANSWER_TIMEOUT: 500, // TODO: move back to 1000
         questions: questions,
@@ -72,6 +72,10 @@ export default {
         return this.correctQuestions.length + this.missedQuestions.length === this.QUESTION_LIMIT
       },
       timerBar: function() {
+        if (!this.timeForSelection) { 
+          return ""
+        }
+
         let tb = ""
         let bars = Math.round((this.timeForSelection/this.SELECTION_TIMEOUT) * 10)
 
@@ -84,7 +88,14 @@ export default {
         }
 
         return `[${tb}]`
-      }
+      },
+      timerLeft: function() {
+        if (this.timeForSelection) {
+          return `${this.timeForSelection}s`
+        } else {
+          return ""
+        }
+      },
   },
   created() {
       this.reset();
@@ -109,13 +120,15 @@ export default {
         // reset the timer
         this.timeForSelection = this.SELECTION_TIMEOUT
 
-        this.selectionTimer = setInterval(() => {
-          if (this.timeForSelection === 1) {
-            this.buttonPressed(-1)
-          } else {
-            this.timeForSelection--;
-          }
-        }, 1000)
+        if (this.timeForSelection > 0) {
+          this.selectionTimer = setInterval(() => {
+            if (this.timeForSelection === 1) {
+              this.buttonPressed(-1)
+            } else {
+              this.timeForSelection--;
+            }
+          }, 1000)
+        }
 
         // set the first question as selected
         this.questionIndex = 0
