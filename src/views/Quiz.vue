@@ -11,17 +11,20 @@
       <!-- FOOTER -->
       <div class="footer">
         <img src="../assets/border.png"/>
-        <div>
-          <div style="display:inline-block;padding-top:10px;font-size:20px;right:auto;left:0px;">60s</div>
-          <div class="progress" style="display:inline-block;">Question {{questionIndex + 1}}/{{QUESTION_LIMIT}}</div>
+        <div class="footerProgressRow">
+          <div>
+            <span>{{ timerBar }}</span>
+            <span style="padding-left:3px;">{{timeForSelection}}s</span>
+          </div>
+          <div class="progress">Question {{questionIndex + 1}}/{{QUESTION_LIMIT}}</div>
         </div>
       </div>
     </div>
 
     <!-- RESULTS -->
     <Results v-else 
-      v-bind:missed="correctQuestions.length"
-      v-bind:correct="missedQuestions.length"
+      v-bind:missed="missedQuestions.length"
+      v-bind:correct="correctQuestions.length"
       v-bind:avgTime="65"
       v-bind:totalTime="737"
     />
@@ -48,7 +51,8 @@ export default {
   },
   data() {
     return {
-        QUESTION_LIMIT: 8, // TODO: move back to 15
+        SELECTION_TIMEOUT: 2,
+        QUESTION_LIMIT: 3, // TODO: move back to 15
         ANSWER_TIMEOUT: 500, // TODO: move back to 1000
         questions: questions,
         questionIndex: 0,
@@ -56,18 +60,20 @@ export default {
         correctQuestions: [],
         selectedAnswer: -1,
         buttonTimer: null,
+        timeForSelection: 0,
+        selectionTimer: null,
     }
   },
   computed: {
       currentQuestion: function() {
           return this.questions[this.questionIndex]
       },
-      correct: function() {
-        return this.currentQuestion.correctAnswer == this.selectedAnswer
-      },
       finished: function() {
         return this.correctQuestions.length + this.missedQuestions.length === this.QUESTION_LIMIT
       },
+      timerBar: function() {
+        return "[-------\u00A0\u00A0\u00A0]"
+      }
   },
   created() {
       this.reset();
@@ -87,6 +93,17 @@ export default {
         this.missedQuestions = []
         this.correctQuestions = []
 
+        // reset the timer
+        this.timeForSelection = this.SELECTION_TIMEOUT
+
+        this.selectionTimer = setInterval(() => {
+          if (this.timeForSelection === 1) {
+            this.buttonPressed(-1)
+          } else {
+            this.timeForSelection--;
+          }
+        }, 1000)
+
         // set the first question as selected
         this.questionIndex = 0
       },
@@ -100,7 +117,7 @@ export default {
           console.log(`INFO: Ignoring multi press for ${index}, selection already made.`)
           return;
         }
-        if (this.finished) {
+        if (this.finished && index !== -1) {
           this.reset()
           return;
         }
@@ -114,22 +131,29 @@ export default {
         }
 
         // add to score arrays
-        if (this.correct) {
+        if (this.currentQuestion.correctAnswer === this.selectedAnswer) {
           this.correctQuestions.push(this.currentQuestion)
         } else {
           this.missedQuestions.push(this.currentQuestion)
         }
 
-        this.buttonTimer = setTimeout(() => {
-           this.buttonTimer = null;
-           this.selectedAnswer = -1
-           this.questionIndex++
-        }, this.ANSWER_TIMEOUT);
+        if (index !== -1) {
+          this.buttonTimer = setTimeout(() => { this.next() }, this.ANSWER_TIMEOUT);
+        } else {
+          this.next()
+        }
       },
+
       next: function() {
-          if (this.questionIndex < this.questions.length - 1) {
-              this.questionIndex++;
-          }
+        this.buttonTimer = null;
+        this.selectedAnswer = -1
+        this.timeForSelection = this.SELECTION_TIMEOUT;
+        
+        if (this.questionIndex < this.questions.length - 1) {
+          this.questionIndex++
+        } else {
+          clearInterval(this.selectionTimer)
+        }
       },
       onkeydown: function(e){
         switch(e.code) {
@@ -182,6 +206,11 @@ function randomizeQuestions(questions, missed, limit) {
   // first add any missed questions to our list
   for (let q of missed) {
     randQuestions.push(q)
+  }
+
+  // if all questions were missed, just return
+  if (randQuestions.length === limit) {
+    return shuffle(randQuestions)
   }
 
   // then randomize the original list
@@ -252,13 +281,16 @@ function shuffle(array) {
   }
   .footer {
   }
+  .footer div {
+    font-size: 20px;
+  }
+  .footerProgressRow {
+    display:grid;
+    grid-template-columns: 50% 50%;
+    padding-top:15px;
+  }
 
   .progress {
-    padding-top:10px;
-    font-size: 20px;
-    margin-left: auto;
-    margin-right: 20px;
-    width: 300px;
-    text-align: end;
+    justify-self: end;
   }
 </style>
