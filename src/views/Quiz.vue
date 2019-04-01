@@ -51,7 +51,7 @@ export default {
   },
   data() {
     return {
-        SELECTION_TIMEOUT: 2,
+        SELECTION_TIMEOUT: 60,
         QUESTION_LIMIT: 3, // TODO: move back to 15
         ANSWER_TIMEOUT: 500, // TODO: move back to 1000
         questions: questions,
@@ -72,7 +72,18 @@ export default {
         return this.correctQuestions.length + this.missedQuestions.length === this.QUESTION_LIMIT
       },
       timerBar: function() {
-        return "[-------\u00A0\u00A0\u00A0]"
+        let tb = ""
+        let bars = Math.round((this.timeForSelection/this.SELECTION_TIMEOUT) * 10)
+
+        // fill with bars, the rest with spaces
+        for (let i = 0; i<bars;i++) {
+          tb += "-"
+        }
+        for (let i = bars; i<10;i++) {
+          tb += "\u00A0"
+        }
+
+        return `[${tb}]`
       }
   },
   created() {
