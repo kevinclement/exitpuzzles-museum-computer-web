@@ -4,21 +4,8 @@ const http = require('http').Server(app);
 const history = require('connect-history-api-fallback');
 const io = require('socket.io')(http);
 const Gpio = require('onoff').Gpio;
-const floppyDetect = require('./floppy-detect');
 
-// Setup floppy detection callbacks
 let CURRENT_DISK = -1
-floppyDetect
-  .on('DISK_REMOVED', () => {
-    console.log("DISK: REMOVED")
-    CURRENT_DISK = -1
-    io.emit('DISK_REMOVED')
-  })
-  .on('DISK_FOUND', (disk) => {
-    console.log(`DISK: FOUND ${disk}`)
-    CURRENT_DISK = disk
-    io.emit('DISK_FOUND', disk)
-});
 
 // Register static and history overrides
 const staticFileMiddleware = express.static(__dirname + '../../dist/');
@@ -30,7 +17,22 @@ app.use(history({
 app.use(staticFileMiddleware);
 
 // Hookup gpio for buttons if we're not on windows
+// as well as floppy detection
 if (process.platform !== "win32") {
+
+    // floppy disk detection
+    require('./floppy-detect')
+      .on('DISK_REMOVED', () => {
+          console.log("DISK: REMOVED")
+          CURRENT_DISK = -1
+          io.emit('DISK_REMOVED')
+      })
+      .on('DISK_FOUND', (disk) => {
+          console.log(`DISK: FOUND ${disk}`)
+          CURRENT_DISK = disk
+          io.emit('DISK_FOUND', disk)
+      });
+
     new Gpio(14, 'in', 'rising', {debounceTimeout: 10}).watch((err, value) => {
         console.log(`BUTTON: 1`);
         io.emit('BUTTON', { index: 0});
