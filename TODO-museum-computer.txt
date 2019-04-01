@@ -7,8 +7,8 @@
   [ ] check built in monitor and see how bad that is
 
 [ ] enable timers for questions
-  [ ] bar lower left
-  [ ] if times out, treat it as a miss 
+  [x] bar lower left
+  [x] if times out, treat it as a miss 
   [ ] different lengths
     [ ] 60s timer
     [ ] 30s

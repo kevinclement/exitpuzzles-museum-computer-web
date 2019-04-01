@@ -94,6 +94,8 @@ export default {
   },
   destroyed() {
       window.removeEventListener('keydown', this.onkeydown)
+      clearInterval(this.selectionTimer)
+      clearInterval(this.buttonTimer)
   },
   methods: {
       reset: function() {
