@@ -24,7 +24,7 @@ export default {
   methods: {
     onkeydown: function(e){
       switch(e.code) {
-        case "Backspace":
+        case "Numpad0":
             this.insertDisk()
             break;
         case "Numpad1":
@@ -52,6 +52,12 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Press Start 2P Regular'), local('PressStart2P-Regular'), url('assets/pressStart.ttf') format('truetype');
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

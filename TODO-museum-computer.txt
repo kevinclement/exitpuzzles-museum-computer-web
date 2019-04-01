@@ -1,7 +1,12 @@
-[ ] determine disk types when inserted
+[x] determine disk types when inserted
+[ ] make backup copies of both disks
+  [ ] test them
 [ ] make sure mount stuff works on reboot
 
-[ ] download font so it works offline
+[ ] Insert Disk Screen
+[ ] Journal Screen
+  [ ] paper header
+
 [ ] do we want sounds?
   [ ] check built in monitor and see how bad that is
 
@@ -63,3 +68,4 @@
 [x] wire up all 5 buttons
   [x] create cables and solder all
   [x] wire to quiz and sockets
+[x] download font so it works offline
