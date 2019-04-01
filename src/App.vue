@@ -42,7 +42,7 @@ export default {
     diskInserted: function(disk) {
       console.log(`DISK ${disk} INSERTED`)
       if (disk === 1) {
-        this.$router.push("")
+        this.$router.push("/")
       } else if (disk === 2) {
         this.$router.push("journal")
       }
