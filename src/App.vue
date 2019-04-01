@@ -37,9 +37,15 @@ export default {
     },
     insertDisk: function() {
       console.log(`INSERT DISK SCREEN`)
+      this.$router.push("insert")
     },
     diskInserted: function(disk) {
-      console.log(`disk ${disk} inserted`)
+      console.log(`DISK ${disk} INSERTED`)
+      if (disk === 1) {
+        this.$router.push("")
+      } else if (disk === 2) {
+        this.$router.push("journal")
+      }
     }
   },
 }
