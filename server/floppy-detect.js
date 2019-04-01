@@ -2,6 +2,22 @@ const fs = require('fs');
 const EventEmitter = require('events');
 const Tail = new (require('tail')).Tail('/var/log/syslog');
 
+// NOTES: 
+//   to prep disks, on the pi, insert disk
+//     sudo fdisk /dev/sda
+//       'n' - for new partition
+//       'p' - for primary
+//       <enter> for first sector default
+//       <enter> for last sector default
+//       'w' - to write, fails to re-read but seems to have worked
+//     sudo touch /mnt/floppy/disk1.dat
+//     sudo umount /dev/sda
+//
+//   DEBUG:
+//     'lsblk' - for mount points
+//     'sudo mount /dev/sda /mnt/floppy/' - sets up mount point
+
+
 // consts
 const MAX_FILE_CHECK = 20;
 const EVENTS = {

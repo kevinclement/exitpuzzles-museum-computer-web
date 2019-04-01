@@ -1,4 +1,3 @@
-[x] determine disk types when inserted
 [ ] make backup copies of both disks
   [ ] test them
 [ ] make sure mount stuff works on reboot
@@ -69,3 +68,4 @@
   [x] create cables and solder all
   [x] wire to quiz and sockets
 [x] download font so it works offline
+[x] determine disk types when inserted

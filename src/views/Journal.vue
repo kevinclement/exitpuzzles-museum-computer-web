@@ -1,7 +1,7 @@
 <template>
 
   <div class="journal">
-    <div>MY JOURNAL</div>
+    <div style="padding-top:100px">MY JOURNAL</div>
   </div>
 
 </template>

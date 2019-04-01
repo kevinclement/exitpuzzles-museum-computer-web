@@ -1,7 +1,7 @@
 <template>
 
   <div class="insertDisk">
-    <div>INSERT DISK</div>
+    <div style="padding-top:100px">INSERT DISK</div>
   </div>
 
 </template>
