@@ -131,7 +131,7 @@ export default {
               this.questionIndex++;
           }
       },
-      onkeydown(e){
+      onkeydown: function(e){
         switch(e.code) {
           case "ArrowRight":
             this.next()

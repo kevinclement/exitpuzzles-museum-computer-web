@@ -1,3 +1,7 @@
+[ ] determine disk types when inserted
+[ ] make sure mount stuff works on reboot
+
+[ ] download font so it works offline
 [ ] do we want sounds?
   [ ] check built in monitor and see how bad that is
 
@@ -17,8 +21,6 @@
   [ ] if disk 1 is remove do we need a "INSERT DISK..."
   [ ] if disk 1 is remove and reinserted, noop from launch screen
   [ ] if disk 2 is removed and disk 1 is inserted, goes back to launch screen
-[ ] when disk 2 is inserted and detected, start quiz screens
-  [ ] need to figure out how to listen for this mounting/unmounting
 
 ## Password Screen
 [ ] "insert password to continue"
