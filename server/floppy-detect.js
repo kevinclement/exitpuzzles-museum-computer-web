@@ -16,6 +16,9 @@ const Tail = new (require('tail')).Tail('/var/log/syslog');
 //   DEBUG:
 //     'lsblk' - for mount points
 //     'sudo mount /dev/sda /mnt/floppy/' - sets up mount point
+//
+//   FSTAB
+//     /dev/sda        /mnt/floppy     auto    nofail,x-systemd.device-timeout=1       0       0
 
 
 // consts
@@ -29,8 +32,6 @@ const EVENTS = {
 let fileCheck = 0;
 let diskedRemoved = 0;
 const myEmitter = new EventEmitter();
-
-// TODO: test really fast
 
 // test for file already mounted, do it in a timeout so 
 // main program will have event registered

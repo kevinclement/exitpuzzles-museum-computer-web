@@ -1,9 +1,6 @@
-[ ] make backup copies of both disks
-  [ ] test them
-[ ] make sure mount stuff works on reboot
-
 [ ] Insert Disk Screen
 [ ] Journal Screen
+  [ ] password first
   [ ] paper header
 
 [ ] do we want sounds?
@@ -19,15 +16,6 @@
 
 [ ] how to do a full reset?  e.g. get rid of missed questions
   [ ] maybe button press for 20s
-
-## Launch Screen
-[ ] design screen
-  [ ] if disk 1 is remove do we need a "INSERT DISK..."
-  [ ] if disk 1 is remove and reinserted, noop from launch screen
-  [ ] if disk 2 is removed and disk 1 is inserted, goes back to launch screen
-
-## Password Screen
-[ ] "insert password to continue"
     
 ## Firebase Connection:
 [ ] node app can get questions from firebase and update locally cached questions
@@ -69,3 +57,10 @@
   [x] wire to quiz and sockets
 [x] download font so it works offline
 [x] determine disk types when inserted
+[x] make backup copies of both disks
+  [x] test them
+[x] update password to 'raspberry1'
+[x] make sure mount stuff works on reboot
+[x] design screen
+  [x] if disk 1 is remove do we need a "INSERT DISK..."
+  [x] if disk 2 is removed and disk 1 is inserted, goes back to launch screen
