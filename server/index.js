@@ -1,9 +1,19 @@
-var express = require('express');
-var app = express();
-var http = require('http').Server(app);
-var history = require('connect-history-api-fallback');
-var io = require('socket.io')(http);
+const express = require('express');
+const app = express();
+const http = require('http').Server(app);
+const history = require('connect-history-api-fallback');
+const io = require('socket.io')(http);
 const Gpio = require('onoff').Gpio;
+const floppyDetect = require('./floppy-detect');
+
+// Setup floppy detection callbacks
+floppyDetect
+  .on('DISK_REMOVED', () => {
+    console.log("DISK REMOVED")
+  })
+  .on('DISK_FOUND', (disk) => {
+    console.log(`FOUND ${disk}`);
+});
 
 // Register static and history overrides
 const staticFileMiddleware = express.static(__dirname + '../../dist/');
