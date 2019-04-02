@@ -2,16 +2,22 @@
 
   <div class="password">
     <div class="diskMainRow">
-      <img src="../assets/floppy.png" style="width:150px;"/>
-      <div>
+      <img src="../assets/lock-solved.png" style="width:150px;" v-if="correct"/>
+      <img src="../assets/lock.png"        style="width:150px;" v-else-if="!incorrect"/>
+      <img src="../assets/lock-failed.png" style="width:150px;" v-else/>
+      <div v-if="!incorrect">
         <div>ENTER PASSWORD</div>
         <div style="padding-top:20px;">
-          <span style="padding-left:39px;padding-right:25px;">{{pass1}}</span>
-          <span style="padding-right:25px;">{{pass2}}</span>
-          <span style="padding-right:25px;">{{pass3}}</span>
-          <span style="">{{pass4}}</span>
+          <span style="padding-left:39px;padding-right:25px;">{{password[0]}}</span>
+          <span style="padding-right:25px;">{{password[1]}}</span>
+          <span style="padding-right:25px;">{{password[2]}}</span>
+          <span style="">{{password[3]}}</span>
         </div>
       </div>
+      <div style="padding-top:85px;padding-left:10px;" v-else>
+        WRONG
+      </div>
+
     </div>
   </div>
 
@@ -23,24 +29,35 @@ export default {
   },
   data() {
     return {
-      pass1: "_",
-      pass2: "_",
-      pass3: "_",
-      pass4: "_",
+      CORRECT_PASSWORD: 'ABBA',
+      password: ['_','_','_','_'],
+      typedPassword: '',
+      index: 0,
+      incorrect: false,
+      correct: false,
     }
   },
   sockets: {
     BUTTON: function (data) {
-        console.log(`button pressed: ${data}`)
-        console.log(`translate: ${this.buttonToText(data)}`)
-
+      console.log(`button pressed: ${data}`)
+      this.buttonPressed(data)
     }
   },
   created() {
+    window.addEventListener('keydown', this.onkeydown)
+    this.reset()
   },
   destroyed() {
+    window.removeEventListener('keydown', this.onkeydown)
   },
   methods: {
+    reset: function() {
+      this.typedPassword = ''
+      this.password = ['_','_','_','_']
+      this.index = 0
+      this.incorrect = false
+      this.correct = false
+    },
     buttonToText: function(button) {
       switch(button) {
         case 0:
@@ -61,7 +78,51 @@ export default {
         default:
           return 'X'
       }
-    }
+    },
+    buttonPressed: function(button) {
+      if (this.index >= this.CORRECT_PASSWORD.length) {
+        console.log(`WARN: ignoring extra presses while evaluating`);
+        return;
+      }
+
+      this.$set(this.password, this.index, '*')
+      this.typedPassword += this.buttonToText(button)
+      this.index++;
+
+      if (this.index == this.CORRECT_PASSWORD.length) {
+        this.verifyPassword()
+      }
+    },
+    verifyPassword() {
+      console.log(`'${this.typedPassword}' == '${this.CORRECT_PASSWORD}'`);
+      if (this.typedPassword === this.CORRECT_PASSWORD) {
+        console.log(`CORRECT!!!`);
+        this.correct = true
+        setTimeout(() => { this.$router.push("journal") }, 1000)
+      } else {
+        console.log(`WRONG!!!!!`);
+        this.incorrect = true
+        setTimeout(() => { this.reset() }, 2000)
+      }
+    },
+    onkeydown: function(e){
+        switch(e.code) {
+          case "KeyA":
+          case "KeyB":
+          case "KeyC":
+          case "KeyD":
+          case "KeyE":
+            this.buttonPressed(e.keyCode - 65)
+            break
+          case "Digit1":
+          case "Digit2":
+          case "Digit3":
+          case "Digit4":
+          case "Digit5":
+            this.buttonPressed(parseInt(e.key) - 1)
+            break;
+        }
+      }
   }
 }
 </script>
