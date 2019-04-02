@@ -1,20 +1,21 @@
 <template>
 
   <div class="password">
-    <div class="diskMainRow">
-      <img src="../assets/lock-solved.png" style="width:150px;" v-if="correct"/>
-      <img src="../assets/lock.png"        style="width:150px;" v-else-if="!incorrect"/>
-      <img src="../assets/lock-failed.png" style="width:150px;" v-else/>
+    <div class="mainRow">
+
+      <img class="lock" src="../assets/lock-solved.png" v-if="correct"/>
+      <img class="lock" src="../assets/lock.png"        v-else-if="!incorrect"/>
+      <img class="lock" src="../assets/lock-failed.png" v-else/>
       <div v-if="!incorrect">
         <div>ENTER PASSWORD</div>
-        <div style="padding-top:20px;">
-          <span style="padding-left:39px;padding-right:25px;">{{password[0]}}</span>
-          <span style="padding-right:25px;">{{password[1]}}</span>
-          <span style="padding-right:25px;">{{password[2]}}</span>
-          <span style="">{{password[3]}}</span>
+        <div class="passEntry">
+          <span class="passChar" style="padding-left:39px;">{{password[0]}}</span>
+          <span class="passChar">{{password[1]}}</span>
+          <span class="passChar">{{password[2]}}</span>
+          <span>{{password[3]}}</span>
         </div>
       </div>
-      <div style="padding-top:85px;padding-left:10px;" v-else>
+      <div class="passWrong" v-else>
         WRONG
       </div>
 
@@ -138,12 +139,22 @@ export default {
     color: #00D46A;
     font-family: 'Press Start 2P';
   }
-  .diskMainRow {
+  .mainRow {
     display:grid;
     grid-template-columns:185px 400px;
     font-size:44px;
   }
-  .diskMainRow span {
-    padding-top: 0px;
+  .lock {
+    width:150px;
+  }
+  .passEntry {
+    padding-top:20px;
+  }
+  .passChar {
+    padding-right:25px;
+  }
+  .passWrong {
+    padding-top:85px;
+    padding-left:10px;
   }
 </style>
