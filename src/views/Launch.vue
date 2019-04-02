@@ -1,7 +1,7 @@
 <template>
   <div class="launch" style="">
     <div class="welcome">Welcome to The...</div>
-    <img class="zoltar" src="../assets/logo-more-pixels.png"/>
+    <img class="zoltar" src="../assets/logo-pixels.png"/>
     <div class="copyright">©<span style="padding-left:3px;">1985</span> Marco Software INC.</div>
     <div class="insertDisk" v-bind:class="{ blink: blink }">Press ANY button to START...</div>
   </div>
