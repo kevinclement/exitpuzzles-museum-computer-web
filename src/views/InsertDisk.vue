@@ -1,7 +1,10 @@
 <template>
 
   <div class="insertDisk">
-    <div style="padding-top:100px">INSERT DISK</div>
+    <div class="diskMainRow">
+      <img src="../assets/floppy.png" style="width:150px;"/>
+      <span>INSERT DISK...</span>
+    </div>
   </div>
 
 </template>
@@ -28,9 +31,18 @@ export default {
     height: 100vh;
     display: grid;
     justify-items: center;
+    align-items: center;
+    height:100vh;
     grid-template-columns: auto;
-    grid-template-rows: auto;
     color: #00D46A;
     font-family: 'Press Start 2P';
+  }
+  .diskMainRow {
+    display:grid;
+    grid-template-columns:185px auto;
+    font-size:44px;
+  }
+  .diskMainRow span {
+    padding-top: 58px;
   }
 </style>

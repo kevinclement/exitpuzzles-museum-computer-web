@@ -1,24 +1,13 @@
-[ ] Insert Disk Screen
 [ ] Journal Screen
   [ ] password first
   [ ] paper header
 
 [ ] do we want sounds?
   [ ] check built in monitor and see how bad that is
-  
-[ ] how to do a full reset?  e.g. get rid of missed questions
-  [ ] maybe button press for 20s
-  [ ] have this be the way the timer is configured.  1st button is 60, 2nd is 30, 3rd is 0
-  [ ] take disk out and put back in should reset?
-    
-## Firebase Connection:
-[ ] node app can get questions from firebase and update locally cached questions
-[ ] different timer lengths
-[ ] should probably figure out what max characters are for it to fix on screen and limit that
-[ ] some sort of support for remote update?  
-  [ ] I can toggle a bit in firebase and it will do a git pull and restart of pm2
-  [ ] tie that into the ux ui to show last pull and possible need to refresh with a button
 
+[ ] ability to configure timer lengths  
+  [ ] pop out disk, then button combo to set, like A-B-B-A
+    
 --------------------------------------------
 [x] convert to vue
   [x] cleanup helloworld and map to prototype
@@ -60,3 +49,14 @@
   [x] if disk 1 is remove do we need a "INSERT DISK..."
   [x] if disk 2 is removed and disk 1 is inserted, goes back to launch screen
 [x] calculate avg time and total time
+[x] how to do a full reset?  e.g. get rid of missed questions
+  [x] pop out disk will reset it
+## Firebase Connection:
+[\] node app can get questions from firebase and update locally cached questions
+[\] different timer lengths
+[\] should probably figure out what max characters are for it to fix on screen and limit that
+[\] some sort of support for remote update?  
+  [\] I can toggle a bit in firebase and it will do a git pull and restart of pm2
+  [\] tie that into the ux ui to show last pull and possible need to refresh with a button
+[x] Insert Disk Screen  
+  
