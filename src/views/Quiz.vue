@@ -25,8 +25,7 @@
     <Results v-else 
       v-bind:missed="missedQuestions.length"
       v-bind:correct="correctQuestions.length"
-      v-bind:avgTime="65"
-      v-bind:totalTime="737"
+      v-bind:totalTime="timeTakenTotal"
     />
 
 </template>
@@ -51,7 +50,7 @@ export default {
   },
   data() {
     return {
-        SELECTION_TIMEOUT: 2,
+        SELECTION_TIMEOUT: 0,
         QUESTION_LIMIT: 3, // TODO: move back to 15
         ANSWER_TIMEOUT: 500, // TODO: move back to 1000
         questions: questions,
@@ -62,6 +61,8 @@ export default {
         buttonTimer: null,
         timeForSelection: 0,
         selectionTimer: null,
+        questionStartTime: 0,
+        timeTakenTotal: 0,
     }
   },
   computed: {
@@ -130,6 +131,9 @@ export default {
           }, 1000)
         }
 
+        // store time started for time for question
+        this.questionStartTime = new Date()
+
         // set the first question as selected
         this.questionIndex = 0
       },
@@ -147,6 +151,9 @@ export default {
           this.reset()
           return;
         }
+
+        // add time taken for stats
+        this.timeTakenTotal += ((new Date()) - this.questionStartTime)
 
         // support undefined debug mode that randomly picks answer
         if (index === undefined) {
@@ -174,6 +181,7 @@ export default {
         this.buttonTimer = null;
         this.selectedAnswer = -1
         this.timeForSelection = this.SELECTION_TIMEOUT;
+        this.questionStartTime = new Date()
         
         if (this.questionIndex < this.questions.length - 1) {
           this.questionIndex++

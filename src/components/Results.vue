@@ -38,7 +38,6 @@ export default {
   props: {
       missed: Number,
       correct: Number,
-      avgTime: Number,
       totalTime: Number
   },
   data() {
@@ -74,6 +73,9 @@ export default {
 
         return scores[this.correct-1]
     },
+    avgTime: function() {
+      return this.totalTime / (this.missed + this.correct)
+    },
     percentage: function() {
         if (this.correct === 0 && this.missed === 0) return "0"
 
@@ -96,7 +98,6 @@ export default {
   },
   created() {
       // turn on blinking of score if we're at 100%
-      console.log(`per ${this.percentage}`);
       if (this.percentage == 100) {
         console.log(`setting timer`);
         this.blinkTimer = setInterval(() => {
@@ -108,7 +109,8 @@ export default {
     clearTimeout(this.blinkTimer);
   },
   methods: {
-    formatTime(tInSeconds) {
+    formatTime(tInMilliseconds) {
+        const tInSeconds = Math.floor(tInMilliseconds / 1000)
         const minutes = Math.floor(tInSeconds / 60)
         const seconds = tInSeconds - (minutes * 60)
 
