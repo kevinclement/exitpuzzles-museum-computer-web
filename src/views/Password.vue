@@ -41,7 +41,7 @@ export default {
   sockets: {
     BUTTON: function (data) {
       console.log(`button pressed: ${data}`)
-      this.buttonPressed(data)
+      this.buttonPressed(data.index)
     }
   },
   created() {
