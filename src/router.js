@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Launch from './views/Launch.vue'
+import LaunchOld from './views/LaunchOld.vue'
 import Quiz from './views/Quiz.vue'
 import InsertDisk from './views/InsertDisk.vue'
 import Journal from './views/Journal.vue'
@@ -16,6 +17,11 @@ export default new Router({
       path: '/',
       name: 'launch',
       component: Launch
+    },
+    {
+      path: '/old',
+      name: 'launchold',
+      component: LaunchOld
     },
     {
       path: '/quiz',
