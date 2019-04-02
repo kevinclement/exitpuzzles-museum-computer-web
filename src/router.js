@@ -5,6 +5,7 @@ import Launch from './views/Launch.vue'
 import LaunchOld from './views/LaunchOld.vue'
 import Quiz from './views/Quiz.vue'
 import InsertDisk from './views/InsertDisk.vue'
+import Password from './views/Password.vue'
 import Journal from './views/Journal.vue'
 
 Vue.use(Router)
@@ -32,6 +33,11 @@ export default new Router({
       path: '/insert',
       name: 'insert',
       component: InsertDisk
+    },
+    {
+      path: '/password',
+      name: 'password',
+      component: Password
     },
     {
       path: '/journal',

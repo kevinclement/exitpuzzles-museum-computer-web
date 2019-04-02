@@ -1,5 +1,7 @@
+[ ] Password screen
+    [ ] incorrect changes text and icon for 4s
+    [ ] correct redirects to journal
 [ ] Journal Screen
-  [ ] password first
   [ ] paper header
 
 [ ] do we want sounds?
