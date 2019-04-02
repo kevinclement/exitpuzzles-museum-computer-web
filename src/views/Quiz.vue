@@ -50,9 +50,9 @@ export default {
   },
   data() {
     return {
-        SELECTION_TIMEOUT: 0,
-        QUESTION_LIMIT: 3, // TODO: move back to 15
-        ANSWER_TIMEOUT: 500, // TODO: move back to 1000
+        SELECTION_TIMEOUT: 0,  // TODO: move to 60s?
+        QUESTION_LIMIT: 3,     // TODO: move back to 15
+        ANSWER_TIMEOUT: 500,   // TODO: move back to 1000
         questions: questions,
         questionIndex: 0,
         missedQuestions: [],
