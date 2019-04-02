@@ -1,6 +1,3 @@
-[ ] Password screen
-    [ ] incorrect changes text and icon for 4s
-    [ ] correct redirects to journal
 [ ] Journal Screen
   [ ] paper header
 
@@ -61,4 +58,6 @@
   [\] I can toggle a bit in firebase and it will do a git pull and restart of pm2
   [\] tie that into the ux ui to show last pull and possible need to refresh with a button
 [x] Insert Disk Screen  
-  
+[x] Password screen
+    [x] incorrect changes text and icon for 4s
+    [x] correct redirects to journal
