@@ -18,6 +18,9 @@
           </div>
           <div class="progress">Question {{questionIndex + 1}}/{{QUESTION_LIMIT}}</div>
         </div>
+        <audio autoplay="autoplay" v-if="this.timeForSelection">
+          <source src="../assets/sounds/clock-ticking-4.wav" type="audio/wav">
+        </audio>
       </div>
     </div>
 

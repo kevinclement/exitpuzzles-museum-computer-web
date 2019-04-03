@@ -1,6 +1,4 @@
-[ ] do we want sounds?
-  [ ] check built in monitor and see how bad that is
-  
+ 
 --------------------------------------------
 [x] convert to vue
   [x] cleanup helloworld and map to prototype
@@ -62,3 +60,5 @@
 [x] once solved, if disk is removed dont reset puzzle
   [x] will require key combo in order to reset the room
 [x] check button presses in results page
+[x] do we want sounds?
+  [x] check built in monitor and see how bad that is
