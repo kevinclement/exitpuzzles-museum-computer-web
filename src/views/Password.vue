@@ -30,7 +30,7 @@ export default {
   },
   data() {
     return {
-      CORRECT_PASSWORD: 'ABBA',
+      CORRECT_PASSWORD: 'DEAD',
       password: ['_','_','_','_'],
       typedPassword: '',
       index: 0,
@@ -60,25 +60,7 @@ export default {
       this.correct = false
     },
     buttonToText: function(button) {
-      switch(button) {
-        case 0:
-          return 'A'
-          break
-        case 1:
-          return 'B'
-          break
-        case 2:
-          return 'C'
-          break
-        case 3:
-          return 'D'
-          break
-        case 4:
-          return 'E'
-          break
-        default:
-          return 'X'
-      }
+      return String.fromCharCode(65 + button)
     },
     buttonPressed: function(button) {
       if (this.index >= this.CORRECT_PASSWORD.length) {
