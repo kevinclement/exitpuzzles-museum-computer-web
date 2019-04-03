@@ -6,7 +6,7 @@
       <span>INSERT DISK...</span>
     </div>
     <div class="status" v-if="statusMessage !== ''">
-      <div><< {{statusMessage}} >></div>
+      <div>&lt;&lt; {{statusMessage}} &gt;&gt;</div>
     </div>
   </div>
 
@@ -19,7 +19,7 @@ const CODE_TIMER_30s = [0,0,4,1] // A,A,E,B
 const CODE_TIMER_OFF = [0,0,4,2] // A,A,E,C
 
 // CODES for warping to logo
-const CODE_WARP_LOGO = [2,2,2,2] // C,C,C,C
+const CODE_RESET_QUIZ = [2,2,2,2] // C,C,C,C
 
 export default {
   name: 'InsertDisk',
@@ -70,6 +70,10 @@ export default {
         this.$root.$data.settings.QUESTION_TIMEOUT_S = 0
       }
 
+      if (checkEqual(this.lastKeys, CODE_RESET_QUIZ)) {
+        this.$root.$data.results = {}
+        this.status(`Cleared results`)
+      }
     },
     status(txt) {
       console.log(txt)

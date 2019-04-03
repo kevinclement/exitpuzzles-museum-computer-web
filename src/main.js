@@ -20,6 +20,8 @@ new Vue({
   data: {
     settings : {
       QUESTION_TIMEOUT_S: 60
+    },
+    results : {
     }
   }
 }).$mount('#app')

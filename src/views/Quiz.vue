@@ -1,7 +1,7 @@
 <template>
 
     <!-- QUESTIONS -->
-    <div class="questions" v-if="!finished">
+    <div class="questions" v-if="!showResults">
       <!-- HEADER -->
       <div class="header"><img src="../assets/border.png"/></div>
 
@@ -23,8 +23,8 @@
 
     <!-- RESULTS -->
     <Results v-else 
-      v-bind:missed="missedQuestions.length"
-      v-bind:correct="correctQuestions.length"
+      v-bind:missed="missedQuestionsTotal"
+      v-bind:correct="correctQuestionsTotal"
       v-bind:totalTime="timeTakenTotal"
     />
 
@@ -62,7 +62,11 @@ export default {
         timeForSelection: 0,
         selectionTimer: null,
         questionStartTime: 0,
+
+        showResults: false,
         timeTakenTotal: 0,
+        correctQuestionsTotal: 0,
+        missedQuestionsTotal: 0,
     }
   },
   computed: {
@@ -99,7 +103,15 @@ export default {
       },
   },
   created() {
-      this.reset();
+      // check for completion globally
+      if (this.$root.$data.results.time && this.$root.$data.results.time > 0) {
+        this.timeTakenTotal = this.$root.$data.results.time
+        this.missedQuestionsTotal = this.$root.$data.results.missed
+        this.correctQuestionsTotal = this.$root.$data.results.correct
+        this.showResults = true
+      } else {
+        this.reset();
+      }
 
       // hookup keyboard handler for debug stuff when not using buttons
       window.addEventListener('keydown', this.onkeydown)
@@ -116,7 +128,13 @@ export default {
 
         // after randomizing, can now reset the missed questions
         this.missedQuestions = []
+        this.missedQuestionsTotal = 0
         this.correctQuestions = []
+        this.correctQuestionsTotal = 0
+        this.showResults = false
+        this.$root.$data.results.time = 0
+        this.$root.$data.results.correct = 0
+        this.$root.$data.results.missed = 0
 
         // reset the timer
         this.timeForSelection = this.SELECTION_TIMEOUT
@@ -143,11 +161,18 @@ export default {
           }
       },
       buttonPressed: function(index) {
+        console.log(`button pressed: ${index}`);
+
         if (this.buttonTimer) {
           console.log(`INFO: Ignoring multi press for ${index}, selection already made.`)
           return;
         }
-        if (this.finished && index !== -1) {
+        if (this.showResults && this.missedQuestionsTotal === 0) {
+          console.log(`INFO: Ignoring button press for ${index}, quiz already solved.`)
+          return;
+        }
+
+        if (this.showResults && index !== -1) {
           this.reset()
           return;
         }
@@ -186,8 +211,20 @@ export default {
         if (this.questionIndex < this.questions.length - 1) {
           this.questionIndex++
         } else {
+          this.results()
           clearInterval(this.selectionTimer)
         }
+      },
+      results() {
+        this.correctQuestionsTotal = this.correctQuestions.length
+        this.$root.$data.results.correct = this.correctQuestions.length
+
+        this.missedQuestionsTotal = this.missedQuestions.length
+        this.$root.$data.results.missed = this.missedQuestions.length
+
+        this.$root.$data.results.time = this.timeTakenTotal
+
+        this.showResults = true
       },
       onkeydown: function(e){
         switch(e.code) {
