@@ -50,7 +50,7 @@ export default {
   },
   data() {
     return {
-        SELECTION_TIMEOUT: 0,  // TODO: move to 60s?
+        SELECTION_TIMEOUT: this.$root.$data.settings.QUESTION_TIMEOUT_S,
         QUESTION_LIMIT: 3,     // TODO: move back to 15
         ANSWER_TIMEOUT: 500,   // TODO: move back to 1000
         questions: questions,

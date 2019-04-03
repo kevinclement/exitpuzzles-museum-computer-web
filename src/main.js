@@ -16,5 +16,10 @@ if (process.env.NODE_ENV === 'production') {
 
 new Vue({
   router,
-  render: h => h(App)
+  render: h => h(App),
+  data: {
+    settings : {
+      QUESTION_TIMEOUT_S: 60
+    }
+  }
 }).$mount('#app')

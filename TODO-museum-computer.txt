@@ -3,10 +3,7 @@
 
 [ ] do we want sounds?
   [ ] check built in monitor and see how bad that is
-
-[ ] ability to configure timer lengths  
-  [ ] pop out disk, then button combo to set, like A-B-B-A
-    
+  
 --------------------------------------------
 [x] convert to vue
   [x] cleanup helloworld and map to prototype
@@ -63,3 +60,5 @@
     [x] correct redirects to journal
 [x] Journal Screen
   [x] paper header
+[x] ability to configure timer lengths  
+  [x] pop out disk, then button combo to set, like A-B-B-A
