@@ -1,3 +1,6 @@
+[ ] once solved, if disk is removed dont reset puzzle
+  [ ] will require key combo in order to reset the room
+
 [ ] do we want sounds?
   [ ] check built in monitor and see how bad that is
 
