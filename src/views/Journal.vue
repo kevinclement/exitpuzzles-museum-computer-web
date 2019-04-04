@@ -1,7 +1,7 @@
 <template>
 
   <div class="journal">
-    <div style="padding-top:15px">
+    <div style="padding-top:25px">
       <pre style="font-family: 'Press Start 2P';">
   .------------------------------------------------.
  /  .-.                                        .-.  \
@@ -11,25 +11,24 @@
 | `---' |  19 Oct 1987                       | `---' |
 |       |                                    |       |
 |       |                                    |       |
-|       |  Last night wnday, so i t my mums  |       |
-|       |  for the weeki woke up a0 am,      |       |
-|       |  i thought i  a light taon my      |       |
-|       |  bedroom doorer i lookedhe time    |       |
-|       |  on my mobilee howeve i  back down |       |
-|       |  to sleep some before i o i soon   |       |
-|       |  thought i hee knocking , so i sat |       |
-|       |  up and lookethe door, bthing else |       |
-|       |  came so i weck to sleep           |       |
+|       |  Last night was sunday, so i was   |       |
+|       |  at my mums for the weekend. i     |       |
+|       |  woke up at 5:50 am, i thought i   |       |
+|       |  heard light taping on my bedroom  |       |
+|       |  door after i looked at the time   |       |
+|       |  on my mobile phone however i      |       |
+|       |  down to sleep some more before i  |       |
+|       |  had to i soon thought i heard the |       |
+|       |  knocking again, so i sat up and   |       |
+|       |  looked at the door, but nothing   |       |
+|       |  else came so i went back to       |       |
+|       |  sleep.                            |       |
 |       |                                    |       |
 |       |                                    |       |
-|       |  I woke up at 8:05 shower, dad     |       |
-|       |  arrived while i wa and we soon    |       |
-|       |  left for work.                    |       |
-|       |                                    |       |
-|       |                                    |       |
-|       |                                    |       |
-|       |                                    |       |
-|       |                                    |       |
+|       |  I woke up at 8:05 and had a       |       |
+|       |  showerdad arrived while i was     |       |
+|       |  packing, and we soon left for     |       |
+|       |  work.                             |       |
 |       |                                    |       |
 |       |                                    |       |
 |       |                                    |       |
