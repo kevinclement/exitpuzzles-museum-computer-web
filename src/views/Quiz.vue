@@ -1,5 +1,5 @@
 <template>
-
+  <div>
     <!-- QUESTIONS -->
     <div class="questions" v-if="!showResults">
       <!-- HEADER -->
@@ -18,7 +18,7 @@
           </div>
           <div class="progress">Question {{questionIndex + 1}}/{{QUESTION_LIMIT}}</div>
         </div>
-        <audio autoplay="autoplay" v-if="this.timeForSelection">
+        <audio ref="tickSnd" autoplay="true" loop="true" v-if="this.timeForSelection">
           <source src="../assets/sounds/clock-ticking-4.wav" type="audio/wav">
         </audio>
       </div>
@@ -31,6 +31,10 @@
       v-bind:totalTime="timeTakenTotal"
     />
 
+    <audio ref="buttonSnd" preload="true">
+      <source src="../assets/sounds/button-17.wav" type="audio/wav">
+    </audio>
+  </div>
 </template>
 
 <script>
@@ -174,7 +178,8 @@ export default {
           console.log(`INFO: Ignoring button press for ${index}, quiz already solved.`)
           return;
         }
-
+        
+        this.$refs.buttonSnd.play()
         if (this.showResults && index !== -1) {
           this.reset()
           return;
