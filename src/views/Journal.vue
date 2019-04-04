@@ -47,6 +47,9 @@
   `---'
      </pre>
     </div>
+    <audio autoplay="true">
+          <source src="../assets/sounds/page-flip-5.wav" type="audio/wav">
+    </audio>
   </div>
 
 </template>

@@ -3,20 +3,17 @@
   <div class="password">
     <div class="mainRow">
 
-      <img class="lock" src="../assets/lock-solved.png" v-if="correct"/>
+      <img class="lock" src="../assets/lock-solved-rotated.png" v-if="correct"/>
       <img class="lock" src="../assets/lock.png"        v-else-if="!incorrect"/>
       <img class="lock" src="../assets/lock-failed.png" v-else/>
-      <div v-if="!incorrect">
-        <div>ENTER PASSWORD</div>
+      <div v-bind:class="{ incorrect: incorrect }">
+        <div class="passText" v-html="passText"></div>
         <div class="passEntry">
           <span class="passChar" style="padding-left:39px;">{{password[0]}}</span>
           <span class="passChar">{{password[1]}}</span>
           <span class="passChar">{{password[2]}}</span>
           <span>{{password[3]}}</span>
         </div>
-      </div>
-      <div class="passWrong" v-else>
-        WRONG
       </div>
 
     </div>
@@ -33,6 +30,7 @@ export default {
       CORRECT_PASSWORD: 'DEAD',
       password: ['_','_','_','_'],
       typedPassword: '',
+      passText: 'ENTER PASSWORD',
       index: 0,
       incorrect: false,
       correct: false,
@@ -56,6 +54,7 @@ export default {
       this.typedPassword = ''
       this.password = ['_','_','_','_']
       this.index = 0
+      this.passText = 'ENTER PASSWORD'
       this.incorrect = false
       this.correct = false
     },
@@ -85,6 +84,7 @@ export default {
       } else {
         console.log(`WRONG!!!!!`);
         this.incorrect = true
+        this.passText = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WRONG'
         setTimeout(() => { this.reset() }, 2000)
       }
     },
@@ -123,20 +123,21 @@ export default {
   }
   .mainRow {
     display:grid;
-    grid-template-columns:185px 400px;
+    grid-template-columns:215px 400px;
     font-size:44px;
   }
   .lock {
-    width:150px;
+    height:150px;
+    justify-self:end;
+    padding-right:50px;
   }
   .passEntry {
     padding-top:20px;
   }
+  .incorrect .passEntry {
+    visibility:hidden;
+  }
   .passChar {
     padding-right:25px;
-  }
-  .passWrong {
-    padding-top:85px;
-    padding-left:10px;
   }
 </style>
