@@ -119,10 +119,7 @@ function updateSettings(timeout) {
     },
 
     body: JSON.stringify({"QUESTION_TIMEOUT_S":timeout})
-})
-.then( (response) => { 
-   //do something awesome that makes the world a better place
-});
+  })
 }
 </script>
 

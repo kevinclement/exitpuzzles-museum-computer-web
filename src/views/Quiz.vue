@@ -126,8 +126,15 @@ export default {
           })
           .then((myJson) => {
             this.SELECTION_TIMEOUT = myJson.QUESTION_TIMEOUT_S
-            this.reset();
-          });
+          })
+          .catch((e) => {
+            // if server isn't running or some problem, then default to 60
+            console.log(`ERROR fetching settings: ${e}`);
+            this.SELECTION_TIMEOUT = 60
+          })
+          .finally(() => {
+            this.reset()
+          })
       }
 
       // hookup keyboard handler for debug stuff when not using buttons
