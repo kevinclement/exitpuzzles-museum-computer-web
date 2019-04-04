@@ -55,19 +55,18 @@ export default {
     checkCode() {
 
       console.log('checking for special reset code')
-      console.log(`setting: ${this.$root.$data.settings.QUESTION_TIMEOUT_S}`);
 
       if (checkEqual(this.lastKeys, CODE_TIMER_60s)) {
         this.status(`Updated TIMEOUT to 60s`)
-        this.$root.$data.settings.QUESTION_TIMEOUT_S = 60
+        updateSettings(60)
       }
       else if (checkEqual(this.lastKeys, CODE_TIMER_30s)) {
         this.status(`Updated TIMEOUT to 30s`)
-        this.$root.$data.settings.QUESTION_TIMEOUT_S = 30
+        updateSettings(30)
       }
       else if (checkEqual(this.lastKeys, CODE_TIMER_OFF)) {
         this.status(`Updated TIMEOUT to 0s`)
-        this.$root.$data.settings.QUESTION_TIMEOUT_S = 0
+        updateSettings(0)
       }
 
       if (checkEqual(this.lastKeys, CODE_RESET_QUIZ)) {
@@ -109,6 +108,21 @@ function checkEqual(a, b) {
   }
 
   return true
+}
+
+function updateSettings(timeout) {
+  fetch("http://localhost:8080/settings", {
+    method: "post",
+    headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+    },
+
+    body: JSON.stringify({"QUESTION_TIMEOUT_S":timeout})
+})
+.then( (response) => { 
+   //do something awesome that makes the world a better place
+});
 }
 </script>
 

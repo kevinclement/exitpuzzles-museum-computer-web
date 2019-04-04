@@ -60,7 +60,7 @@ export default {
   },
   data() {
     return {
-        SELECTION_TIMEOUT: this.$root.$data.settings.QUESTION_TIMEOUT_S,
+        SELECTION_TIMEOUT: 0,
         QUESTION_LIMIT: 3,     // TODO: move back to 15
         ANSWER_TIMEOUT: 500,   // TODO: move back to 1000
         questions: questions,
@@ -120,7 +120,14 @@ export default {
         this.correctQuestionsTotal = this.$root.$data.results.correct
         this.showResults = true
       } else {
-        this.reset();
+        fetch('http://localhost:8080/settings')
+          .then((response) => {
+            return response.json();
+          })
+          .then((myJson) => {
+            this.SELECTION_TIMEOUT = myJson.QUESTION_TIMEOUT_S
+            this.reset();
+          });
       }
 
       // hookup keyboard handler for debug stuff when not using buttons

@@ -10,7 +10,9 @@
     "now-build": "vue-cli-service build"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "connect-history-api-fallback": "^1.6.0",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "onoff": "^4.1.1",
     "socketio": "^1.0.0",

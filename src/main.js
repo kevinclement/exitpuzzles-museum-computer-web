@@ -18,9 +18,6 @@ new Vue({
   router,
   render: h => h(App),
   data: {
-    settings : {
-      QUESTION_TIMEOUT_S: 60
-    },
     results : {
     }
   }
