@@ -179,7 +179,11 @@ export default {
           return;
         }
         
-        this.$refs.buttonSnd.play()
+        // play sounds for button press, either button or timeout
+        if (index !== -1) {
+          this.$refs.buttonSnd.play()
+        }
+
         if (this.showResults && index !== -1) {
           this.reset()
           return;
