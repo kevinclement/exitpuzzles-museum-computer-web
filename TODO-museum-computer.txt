@@ -1,4 +1,3 @@
- 
 --------------------------------------------
 [x] convert to vue
   [x] cleanup helloworld and map to prototype
@@ -62,3 +61,7 @@
 [x] check button presses in results page
 [x] do we want sounds?
   [x] check built in monitor and see how bad that is
+[x] sounds
+  [x] question timeout
+  [x] password unlock
+  [x] password failed

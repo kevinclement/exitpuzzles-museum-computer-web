@@ -34,6 +34,9 @@
     <audio ref="buttonSnd" preload="true">
       <source src="../assets/sounds/button-17.wav" type="audio/wav">
     </audio>
+    <audio ref="timeoutSnd" preload="true">
+        <source src="../assets/sounds/beep-03.wav" type="audio/wav">
+    </audio>
   </div>
 </template>
 
@@ -182,6 +185,8 @@ export default {
         // play sounds for button press, either button or timeout
         if (index !== -1) {
           this.$refs.buttonSnd.play()
+        } else {
+          this.$refs.timeoutSnd.play()
         }
 
         if (this.showResults && index !== -1) {

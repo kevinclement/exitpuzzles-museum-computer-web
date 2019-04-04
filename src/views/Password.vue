@@ -16,6 +16,12 @@
         </div>
       </div>
 
+      <audio autoplay="true" v-if="correct">
+        <source src="../assets/sounds/cassette-out-1.wav" type="audio/wav">
+      </audio>
+      <audio autoplay="true" v-if="incorrect">
+        <source src="../assets/sounds/beep-03.wav" type="audio/wav">
+      </audio>
     </div>
   </div>
 
