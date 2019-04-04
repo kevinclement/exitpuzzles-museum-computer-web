@@ -2,54 +2,44 @@
 
   <div class="journal">
     <div style="padding-top:15px">
-      <pre style="font-family: 'Press Start 2P';font-size:14px;">
-  .----------------------------------------------------------.
- /  .-.                                                  .-.  \
-|  /   \   My Journal                                   /   \  |
-| |\_.  |                                              |    /| |
-|\|  | /|                                              |\  | |/|
-| `---' |  19 Oct 1987                                 | `---' |
-|       |                                              |       |
-|       |                                              |       |
-|       |  Last night was sunday, so i was at my mums  |       |
-|       |  for the weekend. i woke up at 5:50 am,      |       |
-|       |  i thought i heard a light taping on my      |       |
-|       |  bedroom door. after i looked at the time    |       |
-|       |  on my mobile phone howeve i layed back down |       |
-|       |  to sleep some more before i had to i soon   |       |
-|       |  thought i herd the knocking again, so i sat |       |
-|       |  up and looked at the door, but nothing else |       |
-|       |  came so i went back to sleep.               |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |  I woke up at 8:05 and had a shower, dad     |       |
-|       |  arrived while i was packing, and we soon    |       |
-|       |  left for work.                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |                                              |       |
-|       |----------------------------------------------|       |
-\       |                                              |       /
- \     /                                                \     /
-  `---'                                                  `---'
+      <pre style="font-family: 'Press Start 2P';">
+  .------------------------------------------------.
+ /  .-.                                        .-.  \
+|  /   \   My Journal                         /   \  |
+| |\_.  |                                    |    /| |
+|\|  | /|                                    |\  | |/|
+| `---' |  19 Oct 1987                       | `---' |
+|       |                                    |       |
+|       |                                    |       |
+|       |  Last night wnday, so i t my mums  |       |
+|       |  for the weeki woke up a0 am,      |       |
+|       |  i thought i  a light taon my      |       |
+|       |  bedroom doorer i lookedhe time    |       |
+|       |  on my mobilee howeve i  back down |       |
+|       |  to sleep some before i o i soon   |       |
+|       |  thought i hee knocking , so i sat |       |
+|       |  up and lookethe door, bthing else |       |
+|       |  came so i weck to sleep           |       |
+|       |                                    |       |
+|       |                                    |       |
+|       |  I woke up at 8:05 shower, dad     |       |
+|       |  arrived while i wa and we soon    |       |
+|       |  left for work.                    |       |
+|       |                                    |       |
+|       |                                    |       |
+|       |                                    |       |
+|       |                                    |       |
+|       |                                    |       |
+|       |                                    |       |
+|       |                                    |       |
+|       |                                    |       |
+|       |                                    |       |
+|       |                                    |       |
+|       |                                    |       |
+|       |------------------------------------|       |
+\       |                                    |       /
+ \     /                                      \     /
+  `---'                                        `---'
       </pre>
 
     </div>
@@ -87,5 +77,6 @@ export default {
     grid-template-rows: auto;
     color: #00D46A;
     font-family: 'Press Start 2P';
+    font-size: 18px;
   }
 </style>
