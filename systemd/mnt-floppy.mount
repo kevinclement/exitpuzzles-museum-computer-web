@@ -1,0 +1,3 @@
+[Mount]
+What=/dev/sda
+Where=/mnt/floppy
