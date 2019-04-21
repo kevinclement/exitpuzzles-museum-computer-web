@@ -47,7 +47,7 @@ export default {
     display: grid;
     justify-items: center;
     grid-template-columns: auto;
-    grid-template-rows: 75px auto 75px auto;
+    grid-template-rows: 75px auto 70px 50px;
     color: #00D46A;
     font-family: 'Press Start 2P';
   }

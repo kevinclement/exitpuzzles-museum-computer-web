@@ -373,13 +373,13 @@ function shuffle(array) {
       color: #00D46A;
       font-family: 'Press Start 2P';
       grid-template-columns: auto;
-      grid-template-rows: 170px auto 120px;
+      grid-template-rows: 170px auto 125px;
       justify-items: center;
   }
 
   .header {
       justify-self:center;
-      padding-top:50px;
+      padding-top:45px;
   }
   .footer {
   }

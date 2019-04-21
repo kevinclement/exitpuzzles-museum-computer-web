@@ -129,8 +129,8 @@ export default {
     display: grid;
     font-size: 28px;
     padding-top:40px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
     grid-template-rows: 37px 160px 75px 315px 50px 50px;
     color: #00D46A;
     font-family: 'Press Start 2P';
