@@ -45,6 +45,7 @@ setTimeout(() => {
 Tail.on('line', function(data) {
   if (/changed media or resized disk sda/.test(data)) {
     if (!diskedRemoved) {
+      console.log(`found disk removed in log.  sending disk removed signal.`);
       diskedRemoved = 1;
       myEmitter.emit(EVENTS.DISK_REMOVED);
     }
