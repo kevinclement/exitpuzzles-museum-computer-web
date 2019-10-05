@@ -204,6 +204,7 @@ export default {
         }
 
         if (this.showResults && index !== -1) {
+          this.reset();
           this.$router.push("/")
           return;
         }
