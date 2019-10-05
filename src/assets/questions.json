@@ -229,5 +229,95 @@
             "Monkey's Paw"
         ],
         "correctAnswer": 4
-    }
+    },
+
+
+    {
+        "question": "The Book of the Dead is also known as?:",
+        "answers": [
+            "The Voynich Manuscript",
+            "Necronomicon",
+            "The Codex Gigas",
+            "The Book of Soyga",
+            "The Grand Grimoire"
+        ],
+        "correctAnswer": 2
+    },
+    {
+        "question": "Who first discovered the Dodo in 1662?:",
+        "answers": [
+            "Spanish Explorers",
+            "Japanese Whalers",
+            "Viking Raiders",
+            "Dutch Sailors",
+            "European Traders"
+        ],
+        "correctAnswer": 4
+    },
+    {
+        "question": "Polycephaly is a rare birth defect that causes what?:",
+        "answers": [
+            "Extra Digits",
+            "Conjoined Craniums",
+            "Missing Eye-Sockets",
+            "Unusual Number of Limbs",
+            "Multiple Heads"
+        ],
+        "correctAnswer": 5
+    },
+    {
+        "question": "How tall was the strange creature found Chile's Atacama Desert?:",
+        "answers": [
+            "6 inches",
+            "1 foot",
+            "2 feet",
+            "2.5 feet",
+            "4 feet"
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Who captured the original footage of Sasquatch?:",
+        "answers": [
+            "Roger Patterson",
+            "Robert Wilson",
+            "Victor Lustig",
+            "Whitley Strieber ",
+            "Charles Ponzi"
+        ],
+        "correctAnswer": 1
+    },
+    {
+        "question": "Possibly the oldest artifacts on display.\nHow old are the dinosaur fossils in the Musuem of Curiosity?:",
+        "answers": [
+            "100 Million Years",
+            "25 Million Years",
+            "50 Million Years",
+            "15 Million Years",
+            "75 Million Years"
+        ],
+        "correctAnswer": 5
+    },
+    {
+        "question": "Lycanthropy is the folklore of what?:",
+        "answers": [
+            "Vampire Hunting",
+            "Fortune Telling",
+            "Spell Casting",
+            "Werewolves and Shapeshifting",
+            "Believing in Conspiracies"
+        ],
+        "correctAnswer": 4
+    },
+    {
+        "question": "The Masonic Cipher is also known as?:",
+        "answers": [
+            "Shift Cipher",
+            "Porta Cipher",
+            "Columnar Transposition Cipher",
+            "Pig-Pen Cipher",
+            "Atbash Cipher"
+        ],
+        "correctAnswer": 4
+    }   
 ]
