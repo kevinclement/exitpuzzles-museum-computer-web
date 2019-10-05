@@ -52,8 +52,7 @@ export default {
         // Since I don't want to try and figure that out, I'm just manually setting results
         // Simplest thing that works :smile:
         if (this.correct == 0) return "0"
-        
-        
+
         const scores = [
             "02274",
             "09843",
