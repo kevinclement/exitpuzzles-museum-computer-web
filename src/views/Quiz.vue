@@ -61,7 +61,7 @@ export default {
   data() {
     return {
         SELECTION_TIMEOUT: 0,
-        QUESTION_LIMIT: 3,     // TODO: move back to 15
+        QUESTION_LIMIT: 20,
         ANSWER_TIMEOUT: 1000,
         questions: questions,
         questionIndex: 0,
