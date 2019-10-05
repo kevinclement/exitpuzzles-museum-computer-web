@@ -78,8 +78,10 @@ if (process.platform !== "win32") {
 io.on('connection', function(socket){
   console.log('client connected');
   if (CURRENT_DISK !== -1) {
+    console.log(`current disk already present.  sending disk ${CURRENT_DISK}`);
     io.emit('DISK_FOUND', CURRENT_DISK)
   } else {
+    console.log(`no disk found initially.  sending disk removed.`);
     io.emit('DISK_REMOVED')
   }
 });
