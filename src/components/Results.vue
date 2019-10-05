@@ -53,12 +53,18 @@ export default {
         // Simplest thing that works :smile:
         if (this.correct == 0) return "0"
         
+        
         const scores = [
+            "02274",
             "09843",
+            "12348",
             "16271",
+            "17318",
+            "20113",
             "21519",
             "28072",
             "32885",
+            "37224",
             "42469",
             "49170",
             "50032",
@@ -68,7 +74,7 @@ export default {
             "75428",
             "77081",
             "81992",
-            "87423",
+            "87423"
         ]
 
         return scores[this.correct-1]

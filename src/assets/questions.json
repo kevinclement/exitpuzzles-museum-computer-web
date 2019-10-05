@@ -319,5 +319,27 @@
             "Atbash Cipher"
         ],
         "correctAnswer": 4
-    }   
+    },
+    {
+        "question": "How many shrunken heads are on display in The Museum of Curiosity?:",
+        "answers": [
+            "Four",
+            "Five",
+            "Six",
+            "Seven",
+            "Eight"
+        ],
+        "correctAnswer": 4
+    },
+    {
+        "question": "Which item is NOT currently on display above the shrunken heads?:",
+        "answers": [
+            "Alien Fetus",
+            "Human Heart",
+            "Necrotic Ear",
+            "Abnormal Brain",
+            "Parasitic Worm"
+        ],
+        "correctAnswer": 3
+    }
 ]
