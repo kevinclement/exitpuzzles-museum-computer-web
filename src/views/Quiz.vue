@@ -220,9 +220,11 @@ export default {
         }
 
         // add to score arrays
-        if (this.currentQuestion.correctAnswer === this.selectedAnswer) {
+        if (this.currentQuestion.correctAnswer - 1 === this.selectedAnswer) {
+          console.log(`correct`)
           this.correctQuestions.push(this.currentQuestion)
         } else {
+          console.log(`missed`)
           this.missedQuestions.push(this.currentQuestion)
         }
 
