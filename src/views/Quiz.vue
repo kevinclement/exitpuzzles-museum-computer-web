@@ -45,6 +45,8 @@ import Question from '@/components/Question'
 import Results from '@/components/Results'
 import questions from '@/assets/questions.json'
 
+const TIMEOUTS_BEFORE_RESET = 4
+
 export default {
   name: 'Quiz',
   props: {
@@ -67,6 +69,7 @@ export default {
         questionIndex: 0,
         missedQuestions: [],
         correctQuestions: [],
+        timedOutInARow: 0,
         selectedAnswer: -1,
         buttonTimer: null,
         timeForSelection: 0,
@@ -155,6 +158,7 @@ export default {
         this.missedQuestionsTotal = 0
         this.correctQuestions = []
         this.correctQuestionsTotal = 0
+        this.timedOutInARow = 0
         this.showResults = false
         this.$root.$data.results.time = 0
         this.$root.$data.results.correct = 0
@@ -201,6 +205,20 @@ export default {
           this.$refs.buttonSnd.play()
         } else {
           this.$refs.timeoutSnd.play()
+        }
+
+        // keep track of total timeouts
+        if (index === -1) {
+          this.timedOutInARow++
+          console.log(`timeout: ${this.timedOutInARow}`)
+
+          if (this.timedOutInARow === TIMEOUTS_BEFORE_RESET) {
+             console.log(`max timeouts reached resetting.`)
+             this.reset();
+             this.$router.push("/")
+          }
+        } else {
+          this.timedOutInARow = 0;
         }
 
         if (this.showResults && index !== -1) {
