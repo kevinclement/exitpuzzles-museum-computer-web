@@ -31,12 +31,12 @@
         <div class="footerMsg">{{pressAnyButton}}</div>
 
         <audio ref="successSnd" preload="true">
-          <source src="../assets/sounds/success.mp3" type="audio/mp3">
+          <source src="../assets/sounds/success.mp3" type="audio/mpeg">
+        </audio>
+        <audio ref="failureSnd" preload="true">
+          <source src="../assets/sounds/failure.mp3" type="audio/mpeg">
         </audio>
 
-        <audio ref="failureSnd" preload="true">
-          <source src="../assets/sounds/failure.mp3" type="audio/mp3">
-        </audio>
   </div>
 </template>
 
@@ -111,27 +111,20 @@ export default {
   },
   created() {
       if (this.percentage == 100) {
-
         // turn on blinking of score if we're at 100%
         console.log(`setting timer`);
         this.blinkTimer = setInterval(() => {
           this.blink = !this.blink;
         }, 1000);
+      } 
 
-        if (this.$refs.successSnd) {
-          console.log(`playing success`)
-          this.$refs.successSnd.play()
-        } else {
-          console.log(`No ref for success, ignoring.`)
-        }
-      } else {
-        if (this.$refs.failureSnd) {
-          console.log(`playing failure`)
-          this.$refs.failureSnd.play()
-        } else {
-          console.log(`No ref for failure, ignoring.`)
-        }
-      }
+      setTimeout(() => {
+          if (this.percentage == 100) {
+            this.$refs.successSnd.play()
+          } else {
+            this.$refs.failureSnd.play()
+          }
+      }, 500);
   },
   destroyed() {
     clearTimeout(this.blinkTimer);

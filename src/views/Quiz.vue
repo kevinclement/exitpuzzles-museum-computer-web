@@ -35,7 +35,7 @@
       <source src="../assets/sounds/button-17.wav" type="audio/wav">
     </audio>
     <audio ref="timeoutSnd" preload="true">
-        <source src="../assets/sounds/beep-03.wav" type="audio/wav">
+      <source src="../assets/sounds/beep-03.wav" type="audio/wav">
     </audio>
   </div>
 </template>
