@@ -7,10 +7,11 @@ User=pi
 Type=simple
 Restart=always
 RestartSec=7
-StandardOutput=null
-StandardError=null
 ExecStart=/usr/bin/node /home/pi/code/exitpuzzles-museum-computer-web/server/index.js
-ExecStop=/usr/bin/killall node
+# Output to syslog
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=exitpuzzles-quiz
 Environment=NODE_ENV=production
 
 [Install]
