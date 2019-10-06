@@ -10,7 +10,7 @@
 |\|  | /|                                      |\  | |/|
 | `---' |                                      | `---' |
 |       |                                      |       |
-|       |  05 Oct 2019                         |       |
+|       |  {{date}}                         |       |
 |       |                                      |       |
 |       |                                      |       |
 |       |                                      |       |
@@ -44,15 +44,40 @@
 
 </template>
 <script>
+const HOW_MANY_DAYS_BACK = 4
+const months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+]
 export default {
   name: 'Journal',
   props: {
   },
   data() {
     return {
+      date: "05 Oct 2019" // should be dynamic
     }
   },
   created() {
+    
+    let daysAgo = new Date(new Date().getTime() - (86400000 * HOW_MANY_DAYS_BACK))
+
+    let m = months[daysAgo.getMonth()]
+    let d = daysAgo.getDate()
+    d = d < 10 ? "0" + d : d;
+    let y = daysAgo.getFullYear()
+
+    this.date = `${d} ${m} ${y}`
   },
   destroyed() {
   },
