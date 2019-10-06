@@ -29,6 +29,14 @@
         </div>
         <div class="footerMsg">{{tryAgain}}</div>
         <div class="footerMsg">{{pressAnyButton}}</div>
+
+        <audio ref="successSnd" preload="true">
+          <source src="../assets/sounds/success.mp3" type="audio/mp3">
+        </audio>
+
+        <audio ref="failureSnd" preload="true">
+          <source src="../assets/sounds/failure.mp3" type="audio/mp3">
+        </audio>
   </div>
 </template>
 
@@ -102,12 +110,17 @@ export default {
     }
   },
   created() {
-      // turn on blinking of score if we're at 100%
       if (this.percentage == 100) {
+
+        // turn on blinking of score if we're at 100%
         console.log(`setting timer`);
         this.blinkTimer = setInterval(() => {
           this.blink = !this.blink;
         }, 1000);
+
+        this.$refs.successSnd && this.$refs.successSnd.play()
+      } else {
+        this.$refs.failureSnd && this.$refs.failureSnd.play()
       }
   },
   destroyed() {

@@ -46,6 +46,7 @@ import Results from '@/components/Results'
 import questions from '@/assets/questions.json'
 
 const TIMEOUTS_BEFORE_RESET = 4
+const TOTAL_QUESTIONS = 1 // NOTE: if you change this you need to change score calculator in Results.vue
 
 export default {
   name: 'Quiz',
@@ -63,7 +64,7 @@ export default {
   data() {
     return {
         SELECTION_TIMEOUT: 0,
-        QUESTION_LIMIT: 20,
+        QUESTION_LIMIT: TOTAL_QUESTIONS,
         ANSWER_TIMEOUT: 1000,
         questions: questions,
         questionIndex: 0,
