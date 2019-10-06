@@ -46,7 +46,7 @@ import Results from '@/components/Results'
 import questions from '@/assets/questions.json'
 
 const TIMEOUTS_BEFORE_RESET = 4
-const TOTAL_QUESTIONS = 1 // NOTE: if you change this you need to change score calculator in Results.vue
+const TOTAL_QUESTIONS = 20 // NOTE: if you change this you need to change score calculator in Results.vue
 
 export default {
   name: 'Quiz',
