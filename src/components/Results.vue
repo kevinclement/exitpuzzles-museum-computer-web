@@ -118,9 +118,19 @@ export default {
           this.blink = !this.blink;
         }, 1000);
 
-        this.$refs.successSnd && this.$refs.successSnd.play()
+        if (this.$refs.successSnd) {
+          console.log(`playing success`)
+          this.$refs.successSnd.play()
+        } else {
+          console.log(`No ref for success, ignoring.`)
+        }
       } else {
-        this.$refs.failureSnd && this.$refs.failureSnd.play()
+        if (this.$refs.failureSnd) {
+          console.log(`playing failure`)
+          this.$refs.failureSnd.play()
+        } else {
+          console.log(`No ref for failure, ignoring.`)
+        }
       }
   },
   destroyed() {
