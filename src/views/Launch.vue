@@ -4,6 +4,10 @@
     <img class="zoltar" src="../assets/logo-pixels.png"/>
     <div class="copyright">©<span style="padding-left:3px;">1985</span> Marco Software INC.</div>
     <div class="insertDisk" v-bind:class="{ blink: blink }">Press ANY button to START...</div>
+    
+    <audio ref="menuSnd" preload="true">
+      <source src="../assets/sounds/menu.mp3" type="audio/mpeg">
+    </audio>
   </div>
   
 </template>
@@ -35,6 +39,7 @@ export default {
   },
   methods: {
     buttonPressed: function() {
+      this.$refs.menuSnd.play()
       this.$router.push("quiz")
     }
   }
