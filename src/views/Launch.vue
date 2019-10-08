@@ -40,7 +40,10 @@ export default {
   methods: {
     buttonPressed: function() {
       this.$refs.menuSnd.play()
-      this.$router.push("quiz")
+      setTimeout( () => 
+      {
+        this.$router.push("quiz")
+      }, 1500)
     }
   }
 }
