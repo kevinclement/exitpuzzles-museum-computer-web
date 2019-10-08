@@ -3,7 +3,7 @@
     <div class="welcome">Welcome to The...</div>
     <img class="zoltar" src="../assets/logo-pixels.png"/>
     <div class="copyright">©<span style="padding-left:3px;">1985</span> Marco Software INC.</div>
-    <div class="insertDisk" v-bind:class="{ blink: blink }">Press ANY button to START...</div>
+    <div class="insertDisk" v-bind:class="{ blink: blink }">{{blinkText}}</div>
     
     <audio ref="menuSnd" preload="true">
       <source src="../assets/sounds/menu.mp3" type="audio/mpeg">
@@ -20,6 +20,7 @@ export default {
     return {
       blink: false,
       blinkTimer: null,
+      blinkText: "Press ANY button to START..."
     }
   },
   sockets: {
@@ -40,6 +41,9 @@ export default {
   methods: {
     buttonPressed: function() {
       this.$refs.menuSnd.play()
+      clearInterval(this.blinkTimer);
+      this.blink = false;
+      this.blinkText = "Good Luck!"
       setTimeout( () => 
       {
         this.$router.push("quiz")
