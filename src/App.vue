@@ -36,7 +36,7 @@ export default {
         }
 
         // now that we've handled it, remove it from the db
-        if (qz.force) {
+        if (qz.force >= 0) {
           this.$root.$data.ref.update({
             force: null
           })
