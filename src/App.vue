@@ -16,6 +16,23 @@ export default {
     }
   },
   created() {
+      // watch for forced override in database
+      this.$root.$data.ref.on('value', (snapshot) => {
+        let qz = snapshot.val()
+        if (qz == null) return
+
+        // NOTE: not sure how this is going to play out with race for disk triggers
+        if (!qz.force || qz.force > 4 || qz.force === 0) {
+          this.diskInserted(1)
+        } else if (qz.force === 2) {
+          this.insertDisk()
+        } else if (qz.force === 3) {
+          this.diskInserted(2)
+        } else if (qz.force === 4) {
+          this.$router.push("journal")
+        }
+      })
+
       window.addEventListener('keydown', this.onkeydown)
   },
   destroyed() {
