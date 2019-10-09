@@ -21,16 +21,27 @@ export default {
         let qz = snapshot.val()
         if (qz == null) return
 
-        // NOTE: not sure how this is going to play out with race for disk triggers
-        if (!qz.force || qz.force > 4 || qz.force === 0) {
+        if (qz.force === 0) {
+          // INSERT DISK
+          this.insertDisk()
+        } else if (qz.force === 1) {
+          // LAUNCH
           this.diskInserted(1)
         } else if (qz.force === 2) {
-          this.insertDisk()
-        } else if (qz.force === 3) {
+          // PASSWORD
           this.diskInserted(2)
-        } else if (qz.force === 4) {
+        } else if (qz.force === 3) {
+          // JOURNAL
           this.$router.push("journal")
         }
+
+        // now that we've handled it, remove it from the db
+        if (qz.force) {
+          this.$root.$data.ref.update({
+            force: null
+          })
+        }
+
       })
 
       window.addEventListener('keydown', this.onkeydown)
