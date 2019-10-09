@@ -33,6 +33,10 @@ export default {
         } else if (qz.force === 3) {
           // JOURNAL
           this.$router.push("journal")
+        } else if (qz.force === 4) {
+          console.log(`resetting results`)
+          this.$root.$data.results = {}
+          this.$router.push("/")
         }
 
         // now that we've handled it, remove it from the db
