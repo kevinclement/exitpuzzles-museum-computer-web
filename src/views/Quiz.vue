@@ -223,6 +223,7 @@ export default {
              console.log(`max timeouts reached resetting.`)
              this.reset();
              this.$router.push("/")
+             return;
           }
         } else {
           this.timedOutInARow = 0;
@@ -320,7 +321,8 @@ export default {
           state: "QUIZ",
           questionIndex: this.questionIndex,
           correctQuestions: this.correctQuestions,
-          missedQuestions: this.missedQuestions
+          missedQuestions: this.missedQuestions,
+          total: TOTAL_QUESTIONS
         })
       }
   },
