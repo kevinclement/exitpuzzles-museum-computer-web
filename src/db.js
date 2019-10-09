@@ -1,4 +1,5 @@
 import firebase from 'firebase/app'
+import 'firebase/database'
 
 let dbUrl = "https://exitpuzzles-admin.firebaseio.com"
 

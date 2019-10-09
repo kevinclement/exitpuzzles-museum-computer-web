@@ -7,7 +7,7 @@ User=pi
 Type=simple
 Restart=always
 RestartSec=7
-ExecStart=/usr/bin/node /home/pi/code/exitpuzzles-museum-computer-web/server/index.js
+ExecStart=/usr/bin/node /home/pi/code/computer/server/index.js
 # Output to syslog
 StandardOutput=syslog
 StandardError=syslog

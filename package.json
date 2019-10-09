@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "vue-cli-service serve",
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "dev": "vue-cli-service serve",
     "server": "node server/index.js",
-    "lint": "vue-cli-service lint",
-    "now-build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "stop": "sudo systemctl stop exitpuzzles.comp.service",
+    "start": "sudo systemctl start exitpuzzles.comp.service",
+    "restart": "sudo systemctl restart exitpuzzles.comp.service",
+    "status": "sudo systemctl status exitpuzzles.comp.service"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
