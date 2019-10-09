@@ -81,6 +81,7 @@ export default {
         timeTakenTotal: 0,
         correctQuestionsTotal: 0,
         missedQuestionsTotal: 0,
+        qz: undefined
     }
   },
   computed: {
@@ -117,6 +118,8 @@ export default {
       },
   },
   created() {
+      this.qz = this.$root.$data.ref.child('devices/quiz')
+
       // check for completion globally
       if (this.$root.$data.results.time && this.$root.$data.results.time > 0) {
         this.timeTakenTotal = this.$root.$data.results.time
@@ -183,11 +186,14 @@ export default {
 
         // set the first question as selected
         this.questionIndex = 0
+
+        this.updateDB();
       },
       prev: function() {
           if (this.questionIndex > 0) {
             this.questionIndex--;
           }
+          this.updateDB();
       },
       buttonPressed: function(index) {
         console.log(`button pressed: ${index}`);
@@ -267,6 +273,8 @@ export default {
           this.results()
           clearInterval(this.selectionTimer)
         }
+
+        this.updateDB();
       },
       results() {
         this.correctQuestionsTotal = this.correctQuestions.length
@@ -305,6 +313,15 @@ export default {
             this.buttonPressed(parseInt(e.key) - 1)
             break;
         }
+      },
+
+      updateDB: function() {
+        this.qz.update({ 
+          state: "QUIZ",
+          questionIndex: this.questionIndex,
+          correctQuestions: this.correctQuestions,
+          missedQuestions: this.missedQuestions
+        })
       }
   },
   components: {

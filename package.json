@@ -22,8 +22,7 @@
     "tail": "^2.0.2",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
-    "vue-socket.io": "^3.0.7",
-    "vuefire": "^2.1.2"
+    "vue-socket.io": "^3.0.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",
