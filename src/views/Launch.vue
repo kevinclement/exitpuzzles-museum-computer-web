@@ -33,6 +33,8 @@ export default {
       this.blink = !this.blink;
     }, 1000);
     window.addEventListener('keydown', this.buttonPressed)
+
+    this.$root.$data.ref.update({ state: "LAUNCH" })
   },
   destroyed() {
     clearTimeout(this.blinkTimer);

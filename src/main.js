@@ -21,7 +21,7 @@ new Vue({
   render: h => h(App),
   data: {
     db: db,
-    ref: db.ref('museum'),
+    ref: db.ref('museum').child('devices/quiz'),
     results : {
     }
   }

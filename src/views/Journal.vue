@@ -69,7 +69,8 @@ export default {
     }
   },
   created() {
-    
+    this.$root.$data.ref.update({ state: "JOURNAL" })
+
     let daysAgo = new Date(new Date().getTime() - (86400000 * HOW_MANY_DAYS_BACK))
 
     let m = months[daysAgo.getMonth()]

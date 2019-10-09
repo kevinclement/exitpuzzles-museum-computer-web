@@ -39,6 +39,8 @@ export default {
     }
   },
   created() {
+      this.$root.$data.ref.update({ state: "INSERT_DISK" })
+
       window.addEventListener('keydown', this.onkeydown)
   },
   destroyed() {

@@ -118,7 +118,7 @@ export default {
       },
   },
   created() {
-      this.qz = this.$root.$data.ref.child('devices/quiz')
+      this.qz = this.$root.$data.ref
 
       // check for completion globally
       if (this.$root.$data.results.time && this.$root.$data.results.time > 0) {
