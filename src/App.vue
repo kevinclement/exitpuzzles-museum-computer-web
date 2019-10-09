@@ -39,13 +39,6 @@ export default {
           this.$router.push("/")
         }
 
-        // now that we've handled it, remove it from the db
-        if (qz.force >= 0) {
-          this.$root.$data.ref.update({
-            force: null
-          })
-        }
-
       })
 
       window.addEventListener('keydown', this.onkeydown)
