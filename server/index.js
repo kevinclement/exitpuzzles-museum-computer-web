@@ -85,14 +85,14 @@ const db = fb
 
 // update started time and set a ping timer
 db.ref('museum/status/quiz').update({
-  piStarted: (new Date()).toLocaleString(),
-  piPing: (new Date()).toLocaleString()
+  started: (new Date()).toLocaleString(),
+  ping: (new Date()).toLocaleString()
 })
 
 // heartbeat timer
 setInterval(()  => {
   db.ref('museum/status/quiz').update({
-    piPing: (new Date()).toLocaleString()
+    ping: (new Date()).toLocaleString()
   })
 }, 30000)
 
