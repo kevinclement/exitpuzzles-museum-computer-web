@@ -1,11 +1,9 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
 
-let dbUrl = "https://exitpuzzles-admin.firebaseio.com"
-
 // Get a Firestore instance
-const db = firebase
-  .initializeApp({ databaseURL: dbUrl })
+export const db = firebase
+  .initializeApp({ databaseURL: require('../db.json').prod })
   .database()
 
 export const ref = db.ref('museum').child('devices/quiz')
