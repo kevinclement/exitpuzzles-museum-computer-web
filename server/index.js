@@ -1,4 +1,7 @@
 const fs = require('fs');
+const json = require('../db.json');
+const fb = require('firebase/app');
+const database = require('firebase/database');
 var cors = require('cors');
 const express = require('express');
 const app = express();
@@ -75,6 +78,25 @@ if (process.platform !== "win32") {
     });
 }
 
+// hookup firebase
+const db = fb
+  .initializeApp({ databaseURL: require('../db.json').prod })
+  .database()
+
+// update started time and set a ping timer
+db.ref('museum/status/quiz').update({
+  started: (new Date()).toLocaleString(),
+  ping: (new Date()).toLocaleString()
+})
+
+// heartbeat timer
+setInterval(()  => {
+  db.ref('museum/status/quiz').update({
+    ping: (new Date()).toLocaleString()
+  })
+}, 30000)
+
+// web socket connection
 io.on('connection', function(socket){
   console.log('client connected');
   if (CURRENT_DISK !== -1) {

@@ -49,9 +49,8 @@ export default {
     }
   },
   created() {
-    this.$root.$data.ref.update({ state: "PASSWORD" })
-
     window.addEventListener('keydown', this.onkeydown)
+    this.$root.$data.reset("PASSWORD")
     this.reset()
   },
   destroyed() {

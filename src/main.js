@@ -7,7 +7,7 @@ import VueSocketIO from 'vue-socket.io'
 Vue.config.productionTip = false
 Vue.config.devtools = false
 
-import { db } from './db'
+import { ref, reset } from './db'
 
 if (process.env.NODE_ENV === 'production') {
   Vue.use(new VueSocketIO({
@@ -20,8 +20,8 @@ new Vue({
   router,
   render: h => h(App),
   data: {
-    db: db,
-    ref: db.ref('museum').child('devices/quiz'),
+    ref: ref,
+    reset: reset,
     results : {
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <div class="launch" style="">
     <div class="welcome">Welcome to The...</div>
-    <img class="zoltar" src="../assets/logo-pixels.png"/>
+    <img class="logo" src="../assets/logo-pixels.png"/>
     <div class="copyright">©<span style="padding-left:3px;">1985</span> Marco Software INC.</div>
     <div class="insertDisk" v-bind:class="{ blink: blink }">{{blinkText}}</div>
     
@@ -33,8 +33,7 @@ export default {
       this.blink = !this.blink;
     }, 1000);
     window.addEventListener('keydown', this.buttonPressed)
-
-    this.$root.$data.ref.update({ state: "LAUNCH" })
+    this.$root.$data.reset("LAUNCH");
   },
   destroyed() {
     clearTimeout(this.blinkTimer);
@@ -72,7 +71,7 @@ export default {
     padding-left:210px;
     font-size:17px;
   }
-  .zoltar {
+  .logo {
     width:600px;
   }
   .logoText {
