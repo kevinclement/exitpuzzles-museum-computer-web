@@ -4,14 +4,9 @@ const Tail = new (require('tail')).Tail('/var/log/syslog');
 
 // NOTES: 
 //   to prep disks, on the pi, insert disk
-//     sudo fdisk /dev/sda
-//       'n' - for new partition
-//       'p' - for primary
-//       <enter> for first sector default
-//       <enter> for last sector default
-//       'w' - to write, fails to re-read but seems to have worked
-//     sudo touch /mnt/floppy/disk1.dat
-//     sudo umount /dev/sda
+//     sudo mkfs.ext2 -c -L disk-journal -t ext2 /dev/sdb
+//
+//   I used disk-trivia, and disk-journal as the labels
 //
 //   DEBUG:
 //     'lsblk' - for mount points
@@ -29,49 +24,29 @@ const EVENTS = {
 }
 
 // vars
-let fileCheck = 0;
-let diskedRemoved = 0;
+let curDisk = -2;
 const myEmitter = new EventEmitter();
 
 // test for file already mounted, do it in a timeout so 
 // main program will have event registered
-setTimeout(() => {
+setInterval(() => {
     let disk = checkForDisk()
-    if (disk !== -1) {
+    if (disk !== curDisk) {
+      if (disk === -1) {
+        myEmitter.emit(EVENTS.DISK_REMOVED, disk)
+      } else {
         myEmitter.emit(EVENTS.DISK_FOUND, disk)
-    }
-}, 50);
-
-Tail.on('line', function(data) {
-  if (/changed media or resized disk sda/.test(data)) {
-    if (!diskedRemoved) {
-      console.log(`found disk removed in log.  sending disk removed signal.`);
-      diskedRemoved = 1;
-      myEmitter.emit(EVENTS.DISK_REMOVED);
-    }
-  }
-
-  if (/sd 0\:0\:0\:0\: \[sda\]/.test(data)) {
-    let chkTimer = setInterval(() => {
-      let disk = checkForDisk();
-      if (disk !== -1) {
-        diskedRemoved = 0;
-        fileCheck = 0;
-        clearTimeout(chkTimer);
-        myEmitter.emit(EVENTS.DISK_FOUND, disk);
-      } else if (++fileCheck === MAX_FILE_CHECK) {
-        console.log(`ERROR: Reached max file check.  Turning off timer.`);
-        clearTimeout(chkTimer);
-        fileCheck = 0;
       }
-    }, 250);
-  }
-});
+
+      curDisk = disk;
+    }
+
+}, 1000);
 
 function checkForDisk() {
-  if (fs.existsSync('/mnt/floppy/disk1.dat')) {
+  if (fs.existsSync('/dev/disk/by-label/disk-trivia')) {
     return 1;
-  } else if (fs.existsSync('/mnt/floppy/disk2.dat')) {
+  } else if (fs.existsSync('/dev/disk/by-label/disk-journal')) {
     return 2;
   }
 
