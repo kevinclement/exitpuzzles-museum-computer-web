@@ -11,7 +11,7 @@ const io = require('socket.io')(http);
 const Gpio = require('onoff').Gpio;
 const bodyParser = require('body-parser');
 let settings = require('./savedSettings.json');
-let CURRENT_DISK = -1
+let CURRENT_DISK = 0
 
 // handle saved settings
 app.use(cors())
@@ -43,7 +43,7 @@ if (process.platform !== "win32") {
     require('./floppy-detect')
       .on('DISK_REMOVED', () => {
           console.log("DISK: REMOVED")
-          CURRENT_DISK = -1
+          CURRENT_DISK = 0
           io.emit('DISK_REMOVED')
       })
       .on('DISK_FOUND', (disk) => {
@@ -99,7 +99,7 @@ setInterval(()  => {
 // web socket connection
 io.on('connection', function(socket){
   console.log('client connected');
-  if (CURRENT_DISK !== -1) {
+  if (CURRENT_DISK !== 0) {
     console.log(`current disk already present.  sending disk ${CURRENT_DISK}`);
     io.emit('DISK_FOUND', CURRENT_DISK)
   } else {
