@@ -46,7 +46,6 @@ import Results from '@/components/Results'
 import questions from '@/assets/questions.json'
 
 const TIMEOUTS_BEFORE_RESET = 4
-const TOTAL_QUESTIONS = 20 // NOTE: if you change this you need to change score calculator in Results.vue
 
 export default {
   name: 'Quiz',
@@ -63,8 +62,8 @@ export default {
   },
   data() {
     return {
-        SELECTION_TIMEOUT: 45,
-        QUESTION_LIMIT: TOTAL_QUESTIONS,
+        SELECTION_TIMEOUT: 60,  // NOTE: both of these are in the db
+        QUESTION_LIMIT: 20,
         ANSWER_TIMEOUT: 1000,
         questions: questions,
         questionIndex: 0,
@@ -119,6 +118,14 @@ export default {
   },
   created() {
       this.qz = this.$root.$data.ref
+
+      this.qz.on('value', (snapshot) => {
+        let quiz = snapshot.val()
+        if (quiz == null) return
+
+        this.SELECTION_TIMEOUT = quiz.timeout
+        this.QUESTION_LIMIT = quiz.total
+      })
 
       // check for completion globally
       if (this.$root.$data.results.time && this.$root.$data.results.time > 0) {
@@ -307,8 +314,7 @@ export default {
           state: "QUIZ",
           questionIndex: this.questionIndex,
           correctQuestions: this.correctQuestions,
-          missedQuestions: this.missedQuestions,
-          total: TOTAL_QUESTIONS
+          missedQuestions: this.missedQuestions
         })
       }
   },
