@@ -29,6 +29,7 @@
       v-bind:missed="missedQuestionsTotal"
       v-bind:correct="correctQuestionsTotal"
       v-bind:totalTime="timeTakenTotal"
+      
     />
 
     <audio ref="buttonSnd" preload="true">
