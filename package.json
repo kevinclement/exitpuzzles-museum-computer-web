@@ -6,6 +6,7 @@
     "dev": "vue-cli-service serve",
     "server": "node server/index.js",
     "build": "vue-cli-service build",
+    "tail": "tail -f /var/log/syslog | grep exitpuzzles-quiz",
     "stop": "sudo systemctl stop exitpuzzles.comp.service",
     "start": "sudo systemctl start exitpuzzles.comp.service",
     "restart": "sudo systemctl restart exitpuzzles.comp.service",
