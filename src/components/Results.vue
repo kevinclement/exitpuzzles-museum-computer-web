@@ -41,6 +41,9 @@
 </template>
 
 <script>
+let FINAL_CORRECT_SCORE = 87423
+let SCORE_OFFSET = 311 // just so its not pure division
+
 export default {
   name: 'Results',
   props: {
@@ -56,35 +59,14 @@ export default {
   },
   computed: {
     score: function() {
-        // NOTE:  ideally I'd have some crazy formulae that couldn't be guessed but was consistent
-        // Since I don't want to try and figure that out, I'm just manually setting results
-        // Simplest thing that works :smile:
-        if (this.correct == 0) return "0"
+        let total = this.missed + this.correct
+        let points_per_correct = Math.floor((FINAL_CORRECT_SCORE - (SCORE_OFFSET * total)) / total)
 
-        const scores = [
-            "02274",
-            "09843",
-            "12348",
-            "16271",
-            "17318",
-            "20113",
-            "21519",
-            "28072",
-            "32885",
-            "37224",
-            "42469",
-            "49170",
-            "50032",
-            "57645",
-            "63052",
-            "66867",
-            "75428",
-            "77081",
-            "81992",
-            "87423"
-        ]
-
-        return scores[this.correct-1]
+        if (this.correct === total) {
+          return FINAL_CORRECT_SCORE
+        } else {
+          return this.correct * points_per_correct
+        } 
     },
     avgTime: function() {
       return this.totalTime / (this.missed + this.correct)
