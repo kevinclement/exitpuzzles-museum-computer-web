@@ -63,7 +63,7 @@ export default {
   },
   data() {
     return {
-        SELECTION_TIMEOUT: 0,
+        SELECTION_TIMEOUT: 45,
         QUESTION_LIMIT: TOTAL_QUESTIONS,
         ANSWER_TIMEOUT: 1000,
         questions: questions,
@@ -127,21 +127,7 @@ export default {
         this.correctQuestionsTotal = this.$root.$data.results.correct
         this.showResults = true
       } else {
-        fetch('http://localhost:8080/settings')
-          .then((response) => {
-            return response.json();
-          })
-          .then((myJson) => {
-            this.SELECTION_TIMEOUT = myJson.QUESTION_TIMEOUT_S
-          })
-          .catch((e) => {
-            // if server isn't running or some problem, then default to 60
-            console.log(`ERROR fetching settings: ${e}`);
-            this.SELECTION_TIMEOUT = 60
-          })
-          .finally(() => {
-            this.reset()
-          })
+        this.reset()
       }
 
       // hookup keyboard handler for debug stuff when not using buttons

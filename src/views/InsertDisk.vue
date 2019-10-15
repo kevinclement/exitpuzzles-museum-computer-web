@@ -13,12 +13,7 @@
 </template>
 <script>
 
-// CODES for setting timer
-const CODE_TIMER_60s = [0,0,4,0] // A,A,E,A
-const CODE_TIMER_30s = [0,0,4,1] // A,A,E,B
-const CODE_TIMER_OFF = [0,0,4,2] // A,A,E,C
-
-// CODES for warping to logo
+// CODE for resetting to logo
 const CODE_RESET_QUIZ = [2,2,2,2] // C,C,C,C
 
 export default {
@@ -56,19 +51,6 @@ export default {
     checkCode() {
 
       console.log('checking for special reset code')
-
-      if (checkEqual(this.lastKeys, CODE_TIMER_60s)) {
-        this.status(`Updated TIMEOUT to 60s`)
-        updateSettings(60)
-      }
-      else if (checkEqual(this.lastKeys, CODE_TIMER_30s)) {
-        this.status(`Updated TIMEOUT to 30s`)
-        updateSettings(30)
-      }
-      else if (checkEqual(this.lastKeys, CODE_TIMER_OFF)) {
-        this.status(`Updated TIMEOUT to 0s`)
-        updateSettings(0)
-      }
 
       if (checkEqual(this.lastKeys, CODE_RESET_QUIZ)) {
         this.$root.$data.results = {}
@@ -111,17 +93,6 @@ function checkEqual(a, b) {
   return true
 }
 
-function updateSettings(timeout) {
-  fetch("http://localhost:8080/settings", {
-    method: "post",
-    headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-    },
-
-    body: JSON.stringify({"QUESTION_TIMEOUT_S":timeout})
-  })
-}
 </script>
 
 <style scoped>
