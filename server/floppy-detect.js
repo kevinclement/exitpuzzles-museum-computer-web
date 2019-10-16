@@ -10,12 +10,13 @@ const EVENTS = {
 
 // vars
 let curDisk = -1;
+let missingFor = 0;
 const myEmitter = new EventEmitter();
 
 const softSPI = new SoftSPI({
-  clock: 23,   // pin number of SCLK
-  mosi: 19,    // pin number of MOSI
-  miso: 21,    // pin number of MISO
+  clock:  23,  // pin number of SCLK
+  mosi:   19,  // pin number of MOSI
+  miso:   21,  // pin number of MISO
   client: 24   // pin number of CS
 });
 
@@ -25,14 +26,20 @@ const mfrc522 = new Mfrc522(softSPI).setResetPin(22)
 // main program will have event registered
 setInterval(() => {
     let disk = checkForDisk()
+
     if (disk !== curDisk) {
-      if (disk === 0) {
-        myEmitter.emit(EVENTS.DISK_REMOVED)
+      // special case missing disk and debounce it
+      if (disk == 0) {
+        missingFor++
+        if (missingFor >= 3) {
+          myEmitter.emit(EVENTS.DISK_REMOVED)
+          curDisk = disk;
+        }
       } else {
         myEmitter.emit(EVENTS.DISK_FOUND, disk)
+        missingFor = 0
+        curDisk = disk;
       }
-
-      curDisk = disk;
     }
 
 }, 1000);
