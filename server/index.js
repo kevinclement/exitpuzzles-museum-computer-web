@@ -8,7 +8,6 @@ const http = require('http').Server(app);
 const history = require('connect-history-api-fallback');
 const io = require('socket.io')(http);
 const Gpio = require('onoff').Gpio;
-const bodyParser = require('body-parser');
 let CURRENT_DISK = 0
 
 // Register static and history overrides

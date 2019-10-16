@@ -16,6 +16,7 @@ export default {
     }
   },
   created() {
+
       // watch for forced override in database
       this.$root.$data.ref.on('value', (snapshot) => {
         let qz = snapshot.val()
@@ -34,7 +35,7 @@ export default {
           // JOURNAL
           this.$router.push("journal")
         } else if (qz.force === 4) {
-          console.log(`resetting results`)
+          // RESET
           this.$root.$data.results = {}
           this.$router.push("/")
         }

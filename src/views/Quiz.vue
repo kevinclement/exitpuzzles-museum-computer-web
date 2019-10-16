@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- QUESTIONS -->
-    <div class="questions" v-if="!showResults">
+    <div class="questions">
       <!-- HEADER -->
       <div class="header"><img src="../assets/border.png"/></div>
 
@@ -24,26 +24,18 @@
       </div>
     </div>
 
-    <!-- RESULTS -->
-    <Results v-else 
-      v-bind:missed="missedQuestionsTotal"
-      v-bind:correct="correctQuestionsTotal"
-      v-bind:totalTime="timeTakenTotal"
-      
-    />
-
     <audio ref="buttonSnd" preload="true">
       <source src="../assets/sounds/button-17.wav" type="audio/wav">
     </audio>
     <audio ref="timeoutSnd" preload="true">
       <source src="../assets/sounds/beep-03.wav" type="audio/wav">
     </audio>
+
   </div>
 </template>
 
 <script>
 import Question from '@/components/Question'
-import Results from '@/components/Results'
 import questions from '@/assets/questions.json'
 
 const TIMEOUTS_BEFORE_RESET = 4
@@ -68,28 +60,18 @@ export default {
         ANSWER_TIMEOUT: 1000,
         questions: questions,
         questionIndex: 0,
-        missedQuestions: [],
-        correctQuestions: [],
         timedOutInARow: 0,
         selectedAnswer: -1,
         buttonTimer: null,
         timeForSelection: 0,
         selectionTimer: null,
         questionStartTime: 0,
-
-        showResults: false,
-        timeTakenTotal: 0,
-        correctQuestionsTotal: 0,
-        missedQuestionsTotal: 0,
         qz: undefined
     }
   },
   computed: {
       currentQuestion: function() {
           return this.questions[this.questionIndex]
-      },
-      finished: function() {
-        return this.correctQuestions.length + this.missedQuestions.length === this.QUESTION_LIMIT
       },
       timerBar: function() {
         if (!this.timeForSelection) { 
@@ -124,21 +106,25 @@ export default {
         let quiz = snapshot.val()
         if (quiz == null) return
 
-        this.SELECTION_TIMEOUT = quiz.timeout
-        this.QUESTION_LIMIT = quiz.total
+        if (this.QUESTION_LIMIT != quiz.total) {
+          this.QUESTION_LIMIT = quiz.total
+          this.resetQuestions()
+          this.resetResults()
+        }
+
+        if (this.SELECTION_TIMEOUT != quiz.timeout) {
+          this.SELECTION_TIMEOUT = quiz.timeout
+
+          // only reset the timer if we're on the page
+          // there are some race conditions if we change the route too fast
+          if (this.$router.currentRoute.name == "quiz") {
+            this.resetTimeForSelection()
+          } 
+        }
       })
 
-      // check for completion globally
-      if (this.$root.$data.results.time && this.$root.$data.results.time > 0) {
-        this.timeTakenTotal = this.$root.$data.results.time
-        this.missedQuestionsTotal = this.$root.$data.results.missed
-        this.correctQuestionsTotal = this.$root.$data.results.correct
-        this.showResults = true
-      } else {
-        this.reset()
-      }
+      this.updateDB();
 
-      // hookup keyboard handler for debug stuff when not using buttons
       window.addEventListener('keydown', this.onkeydown)
   },
   destroyed() {
@@ -147,47 +133,31 @@ export default {
       clearInterval(this.buttonTimer)
   },
   methods: {
-      reset: function() {
+      resetResults: function() {
+        this.$root.$data.results = { missed: [], correct: [], time: 0 }
+      },
+      resetQuestions: function() {
         // create random set of questions, should contain any previously missed questions
-        this.questions = randomizeQuestions(questions, this.missedQuestions, this.QUESTION_LIMIT)
-
-        // after randomizing, can now reset the missed questions
-        this.missedQuestions = []
-        this.missedQuestionsTotal = 0
-        this.correctQuestions = []
-        this.correctQuestionsTotal = 0
-        this.timedOutInARow = 0
-        this.showResults = false
-        this.$root.$data.results.time = 0
-        this.$root.$data.results.correct = 0
-        this.$root.$data.results.missed = 0
-
-        // reset the timer
-        this.timeForSelection = this.SELECTION_TIMEOUT
-
-        if (this.timeForSelection > 0) {
-          this.selectionTimer = setInterval(() => {
-            if (this.timeForSelection === 1) {
-              this.buttonPressed(-1)
-            } else {
-              this.timeForSelection--;
-            }
-          }, 1000)
-        }
+        this.questions = randomizeQuestions(questions, this.$root.$data.results.missed || [], this.QUESTION_LIMIT)
 
         // store time started for time for question
         this.questionStartTime = new Date()
 
         // set the first question as selected
         this.questionIndex = 0
-
-        this.updateDB();
       },
-      prev: function() {
-          if (this.questionIndex > 0) {
-            this.questionIndex--;
-          }
-          this.updateDB();
+      resetTimeForSelection: function() {
+        this.timeForSelection = this.SELECTION_TIMEOUT
+        if (this.timeForSelection > 0) {
+
+          this.selectionTimer = setInterval(() => {
+            if (this.timeForSelection === 1) {
+                this.buttonPressed(-1)
+            } else {
+                this.timeForSelection--;
+            }
+          }, 1000)
+        }
       },
       buttonPressed: function(index) {
         console.log(`button pressed: ${index}`);
@@ -196,11 +166,7 @@ export default {
           console.log(`INFO: Ignoring multi press for ${index}, selection already made.`)
           return;
         }
-        if (this.showResults && this.missedQuestionsTotal === 0) {
-          console.log(`INFO: Ignoring button press for ${index}, quiz already solved.`)
-          return;
-        }
-        
+
         // play sounds for button press, either button or timeout
         if (index !== -1) {
           this.$refs.buttonSnd.play()
@@ -215,7 +181,7 @@ export default {
 
           if (this.timedOutInARow === TIMEOUTS_BEFORE_RESET) {
              console.log(`max timeouts reached resetting.`)
-             this.reset();
+             this.resetResults()
              this.$router.push("/")
              return;
           }
@@ -223,30 +189,19 @@ export default {
           this.timedOutInARow = 0;
         }
 
-        if (this.showResults && index !== -1) {
-          this.reset();
-          this.$router.push("/")
-          return;
-        }
-
         // add time taken for stats
-        this.timeTakenTotal += ((new Date()) - this.questionStartTime)
+        this.$root.$data.results.time += ((new Date()) - this.questionStartTime)
 
-        // support undefined debug mode that randomly picks answer
-        if (index === undefined) {
-          this.selectedAnswer = getRandInt(this.currentQuestion.answers.length, this.selectedAnswer)
-        }
-        else {
-          this.selectedAnswer = index
-        }
+        // store selectedAnswer
+        this.selectedAnswer = index
 
         // add to score arrays
         if (this.currentQuestion.correctAnswer - 1 === this.selectedAnswer) {
           console.log(`correct`)
-          this.correctQuestions.push(this.currentQuestion)
+          this.$root.$data.results.correct.push(this.currentQuestion)
         } else {
           console.log(`missed`)
-          this.missedQuestions.push(this.currentQuestion)
+          this.$root.$data.results.missed.push(this.currentQuestion)
         }
 
         if (index !== -1) {
@@ -272,27 +227,10 @@ export default {
         this.updateDB();
       },
       results() {
-        this.correctQuestionsTotal = this.correctQuestions.length
-        this.$root.$data.results.correct = this.correctQuestions.length
-
-        this.missedQuestionsTotal = this.missedQuestions.length
-        this.$root.$data.results.missed = this.missedQuestions.length
-
-        this.$root.$data.results.time = this.timeTakenTotal
-
-        this.showResults = true
+        this.$router.push("/score")
       },
       onkeydown: function(e){
         switch(e.code) {
-          case "ArrowRight":
-            this.next()
-            break;
-          case "ArrowLeft":
-            this.prev()
-            break;
-          case "ArrowUp":
-            this.buttonPressed()
-            break;
           case "KeyA":
           case "KeyB":
           case "KeyC":
@@ -300,13 +238,6 @@ export default {
           case "KeyE":
             this.buttonPressed(e.keyCode - 65)
             break
-          case "Digit1":
-          case "Digit2":
-          case "Digit3":
-          case "Digit4":
-          case "Digit5":
-            this.buttonPressed(parseInt(e.key) - 1)
-            break;
         }
       },
 
@@ -314,25 +245,14 @@ export default {
         this.qz.update({ 
           state: "QUIZ",
           questionIndex: this.questionIndex,
-          correctQuestions: this.correctQuestions,
-          missedQuestions: this.missedQuestions
+          correctQuestions: this.$root.$data.results.correct ? this.$root.$data.results.correct : [],
+          missedQuestions: this.$root.$data.results.missed ? this.$root.$data.results.missed : []
         })
       }
   },
   components: {
-    'Question': Question,
-    'Results': Results,
+    'Question': Question
   }
-}
-
-function getRandInt(max, cur) {
-  let rand = -1;
-
-  do {
-    rand = Math.floor(Math.random() * Math.floor(max))
-  } while(rand === cur)
-
-  return rand
 }
 
 // Will randomize questions to ask, taking into account ones we've previously missed
@@ -345,7 +265,7 @@ function randomizeQuestions(questions, missed, limit) {
   }
 
   // if all questions were missed, just return
-  if (randQuestions.length === limit) {
+  if (randQuestions.length == limit) {
     return shuffle(randQuestions)
   }
 
@@ -364,7 +284,7 @@ function randomizeQuestions(questions, missed, limit) {
     }
 
     // only do this until we've hit our limit
-    if (randQuestions.length === limit) {
+    if (randQuestions.length == limit) {
       break;
     }
   }

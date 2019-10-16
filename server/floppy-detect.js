@@ -21,10 +21,6 @@ const softSPI = new SoftSPI({
 
 const mfrc522 = new Mfrc522(softSPI).setResetPin(22)
 
-setInterval(function() {
-  
-}, 1000);
-
 // test for file already mounted, do it in a timeout so 
 // main program will have event registered
 setInterval(() => {
