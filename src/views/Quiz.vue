@@ -235,7 +235,8 @@ export default {
           state: "QUIZ",
           questionIndex: this.questionIndex,
           correctQuestions: this.$root.$data.results.correct ? this.$root.$data.results.correct : [],
-          missedQuestions: this.$root.$data.results.missed ? this.$root.$data.results.missed : []
+          missedQuestions: this.$root.$data.results.missed ? this.$root.$data.results.missed : [],
+          currentTotal: this.QUESTION_LIMIT
         })
       }
   },
