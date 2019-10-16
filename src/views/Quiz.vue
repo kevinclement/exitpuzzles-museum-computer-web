@@ -149,6 +149,10 @@ export default {
       resetTimeForSelection: function() {
         this.timeForSelection = this.SELECTION_TIMEOUT
         if (this.timeForSelection > 0) {
+          
+          if (this.selectionTimer) {
+            clearInterval(this.selectionTimer)
+          }
 
           this.selectionTimer = setInterval(() => {
             if (this.timeForSelection === 1) {
