@@ -31,7 +31,8 @@ setInterval(() => {
       // special case missing disk and debounce it
       if (disk == 0) {
         missingFor++
-        if (missingFor >= 3) {
+        if (missingFor >= 5) {
+          console.log('missing long enough, triggering event');
           myEmitter.emit(EVENTS.DISK_REMOVED)
           curDisk = disk;
         }
@@ -40,6 +41,8 @@ setInterval(() => {
         missingFor = 0
         curDisk = disk;
       }
+    } else {
+      missingFor = 0;
     }
 
 }, 1000);
@@ -48,11 +51,13 @@ function checkForDisk() {
   mfrc522.reset();
   let response = mfrc522.findCard();
   if (!response.status) {
+    console.log('find card failed');
     return 0;
   }
   
   response = mfrc522.getUid();
   if (!response.status) {
+    console.log('getUid failed');
     return 0;
   }
 
