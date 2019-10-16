@@ -22,6 +22,9 @@ export default {
         let qz = snapshot.val()
         if (qz == null) return
 
+        this.$root.$data.settings.question_limit = parseInt(qz.total)
+        this.$root.$data.settings.time_limit = parseInt(qz.timeout)
+
         if (qz.force === 0) {
           // INSERT DISK
           this.insertDisk()

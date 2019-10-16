@@ -22,6 +22,10 @@ new Vue({
   data: {
     ref: ref,
     reset: reset,
+    settings: {
+      question_limit:15,
+      time_limit: 90
+    },
     results : {
     }
   }

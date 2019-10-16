@@ -42,8 +42,7 @@ const TIMEOUTS_BEFORE_RESET = 4
 
 export default {
   name: 'Quiz',
-  props: {
-  },
+  props: {},
   sockets: {
     connect: function () {
         console.log('socket connected')
@@ -55,8 +54,8 @@ export default {
   },
   data() {
     return {
-        SELECTION_TIMEOUT: 60,  // NOTE: both of these are in the db
-        QUESTION_LIMIT: 20,
+        SELECTION_TIMEOUT: 90, // defined in db
+        QUESTION_LIMIT: 15,
         ANSWER_TIMEOUT: 1000,
         questions: questions,
         questionIndex: 0,
@@ -102,26 +101,12 @@ export default {
   created() {
       this.qz = this.$root.$data.ref
 
-      this.qz.on('value', (snapshot) => {
-        let quiz = snapshot.val()
-        if (quiz == null) return
+      this.SELECTION_TIMEOUT = this.$root.$data.settings.time_limit;
+      this.QUESTION_LIMIT = this.$root.$data.settings.question_limit;
 
-        if (this.QUESTION_LIMIT != quiz.total) {
-          this.QUESTION_LIMIT = quiz.total
-          this.resetQuestions()
-          this.resetResults()
-        }
-
-        if (this.SELECTION_TIMEOUT != quiz.timeout) {
-          this.SELECTION_TIMEOUT = quiz.timeout
-
-          // only reset the timer if we're on the page
-          // there are some race conditions if we change the route too fast
-          if (this.$router.currentRoute.name == "quiz") {
-            this.resetTimeForSelection()
-          } 
-        }
-      })
+      this.resetQuestions()
+      this.resetResults()
+      this.resetTimeForSelection()
 
       this.updateDB();
 
