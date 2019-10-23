@@ -13,7 +13,10 @@ export const reset = function(state) {
     questionIndex: 0,
     correctQuestions: null,
     missedQuestions: null,
-    force: null
+    force: null,
+    info: {
+      lastActivity: (new Date()).toLocaleString()
+    }
   }
   
   if (state) {
