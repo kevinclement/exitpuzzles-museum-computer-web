@@ -41,8 +41,13 @@ export default {
           // RESET
           this.$root.$data.results = {}
           this.$router.push("/")
+        } else if (qz.force === 5) {
+          // RELOAD CLIENT
+          console.log(`Reloading client...`);
+          setTimeout(()=>{
+            window.location.replace(window.location.origin)
+          }, 500)
         }
-
       })
 
       window.addEventListener('keydown', this.onkeydown)
