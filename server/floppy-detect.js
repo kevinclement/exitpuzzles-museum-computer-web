@@ -51,13 +51,13 @@ function checkForDisk() {
   mfrc522.reset();
   let response = mfrc522.findCard();
   if (!response.status) {
-    console.log('find card failed');
+    //console.log('find card failed');
     return 0;
   }
   
   response = mfrc522.getUid();
   if (!response.status) {
-    console.log('getUid failed');
+    //console.log('getUid failed');
     return 0;
   }
 
