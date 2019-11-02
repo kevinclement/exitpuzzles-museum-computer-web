@@ -9,26 +9,23 @@
 | |\_.  |  My Journal                          |    /| |
 |\|  | /|                                      |\  | |/|
 | `---' |                                      | `---' |
-|       |                                      |       |
 |       |  {{date}}                         |       |
 |       |                                      |       |
-|       |                                      |       |
-|       |                                      |       |
-|       |  i Seriously tHink theRe may be      |       |
-|       |  somethIng to this egyptiaN cursE.   |       |
-|       |  my luck has hapPened to chAnge ever |       |
-|       |  Since that Shipment from cairo      |       |
+|       |  I seriously think there may be      |       |
+|       |  something to this egyptian curse.   |       |
+|       |  My luck has happened to change ever |       |
+|       |  since that shipment from Cairo      |       |
 |       |  arrived.                            |       |
 |       |                                      |       |
+|       |  I now believe the only way to turn  |       |
+|       |  everything around and end this      |       |
+|       |  curse, is to return all five idols   |       |
+|       |  to their shrine, and remember to    |       |
+|       |  place them in the correct order.    |       |
 |       |                                      |       |
-|       |                                      |       |
-|       |  i noW believe the Only way to turn  |       |
-|       |  everything aRound and enD thIs      |       |
-|       |  curse, iS to return All five idoLs   |       |
-|       |  to Their shrine, and remember to    |       |
-|       |  plAce them in the correct ordeR.    |       |
-|       |                                      |       |
-|       |                                      |       |
+|       |  The stool helped me hide the first   |       |
+|       |  idol inside a secret panel in the   |       |
+|       |  top of the red cabinet.             |       |
 |       |                                      |       |
 |       |--------------------------------------|       |
 \       |                                      |       /
