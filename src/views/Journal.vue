@@ -11,6 +11,7 @@
 | `---' |                                      | `---' |
 |       |  {{date}}                         |       |
 |       |                                      |       |
+|       |                                      |       |
 |       |  I seriously think there may be      |       |
 |       |  something to this egyptian curse.   |       |
 |       |  My luck has happened to change ever |       |
@@ -26,6 +27,8 @@
 |       |  The stool helped me hide the first   |       |
 |       |  idol inside a secret panel in the   |       |
 |       |  top of the red cabinet.             |       |
+|       |                                      |       |
+|       |                                      |       |
 |       |                                      |       |
 |       |--------------------------------------|       |
 \       |                                      |       /
