@@ -1,7 +1,7 @@
 <template>
 
   <div class="journal">
-    <div style="padding-top:15px">
+    <div style="padding-top:20px">
       <pre style="font-family: 'Press Start 2P';">
   .--------------------------------------------------.
  /  .-.                                          .-.  \
@@ -29,7 +29,6 @@
 |       |  The stool helped me hide the first   |       |
 |       |  idol inside a secret panel in the   |       |
 |       |  top of the red cabinet.             |       |
-|       |                                      |       |
 |       |                                      |       |
 |       |--------------------------------------|       |
 \       |                                      |       /
