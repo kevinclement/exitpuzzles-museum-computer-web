@@ -114,6 +114,9 @@ export default {
   },
   created() {
       if (this.percentage == 100) {
+        // update db to solved
+        this.$root.$data.runs.solved()
+
         // turn on blinking of score if we're at 100%
         this.blinkTimer = setInterval(() => {
           this.blink = !this.blink;
