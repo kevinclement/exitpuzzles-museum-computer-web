@@ -1,7 +1,7 @@
 <template>
 
   <div class="journal">
-    <div style="padding-top:25px">
+    <div style="padding-top:20px">
       <pre style="font-family: 'Press Start 2P';">
   .--------------------------------------------------.
  /  .-.                                          .-.  \
