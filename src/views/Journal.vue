@@ -18,16 +18,17 @@
 |       |  since that shipment from Cairo      |       |
 |       |  arrived.                            |       |
 |       |                                      |       |
+|       |                                      |       |
 |       |  I now believe the only way to turn  |       |
 |       |  everything around and end this      |       |
 |       |  curse, is to return all five idols   |       |
 |       |  to their shrine, and remember to    |       |
 |       |  place them in the correct order.    |       |
 |       |                                      |       |
+|       |                                      |       |
 |       |  The stool helped me hide the first   |       |
 |       |  idol inside a secret panel in the   |       |
 |       |  top of the red cabinet.             |       |
-|       |                                      |       |
 |       |                                      |       |
 |       |                                      |       |
 |       |--------------------------------------|       |
