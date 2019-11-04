@@ -158,8 +158,8 @@ export default {
 
         this.$refs.buttonSnd.play()
         setTimeout(() => {
-            this.$router.push("/")
             this.$root.$data.results = {}
+            this.$router.push("/")
         }, 400)
     },
     onkeydown: function(e){

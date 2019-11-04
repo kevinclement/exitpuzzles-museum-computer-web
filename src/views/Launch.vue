@@ -47,7 +47,12 @@ export default {
       this.blinkText = "Good Luck!"
       setTimeout( () => 
       {
-        this.$router.push("quiz")
+        if (this.$root.$data.results.correct) {
+          this.$router.push("/score")
+        }
+        else {
+          this.$router.push("quiz")
+        }
       }, 1500)
     }
   }
