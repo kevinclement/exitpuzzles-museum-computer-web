@@ -123,7 +123,7 @@ export default {
       },
       resetQuestions: function() {
         // create random set of questions, should contain any previously missed questions
-        this.questions = randomizeQuestions(questions, this.$root.$data.results.missed || [], this.QUESTION_LIMIT)
+        this.questions = randomizeQuestions(questions, this.$root.$data.results.missed || [], this.$root.$data.results.correct, this.QUESTION_LIMIT)
 
         // store time started for time for question
         this.questionStartTime = new Date()
@@ -246,8 +246,14 @@ export default {
 }
 
 // Will randomize questions to ask, taking into account ones we've previously missed
-function randomizeQuestions(questions, missed, limit) {
+function randomizeQuestions(questions, missed, correct, limit) {
   let randQuestions = [];
+
+  // always add two questions kyle wants in the quiz, but only on the first time
+  if (!correct && missed.length == 0) {
+    randQuestions.push({ "question": "How many fairies are on display in the Museum of Curiosity?:", "answers": ["10","13","15","14","Zero"],"correctAnswer": 3} )
+    randQuestions.push({ "question": "Which item is NOT currently on display above the shrunken heads?:", "answers": [ "Alien Fetus", "Human Heart", "Necrotic Ear", "Abnormal Brain", "Parasitic Worm" ], "correctAnswer": 3})
+  }
 
   // first add any missed questions to our list
   for (let q of missed) {
