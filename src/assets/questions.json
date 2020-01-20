@@ -33,6 +33,17 @@
         "correctAnswer": 4
     },
     {
+        "question": "How many fairies are on display in the Museum of Curiosity?:",
+        "answers": [
+            "10",
+            "13",
+            "15",
+            "14",
+            "Zero"
+        ],
+        "correctAnswer": 3
+    },
+    {
         "question": "Which mythical skull is not on display in the Museum of Curiosity?:",
         "answers": [
             "Alien",
@@ -42,6 +53,17 @@
             "Cyclopes"
         ],
         "correctAnswer": 4
+    },
+    {
+        "question": "Which item is NOT currently on display above the shrunken heads?:",
+        "answers": [
+            "Alien Fetus",
+            "Human Heart",
+            "Necrotic Ear",
+            "Abnormal Brain",
+            "Parasitic Worm"
+        ],
+        "correctAnswer": 3
     },
     {
         "question": "What is the name of the 2-headed pig on display in the Museum of Curiosity?:",
