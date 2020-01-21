@@ -3,13 +3,16 @@ export default class Runs {
         this.runsRef = db.ref('museum/runs')
         this.run = undefined
 
-        this.runsRef.orderByKey().limitToLast(2000).on('value', (snapshot) => {
+        this.runsRef.orderByChild('timestamp').limitToLast(2000).on('value', (snapshot) => {
             let latest = undefined;
-            for (const [date, run] of Object.entries(snapshot.val())) {
+            snapshot.forEach((runSnap) => {
+                let run = runSnap.val()
+                let key = runSnap.key
+
                 if (run.finished == "") {
-                    latest = date
+                    latest = key
                 }
-            }
+            })
 
             if (latest) {
                 this.run = this.runsRef.child(latest)
