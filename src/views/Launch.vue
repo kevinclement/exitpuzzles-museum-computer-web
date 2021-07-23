@@ -47,7 +47,13 @@ export default {
       this.blinkText = "Good Luck!"
       setTimeout( () => 
       {
-        if (this.$root.$data.results.correct) {
+        let cur_correct = this.$root.$data.results.correct ? this.$root.$data.results.correct.length : 0;
+        let cur_missed = this.$root.$data.results.missed ? this.$root.$data.results.missed.length : 0;
+        let total_questions = cur_correct + cur_missed;
+        let finished = total_questions > 0 &&  total_questions == this.$root.$data.settings.question_limit;
+        //console.log(`cor: ${cur_correct} missed: ${cur_missed} total: ${total_questions} fin: ${finished}`);
+        
+        if (finished) {
           this.$router.push("/score")
         }
         else {
