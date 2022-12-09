@@ -16,7 +16,7 @@
     "body-parser": "^1.18.3",
     "connect-history-api-fallback": "^1.6.0",
     "cors": "^2.8.5",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "firebase": "^7.1.0",
     "mfrc522-rpi": "^2.0.0",
     "onoff": "^4.1.1",
