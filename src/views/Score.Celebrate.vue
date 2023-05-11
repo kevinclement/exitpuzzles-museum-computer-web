@@ -15,13 +15,7 @@ export default {
   computed: {},
   created() {},
   destroyed() {},
-  mounted() {
-
-    document.getElementById('confetti-box').addEventListener('pointerdown', (e) => {
-      this.createConfetti(e.pageX, e.pageY, 20);
-    });
-
-  },
+  mounted() {},
   methods: {
     randomId: function(length) {
       var result = [];
@@ -32,6 +26,7 @@ export default {
       }
       return result.join('');
     },
+
     createConfetti: function(x, y, confettiItems) {
       let createElement = document.createElement('div');
       createElement.classList.add('confetti');
@@ -96,7 +91,6 @@ export default {
 </script>
 
 <style>
-
   #confetti-box {
     position: absolute;
     top: 0;

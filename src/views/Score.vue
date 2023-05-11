@@ -27,7 +27,7 @@
             </tr>
           </table>
         </div>
-        <score-celebrate/>
+        <score-celebrate ref="celebrator"/>
         <div class="footerMsg">{{tryAgain}}</div>
         <div class="footerMsg">{{pressAnyButton}}</div>
 
@@ -179,6 +179,15 @@ export default {
     }, 
     nudgeScoreScreen: function(index){
       console.log(`INFO: Ignoring button press for ${index}, quiz already solved.`)
+
+      let maxX = document.body.clientWidth - 100;
+      let maxY = document.body.clientHeight - 100;
+      
+      let x = Math.floor(Math.random() * maxX);
+      let y = Math.floor(Math.random() * maxY);
+      console.log(`INFO: Creating confetti at ${x}, ${y}`);
+
+      this.$refs.celebrator.createConfetti(x, y, 20);
     },
   },
   components: {
