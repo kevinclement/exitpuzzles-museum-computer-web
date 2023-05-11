@@ -1,8 +1,5 @@
 <template>
-    <div>
-        <DIV>CELEBRATE</DIV>
-        <div id="confetti-box"></div>
-    </div>
+    <div>a</div>
 </template>
 
 <script>
@@ -91,14 +88,6 @@ export default {
 </script>
 
 <style>
-  #confetti-box {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 1px solid green;
-  }
   .confetti {
     position: absolute;
     z-index: 9999;

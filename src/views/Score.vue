@@ -2,17 +2,27 @@
     <div class="resultsPage">
         <div>**************************</div>
         <div>
-        <pre class="results">
+        <pre class="results" style="padding-top:40px">
+               █████╗ ███████╗██╗  ██╗██████╗ ██████╗ 
+              ██╔══██╗╚════██║██║  ██║╚════██╗╚════██╗
+              ╚█████╔╝    ██╔╝███████║ █████╔╝ █████╔╝
+              ██╔══██╗   ██╔╝ ╚════██║██╔═══╝  ╚═══██╗
+              ╚█████╔╝   ██║       ██║███████╗██████╔╝
+               ╚════╝    ╚═╝       ╚═╝╚══════╝╚═════╝                                         
+       </pre>
+
+        <!-- <pre class="results">
         ██████╗ ███████╗███████╗██╗   ██╗██╗  ████████╗███████╗   
         ██╔══██╗██╔════╝██╔════╝██║   ██║██║  ╚══██╔══╝██╔════╝ ██╗
         ██████╔╝█████╗  ███████╗██║   ██║██║     ██║   ███████╗ ╚═╝
         ██╔══██╗██╔══╝  ╚════██║██║   ██║██║     ██║   ╚════██║ ██╗
         ██║  ██║███████╗███████║╚██████╔╝███████╗██║   ███████║ ╚═╝
         ╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚══════╝╚═╝   ╚══════╝   
-        </pre>
+</pre> -->
+
         </div>
-        <div>**************************</div>
-        <div>
+        <div style="padding-top:85px;">**************************</div>
+        <!-- <div>
           <table class="resultsTable">
             <tr><td>Missed:</td><td>{{missed}}</td></tr>
             <tr><td>Correct:</td><td>{{correct}} ({{percentage}}%)</td></tr>
@@ -27,9 +37,9 @@
             </tr>
           </table>
         </div>
-        <score-celebrate ref="celebrator"/>
+
         <div class="footerMsg">{{tryAgain}}</div>
-        <div class="footerMsg">{{pressAnyButton}}</div>
+        <div class="footerMsg">{{pressAnyButton}}</div> -->
 
         <audio ref="successSnd" preload="true">
           <source src="../assets/sounds/success.mp3" type="audio/mpeg">
@@ -40,7 +50,8 @@
         <audio ref="buttonSnd" preload="true">
           <source src="../assets/sounds/button-17.wav" type="audio/wav">
         </audio>
-
+        
+        <score-celebrate ref="celebrator"/>
   </div>
 </template>
 
@@ -185,7 +196,6 @@ export default {
       
       let x = Math.floor(Math.random() * maxX);
       let y = Math.floor(Math.random() * maxY);
-      console.log(`INFO: Creating confetti at ${x}, ${y}`);
 
       this.$refs.celebrator.createConfetti(x, y, 20);
     },
