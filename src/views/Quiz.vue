@@ -70,7 +70,15 @@ export default {
   },
   computed: {
       currentQuestion: function() {
-          return this.questions[this.questionIndex]
+          
+        var theQ = this.questions[this.questionIndex];
+        var answerIndex = theQ.correctAnswer - 1;
+        var answerLetter = String.fromCharCode(65 + answerIndex);
+        var answerText = theQ.answers[answerIndex];
+
+        console.log(`answer: ${answerLetter} - ${answerText}`)
+
+        return this.questions[this.questionIndex]
       },
       timerBar: function() {
         if (!this.timeForSelection) { 
