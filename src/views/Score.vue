@@ -27,6 +27,7 @@
             </tr>
           </table>
         </div>
+        <score-celebrate/>
         <div class="footerMsg">{{tryAgain}}</div>
         <div class="footerMsg">{{pressAnyButton}}</div>
 
@@ -44,6 +45,8 @@
 </template>
 
 <script>
+import ScoreCelebrate from './Score.Celebrate.vue'
+
 let FINAL_CORRECT_SCORE = 87423
 let SCORE_OFFSET = 311 // just so its not pure division
 
@@ -152,15 +155,16 @@ export default {
     },
     buttonPressed: function(index) {
         if (this.percentage == 100) {
-            console.log(`INFO: Ignoring button press for ${index}, quiz already solved.`)
-            return;
+            this.nudgeScoreScreen(index);
         }
-
         this.$refs.buttonSnd.play()
-        setTimeout(() => {
-            this.$root.$data.results = {}
-            this.$router.push("/")
-        }, 400)
+
+        if (this.percentage != 100) {
+          setTimeout(() => {
+              this.$root.$data.results = {}
+              this.$router.push("/")
+          }, 400)
+        }
     },
     onkeydown: function(e){
         switch(e.code) {
@@ -172,7 +176,13 @@ export default {
             this.buttonPressed(e.keyCode - 65)
             break
         }
-      }
+    }, 
+    nudgeScoreScreen: function(index){
+      console.log(`INFO: Ignoring button press for ${index}, quiz already solved.`)
+    },
+  },
+  components: {
+    'score-celebrate': ScoreCelebrate,
   }
 }
 </script>
