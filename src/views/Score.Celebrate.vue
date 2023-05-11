@@ -30,7 +30,8 @@ export default {
       let makeId = this.randomId(10);
       createElement.setAttribute('data-id', makeId);
       let confettiHTML = '';
-      let colors = [ '#2162ff', '#9e21ff', '#21a9ff', '#a9ff21', '#ff2184' ]
+      // let colors = [ '#2162ff', '#9e21ff', '#21a9ff', '#a9ff21', '#ff2184' ]
+      let colors = [ '#00D46A' ]
       
       for(var i = 0; i < confettiItems; ++i) {
           let color = Math.floor(Math.random() * (colors.length));
