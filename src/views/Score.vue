@@ -1,29 +1,19 @@
 <template>
-    <div class="resultsPage">
-        <div>**************************</div>
-        <!-- <div style="padding-left:60px;text-align: center;">High Score: </div> -->
+    <div class="resultsPage">      
+      <div>**************************</div>
         <div>
-        <pre class="results" style="padding-top:40px">
-               █████╗ ███████╗██╗  ██╗██████╗ ██████╗ 
-              ██╔══██╗╚════██║██║  ██║╚════██╗╚════██╗
-              ╚█████╔╝    ██╔╝███████║ █████╔╝ █████╔╝
-              ██╔══██╗   ██╔╝ ╚════██║██╔═══╝  ╚═══██╗
-              ╚█████╔╝   ██║       ██║███████╗██████╔╝
-               ╚════╝    ╚═╝       ╚═╝╚══════╝╚═════╝                                         
-       </pre>
-
-        <!-- <pre class="results">
+        <pre class="results">
         ██████╗ ███████╗███████╗██╗   ██╗██╗  ████████╗███████╗   
         ██╔══██╗██╔════╝██╔════╝██║   ██║██║  ╚══██╔══╝██╔════╝ ██╗
         ██████╔╝█████╗  ███████╗██║   ██║██║     ██║   ███████╗ ╚═╝
         ██╔══██╗██╔══╝  ╚════██║██║   ██║██║     ██║   ╚════██║ ██╗
         ██║  ██║███████╗███████║╚██████╔╝███████╗██║   ███████║ ╚═╝
         ╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚══════╝╚═╝   ╚══════╝   
-</pre> -->
-
+        </pre>
         </div>
-        <div style="padding-top:85px;">**************************</div>
-        <!-- <div>
+        <div>**************************</div>
+      
+        <div>
           <table class="resultsTable">
             <tr><td>Missed:</td><td>{{missed}}</td></tr>
             <tr><td>Correct:</td><td>{{correct}} ({{percentage}}%)</td></tr>
@@ -37,27 +27,25 @@
                 <td><div v-bind:class="{ blink: blink }">{{score}}</div></td>
             </tr>
           </table>
+          <div class="footerMsg">{{tryAgain}}</div>
+          <div class="footerMsg">{{pressAnyButton}}</div>
         </div>
 
-        <div class="footerMsg">{{tryAgain}}</div>
-        <div class="footerMsg">{{pressAnyButton}}</div> -->
+        
 
         <audio ref="successSnd" preload="true">
-          <source src="../assets/sounds/success.mp3" type="audio/mpeg">
-        </audio>
+          <source src="../assets/sounds/victory.wav" type="audio/wav">
+        </audio>        
         <audio ref="failureSnd" preload="true">
           <source src="../assets/sounds/failure.mp3" type="audio/mpeg">
         </audio>
         <audio ref="buttonSnd" preload="true">
           <source src="../assets/sounds/button-17.wav" type="audio/wav">
         </audio>
-        
-        <score-celebrate ref="celebrator"/>
   </div>
 </template>
 
 <script>
-import ScoreCelebrate from './Score.Celebrate.vue'
 
 let FINAL_CORRECT_SCORE = 87423
 let SCORE_OFFSET = 311 // just so its not pure division
@@ -110,7 +98,7 @@ export default {
     percentage: function() {
         if (this.correct === 0 && this.missed === 0) return "0"
 
-        return Math.floor((this.correct / (this.missed + this.correct)) * 100)
+        return Math.floor((this.correct / (this.missed + this.correct)) * 100)                
     },
     tryAgain: function() {
         if (this.percentage == 100) {
@@ -169,7 +157,7 @@ export default {
         if (this.percentage == 100) {
             this.nudgeScoreScreen(index);
         }
-        this.$refs.buttonSnd.play()
+        this.$refs.buttonSnd.play()       
 
         if (this.percentage != 100) {
           setTimeout(() => {
@@ -192,17 +180,10 @@ export default {
     nudgeScoreScreen: function(index){
       console.log(`INFO: Ignoring button press for ${index}, quiz already solved.`)
 
-      let maxX = document.body.clientWidth - 100;
-      let maxY = document.body.clientHeight - 100;
-      
-      let x = Math.floor(Math.random() * maxX);
-      let y = Math.floor(Math.random() * maxY);
-
-      this.$refs.celebrator.createConfetti(x, y, 20);
+      this.$router.push("/success")
     },
   },
-  components: {
-    'score-celebrate': ScoreCelebrate,
+  components: {    
   }
 }
 </script>
@@ -212,10 +193,14 @@ export default {
     font-size: 28px;
     padding-top:40px;
     padding-left: 40px;
+    padding-right: 40px;    
     padding-right: 40px;
-    grid-template-rows: 37px 160px 75px 315px 50px 50px;
+    grid-template-rows: 28px 160px 75px 315px 50px 50px;
     color: #00D46A;
     font-family: 'Press Start 2P';
+  }
+  .resultsTable  {
+    padding-bottom: 40px;
   }
   .resultsTable td {
     padding-right:40px;
@@ -225,7 +210,8 @@ export default {
     font-family:"Courier New", monospace;
   }
   .footerMsg {
-    justify-self: center;
+    text-align:center;
+    height:50px;
   }
   .blink {
     color: #000;

@@ -5,6 +5,7 @@ import Launch from './views/Launch.vue'
 import LaunchOld from './views/LaunchOld.vue'
 import Quiz from './views/Quiz.vue'
 import Score from './views/Score.vue'
+import ScoreCelebrate from './views/Score.Celebrate.vue'
 import InsertDisk from './views/InsertDisk.vue'
 import Password from './views/Password.vue'
 import Journal from './views/Journal.vue'
@@ -34,6 +35,11 @@ export default new Router({
       path: '/score',
       name: 'score',
       component: Score
+    },
+    {
+      path: '/success',
+      name: 'success',
+      component: ScoreCelebrate
     },
     {
       path: '/insert',

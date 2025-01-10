@@ -1,19 +1,82 @@
-<template>
-    <div>a</div>
+<template> 
+  <div class="resultsPage">
+        <div>** HIGH SCORE: ***********</div>
+        <pre class="results" v-bind:class="{ blink: blink }" style="padding-top:40px">
+               █████╗ ███████╗██╗  ██╗██████╗ ██████╗ 
+              ██╔══██╗╚════██║██║  ██║╚════██╗╚════██╗
+              ╚█████╔╝    ██╔╝███████║ █████╔╝ █████╔╝
+              ██╔══██╗   ██╔╝ ╚════██║██╔═══╝  ╚═══██╗
+              ╚█████╔╝   ██║       ██║███████╗██████╔╝
+               ╚════╝    ╚═╝       ╚═╝╚══════╝╚═════╝                                         
+       </pre>
+       <div style="padding-top:85px;">**************************</div>      
+      <audio ref="successSnd" preload="true">
+        <source src="../assets/sounds/victory.wav" type="audio/wav">
+      </audio>
+      <audio id="confsnd" ref="celebrateSnd" preload="true">
+        <source src="../assets/sounds/conf.wav" type="audio/wav">
+      </audio>
+      <audio ref="buttonSnd" preload="true">
+        <source src="../assets/sounds/button-17.wav" type="audio/wav">
+      </audio>        
+  </div>   
 </template>
-
 <script>
 
 export default {
   name: 'ScoreCelebrate',
   props: {},
-  sockets: {},
-  data() { return {} },
+  sockets: {
+    connect: function () {
+        console.log('socket connected for score and seven years ago')
+    },
+    BUTTON: function (data) {
+        console.log(`success button pressed: ${data}`)
+        this.buttonPressed(data.index)
+    }
+  },
+  data() { 
+    return {
+        blink: false,
+        blinkTimer: null,
+    } 
+  },
   computed: {},
-  created() {},
-  destroyed() {},
-  mounted() {},
+  created() { 
+    this.blinkTimer = setInterval(() => {
+          this.blink = !this.blink;
+        }, 1000);
+    
+    window.addEventListener('keydown', this.onkeydown)
+  },
+  destroyed() {
+    clearTimeout(this.blinkTimer);
+    window.removeEventListener('keydown', this.onkeydown)
+  },
+  mounted() {    
+    this.createConfetti(20);
+
+    // TODO: play success on mount if I have permission
+    //  this means it could play it twice from previous page
+  },
   methods: {
+    buttonPressed: function() {    
+        this.$refs.buttonSnd.play()
+        this.createConfetti(20);
+        this.$refs.celebrateSnd.play()
+    },
+    onkeydown: function(e){
+        switch(e.code) {
+          case "KeyA":
+          case "KeyB":
+          case "KeyC":
+          case "KeyD":
+          case "KeyE":
+            this.buttonPressed(e.keyCode - 65)
+            break
+        }
+    }, 
+    
     randomId: function(length) {
       var result = [];
       var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -24,7 +87,13 @@ export default {
       return result.join('');
     },
 
-    createConfetti: function(x, y, confettiItems) {
+    createConfetti: function(confettiItems) {
+      let maxX = document.body.clientWidth - 100;
+      let maxY = document.body.clientHeight - 100;
+      
+      let x = Math.floor(Math.random() * maxX);
+      let y = Math.floor(Math.random() * maxY);    
+
       let createElement = document.createElement('div');
       createElement.classList.add('confetti');
       let makeId = this.randomId(10);
@@ -67,7 +136,7 @@ export default {
               let newRotateAngle = randomNumber * rotateAngle;
               let angle = (randomNumber * (maxAngle - minAngle) + minAngle) / 1000;
               let speed = (randomNumber * (maxSpeed - minSpeed) + minSpeed) / 1000;
-              let realT = t * (parseFloat(item.getAttribute('data-angle')));
+              // let realT = t * (parseFloat(item.getAttribute('data-angle')));
               let x = speed * t * Math.cos(angle) + (50 * otherRandom * t);
               let y = speed * t * Math.sin(angle) - (0.5 * gravity * Math.pow(t, 2))  + (50 * otherRandom * t);
               item.style.transform = `translateX(${x * modifierX}px) translateY(${y * -1 * modifierY}px) rotateY(${newRotateAngle}deg) scale(${1})`;
@@ -89,6 +158,23 @@ export default {
 </script>
 
 <style>
+.resultsPage {
+    display: grid;
+    font-size: 28px;
+    padding-top:40px;
+    padding-left: 40px;
+    padding-right: 40px;    
+    grid-template-rows: auto;
+    color: #00D46A;
+    font-family: 'Press Start 2P';
+  }   
+  .results {
+    font: 18px monospace;
+    font-family:"Courier New", monospace;
+  }  
+  .blink {
+    color: #000;
+  }
   .confetti {
     position: absolute;
     z-index: 9999;
