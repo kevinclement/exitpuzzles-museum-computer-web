@@ -2,8 +2,11 @@ import firebase from 'firebase/app'
 import 'firebase/database'
 
 // Get a Firestore instance
+let dev_mode = process.env.NODE_ENV === 'development' && process.env.DEV_MODE !== 'production'
+let dbconfig = require('../db.json')
+let dbUrl = dev_mode ? dbconfig.dev : dbconfig.prod
 export const db = firebase
-  .initializeApp({ databaseURL: require('../db.json').prod })
+  .initializeApp({ databaseURL: dbUrl })
   .database()
 
 export const ref = db.ref('museum').child('devices/quiz')

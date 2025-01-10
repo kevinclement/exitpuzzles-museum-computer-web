@@ -1,6 +1,7 @@
 <template>
     <div class="resultsPage">
         <div>**************************</div>
+        <!-- <div style="padding-left:60px;text-align: center;">High Score: </div> -->
         <div>
         <pre class="results" style="padding-top:40px">
                █████╗ ███████╗██╗  ██╗██████╗ ██████╗ 
