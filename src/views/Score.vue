@@ -34,7 +34,7 @@
         
 
         <audio ref="successSnd" preload="true">
-          <source src="../assets/sounds/victory.wav" type="audio/wav">
+          <source src="../assets/sounds/success.mp3" type="audio/mpeg">
         </audio>        
         <audio ref="failureSnd" preload="true">
           <source src="../assets/sounds/failure.mp3" type="audio/mpeg">

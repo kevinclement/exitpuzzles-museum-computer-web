@@ -1,20 +1,17 @@
 <template> 
   <div class="resultsPage">
-        <div>** HIGH SCORE: ***********</div>
-        <pre class="results" v-bind:class="{ blink: blink }" style="padding-top:40px">
-               █████╗ ███████╗██╗  ██╗██████╗ ██████╗ 
+        <div style="text-align:center">** HIGH SCORE: ***********</div>
+        <pre class="results" v-bind:class="{ blink: blink }" style="padding-top:40px;text-align:center">
+               █████╗ ███████╗██╗  ██╗██████╗ ██████╗
               ██╔══██╗╚════██║██║  ██║╚════██╗╚════██╗
               ╚█████╔╝    ██╔╝███████║ █████╔╝ █████╔╝
               ██╔══██╗   ██╔╝ ╚════██║██╔═══╝  ╚═══██╗
               ╚█████╔╝   ██║       ██║███████╗██████╔╝
-               ╚════╝    ╚═╝       ╚═╝╚══════╝╚═════╝                                         
+               ╚════╝    ╚═╝       ╚═╝╚══════╝╚═════╝                                        
        </pre>
-       <div style="padding-top:85px;">**************************</div>      
+       <div style="padding-top:85px;text-align:center">**************************</div>      
       <audio ref="successSnd" preload="true">
-        <source src="../assets/sounds/victory.wav" type="audio/wav">
-      </audio>
-      <audio id="confsnd" ref="celebrateSnd" preload="true">
-        <source src="../assets/sounds/conf.wav" type="audio/wav">
+          <source src="../assets/sounds/success.mp3" type="audio/mpeg">
       </audio>
       <audio ref="buttonSnd" preload="true">
         <source src="../assets/sounds/button-17.wav" type="audio/wav">
@@ -63,7 +60,7 @@ export default {
     buttonPressed: function() {    
         this.$refs.buttonSnd.play()
         this.createConfetti(20);
-        this.$refs.celebrateSnd.play()
+        this.$refs.successSnd.play()
     },
     onkeydown: function(e){
         switch(e.code) {
@@ -167,6 +164,7 @@ export default {
     grid-template-rows: auto;
     color: #00D46A;
     font-family: 'Press Start 2P';
+    overflow:hidden;
   }   
   .results {
     font: 18px monospace;
