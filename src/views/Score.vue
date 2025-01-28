@@ -155,6 +155,7 @@ export default {
     },
     buttonPressed: function(index) {
         if (this.percentage == 100) {
+            this.$refs.successSnd.play()
             this.nudgeScoreScreen(index);
         }
         this.$refs.buttonSnd.play()       

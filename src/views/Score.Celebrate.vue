@@ -1,17 +1,17 @@
 <template> 
   <div class="resultsPage">
         <div style="text-align:center">** HIGH SCORE: ***********</div>
-        <pre class="results" v-bind:class="{ blink: blink }" style="padding-top:40px;text-align:center">
+        <pre class="results" v-bind:class="{ blink: blink }" style="padding-top:40px;">
                █████╗ ███████╗██╗  ██╗██████╗ ██████╗
               ██╔══██╗╚════██║██║  ██║╚════██╗╚════██╗
               ╚█████╔╝    ██╔╝███████║ █████╔╝ █████╔╝
               ██╔══██╗   ██╔╝ ╚════██║██╔═══╝  ╚═══██╗
               ╚█████╔╝   ██║       ██║███████╗██████╔╝
-               ╚════╝    ╚═╝       ╚═╝╚══════╝╚═════╝                                        
+               ╚════╝    ╚═╝       ╚═╝╚══════╝╚═════╝
        </pre>
        <div style="padding-top:85px;text-align:center">**************************</div>      
       <audio ref="successSnd" preload="true">
-          <source src="../assets/sounds/success.mp3" type="audio/mpeg">
+        <source src="../assets/sounds/conf.wav" type="audio/wav">
       </audio>
       <audio ref="buttonSnd" preload="true">
         <source src="../assets/sounds/button-17.wav" type="audio/wav">
