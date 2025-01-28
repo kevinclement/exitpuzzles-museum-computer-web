@@ -37,7 +37,7 @@
           <source src="../assets/sounds/success.mp3" type="audio/mpeg">
         </audio>
         <audio ref="successSndTwo" preload="true">
-          <source src="../assets/sounds/success2.mp3" type="audio/mpeg">
+          <source src="../assets/sounds/success.mp3" type="audio/mpeg">
         </audio>        
         <audio ref="failureSnd" preload="true">
           <source src="../assets/sounds/failure.mp3" type="audio/mpeg">
@@ -184,7 +184,9 @@ export default {
     nudgeScoreScreen: function(index){
       console.log(`INFO: Ignoring button press for ${index}, quiz already solved.`)
       this.$refs.successSndTwo.play()
+      setTimeout(() => {
       this.$router.push("/success")
+      }, 1500)
     },
   },
   components: {    
