@@ -37,6 +37,9 @@ export default {
         } else if (qz.force === 3) {
           // JOURNAL
           this.$router.push("journal")
+        } else if (qz.force === 6) {
+          // SUCCESS/FIREWORKS
+          this.$router.push("success")
         } else if (qz.force === 4 || qz.force === 5) {
           // RESET or RELOAD
           console.log(`Reloading client...`);
