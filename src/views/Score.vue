@@ -159,8 +159,9 @@ export default {
     buttonPressed: function(index) {
         if (this.percentage == 100) {
             this.nudgeScoreScreen(index);
+        } else {
+          this.$refs.buttonSnd.play()       
         }
-        this.$refs.buttonSnd.play()       
 
         if (this.percentage != 100) {
           setTimeout(() => {

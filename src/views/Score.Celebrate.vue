@@ -1,21 +1,18 @@
 <template> 
-  <div class="resultsPage">
-        <div style="text-align:center;padding-top:216px">** HIGH SCORE: ***********</div>
-        <pre class="results" v-bind:class="{ blink: blink }" style="padding-top:40px;text-align:center">
-         █████╗ ███████╗██╗  ██╗██████╗ ██████╗
-        ██╔══██╗╚════██║██║  ██║╚════██╗╚════██╗
-        ╚█████╔╝    ██╔╝███████║ █████╔╝ █████╔╝
-        ██╔══██╗   ██╔╝ ╚════██║██╔═══╝  ╚═══██╗
-         ╚█████╔╝   ██║       ██║███████╗██████╔╝
-          ╚════╝    ╚═╝       ╚═╝╚══════╝╚═════╝
+  <div class="resultsPage">        
+        <div>** HIGH SCORE: ***********</div>
+        <pre class="results" v-bind:class="{ blink: blink }" style="padding-top:40px;padding-left:25px">
+               █████╗ ███████╗██╗  ██╗██████╗ ██████╗
+              ██╔══██╗╚════██║██║  ██║╚════██╗╚════██╗
+              ╚█████╔╝    ██╔╝███████║ █████╔╝ █████╔╝
+              ██╔══██╗   ██╔╝ ╚════██║██╔═══╝  ╚═══██╗
+              ╚█████╔╝   ██║       ██║███████╗██████╔╝
+               ╚════╝    ╚═╝       ╚═╝╚══════╝╚═════╝                                        
        </pre>
-       <div style="padding-top:85px;text-align:center">**************************</div>      
+       <div style="padding-top:0px;">**************************</div>      
       <audio ref="successSnd" preload="true">
           <source src="../assets/sounds/firework_explode3.mp3" type="audio/mpeg">
         </audio>        
-      <audio ref="successSnd" preload="true">
-        <source src="../assets/sounds/conf.wav" type="audio/wav">
-      </audio>
       <audio ref="buttonSnd" preload="true">
         <source src="../assets/sounds/button-17.wav" type="audio/wav">
       </audio>
@@ -61,7 +58,7 @@ export default {
   },
   methods: {
     buttonPressed: function() {    
-        this.$refs.buttonSnd.play()
+        // this.$refs.buttonSnd.play()
         this.createConfetti(20);
         this.$refs.successSnd.play()
     },
@@ -161,8 +158,8 @@ export default {
 .resultsPage {
     display: grid;
     font-size: 28px;
-    padding-top:40px;
-    padding-left: 40px;
+    padding-top:250px;
+    padding-left: 150px;
     padding-right: 40px;    
     grid-template-rows: auto;
     color: #00D46A;
