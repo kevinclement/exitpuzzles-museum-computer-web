@@ -51,16 +51,14 @@ export default {
     window.removeEventListener('keydown', this.onkeydown)
   },
   mounted() {    
+    this.$refs.successSnd.play()
     this.createConfetti(20);
-
-    // TODO: play success on mount if I have permission
-    //  this means it could play it twice from previous page
   },
   methods: {
     buttonPressed: function() {    
         // this.$refs.buttonSnd.play()
-        this.createConfetti(20);
         this.$refs.successSnd.play()
+        this.createConfetti(20);
     },
     onkeydown: function(e){
         switch(e.code) {
