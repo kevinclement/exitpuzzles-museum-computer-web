@@ -10,9 +10,9 @@
                ╚════╝    ╚═╝       ╚═╝╚══════╝╚═════╝                                        
        </pre>
        <div style="padding-top:0px;">**************************</div>      
-      <audio ref="successSnd" preload="true">
+      <audio ref="successSnd" id="myfirew" preload="true">
           <source src="../assets/sounds/firework_explode3.mp3" type="audio/mpeg">
-        </audio>        
+        </audio>                                                                                                                                                                                           
       <audio ref="buttonSnd" preload="true">
         <source src="../assets/sounds/button-17.wav" type="audio/wav">
       </audio>
@@ -50,14 +50,24 @@ export default {
     clearTimeout(this.blinkTimer);
     window.removeEventListener('keydown', this.onkeydown)
   },
-  mounted() {    
-    this.$refs.successSnd.play()
+  mounted() {
+    this.playFireworks();
     this.createConfetti(20);
   },
   methods: {
-    buttonPressed: function() {    
+    playFireworks() {
+      if(! this.$refs.successSnd.paused) {
+        this.$refs.successSnd.cloneNode(true).play();
+      } else 
+      {
+        this.$refs.successSnd.play();
+      }
+    },
+    buttonPressed: function() {
+      
         // this.$refs.buttonSnd.play()
-        this.$refs.successSnd.play()
+        // this.$refs.successSnd.play()
+        this.playFireworks();
         this.createConfetti(20);
     },
     onkeydown: function(e){
