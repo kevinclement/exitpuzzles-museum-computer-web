@@ -1,7 +1,7 @@
 <template> 
   <div class="resultsPage">
-        <div style="text-align:center">** HIGH SCORE: ***********</div>
-        <pre class="results" v-bind:class="{ blink: blink }" style="padding-top:40px;">
+        <div style="text-align:center;padding-top:216px">** HIGH SCORE: ***********</div>
+        <pre class="results" v-bind:class="{ blink: blink }" style="padding-top:40px;text-align:center">
                █████╗ ███████╗██╗  ██╗██████╗ ██████╗
               ██╔══██╗╚════██║██║  ██║╚════██╗╚════██╗
               ╚█████╔╝    ██╔╝███████║ █████╔╝ █████╔╝
@@ -11,11 +11,14 @@
        </pre>
        <div style="padding-top:85px;text-align:center">**************************</div>      
       <audio ref="successSnd" preload="true">
+          <source src="../assets/sounds/firework_explode3.mp3" type="audio/mpeg">
+        </audio>        
+      <audio ref="successSnd" preload="true">
         <source src="../assets/sounds/conf.wav" type="audio/wav">
       </audio>
       <audio ref="buttonSnd" preload="true">
         <source src="../assets/sounds/button-17.wav" type="audio/wav">
-      </audio>        
+      </audio>
   </div>   
 </template>
 <script>
