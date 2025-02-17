@@ -227,6 +227,7 @@ export default {
         this.updateDB();
       },
       results() {
+        this.$root.$data.results.completed = true
         this.$router.push("/score")
       },
       onkeydown: function(e){

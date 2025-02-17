@@ -12,6 +12,7 @@ export const db = firebase
 export const ref = db.ref('museum').child('devices/quiz')
 
 export const reset = function(state) {
+  console.log(`Resetting state to ${state}`);
   let uObj = {
     questionIndex: 0,
     correctQuestions: null,

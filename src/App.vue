@@ -56,9 +56,19 @@ export default {
   },
   methods: {
     onkeydown: function(e){
+      console.log(`KEYDOWN: '${e.code}'`)
       switch(e.code) {
+        case "Backslash": 
+            console.log(`BACKSLASH: simulate disk removal`)
+            this.insertDisk()
+            break;
         case "Numpad0":
             this.insertDisk()
+            break;
+
+        case "BracketRight":
+            console.log(`BRACKET RIGHT: simulate disk 1 inserted`)
+            this.diskInserted(1)
             break;
         case "Numpad1":
             this.diskInserted(1)
